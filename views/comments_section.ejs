@@ -29,8 +29,8 @@
 
                   <span class="edit"><i class="fa-solid fa-edit"></i> Edit</span>
                   <span class="edit edit-2"><i class="fa-solid fa-edit"></i></span>
-                  <span class="delete"><i class="fa-solid fa-trash"></i> delete</span>
-                  <span class="delete delete-2"><i class="fa-solid fa-trash"></i> </span>
+                  <span data-article_id="<%= data['_id'] %>" class="del-<%= comment_info['main_comment']['_id'] %> delete"><i class="fa-solid fa-trash"></i> delete</span>
+                  <span data-article_id="<%= data['_id'] %>" class="del-<%= comment_info['main_comment']['_id'] %> delete delete-2"><i class="fa-solid fa-trash"></i> </span>
 
 
                 </div>
@@ -78,8 +78,8 @@
 
                       <span class="edit"><i class="fa-solid fa-edit"></i> Edit</span>
                       <span class="edit edit-2"><i class="fa-solid fa-edit"></i></span>
-                      <span class="delete"><i class="fa-solid fa-trash"></i> delete</span>
-                      <span class="delete delete-2"><i class="fa-solid fa-trash"></i> </span>
+                      <span data-article_id="<%= data['_id'] %>" class="del-<%= single_reply._id %> delete"><i class="fa-solid fa-trash"></i> delete</span>
+                      <span data-article_id="<%= data['_id'] %>" class="del-<%= single_reply._id %> delete delete-2"><i class="fa-solid fa-trash"></i> </span>
                     </div>
 
                     <div class="comment-info">@<span class="tag-person"><%=single_reply.reply_for  %></span><%= single_reply.comment_info %></div>

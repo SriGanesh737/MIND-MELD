@@ -334,5 +334,28 @@ router.post('/disliked/:articleid', (req, res) => {
 
 });
 
+router.delete('/:article_id/:comment_id', (req, res) => {
+    const article_id = req.params.article_id;
+    const comment_id = req.params.comment_id;
+    // console.log(article_id, comment_id,"....");
+    comment_model.findOne({ _id: comment_id }).then((comment) => {
+        const replies_ids = comment['replies_ids'];
+        console.log(replies_ids, '...');
+        comment_model.deleteMany({ _id: { $in: replies_ids } }).then(() => {
+            // console.log('replies deleted');
+            comment_model.deleteOne({ _id: comment_id }).then(() => {
+                console.log('main comment also delted...');
+                // res.redirect('/');
+                res.end();
+            })
+                .catch((err) => { console.log(err) });
+        }).catch((err) => {
+            console.log(err);
+        })
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
 
 module.exports = router;
