@@ -20,8 +20,10 @@
   <%- include('partials/loading') %>
     <%- include('partials/navbar')-%>
     <%- include('partials/cursor') %>
-   <div style="min-height: 600px;" class="your_blogs">
+
     <h1 class="title_expert">Your Blogs</h1>
+    <% if(data.length!==0) { %>
+   <div style="min-height: 600px;" class="your_blogs">
 
     <% data.forEach(ele => { %>
           <div id="<%= ele['id'] %>" class="your_blog">
@@ -43,7 +45,13 @@
     <% }) %>
 
     </div>
-
+ <% }%>
+ <% if(data.length==0) { %>
+  <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+   
+    <img src="../images/null.png" alt="">
+ </div>
+  <%} %>
 
 
     <%- include('partials/footer')-%>

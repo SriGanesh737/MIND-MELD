@@ -18,8 +18,8 @@
   <%- include('partials/loading') %>
   <%- include('partials/navbar') %>
 
-
-     <h1 class="bookmarked-heading">Bookmarked Articles</h1>
+  <h1 class="bookmarked-heading">Bookmarked Articles</h1>
+  <% if(bookmarked_data.length!=0) { %>
      <%- include('partials/cursor') %>
 
 
@@ -60,6 +60,12 @@
       <% }) %>
 
       </div>
+      <% } %>
+      <% if(bookmarked_data.length==0) { %>
+       <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+          <img src="../images/null.png" alt="">
+       </div>
+        <% }%>
 
       <%- include('partials/footer') %>
 
