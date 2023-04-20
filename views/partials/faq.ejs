@@ -1,0 +1,94 @@
+
+<form action="/askquery/filter" class="<%= registeras=='user'?'dontshow':" " %>" action="" method="post">
+      <label class="label_show" for="show_dontshow">Status:</label>
+      <select class="filter_select" name="is_solved" id="show_dontshow">
+        <option value="true">Solved</option>
+        <option value="false">Unsolved</option>
+      </select>
+      <button class="filter_apply" type="submit">Apply</button>
+</form>
+
+
+
+
+
+
+
+<% for( let i = 0; i < faq_data.length; i++ ) { %>
+
+   <% let data=faq_data[i] %>
+
+   <!-- for showing not answered questions. -->
+    <div  class="question-wrapper <%= is_answered?'dontshow':" " %>">
+      <div class="not_answered_wrapper">
+        <div class="not-answered-question">
+          <%= data['question'] %>
+        </div>
+
+        <button class="<%= i %> answer">
+          Answer
+        </button>
+      </div>
+      <div class="solution-<%= i %> solution-form dontshow">
+        <form  action="askquery/answer/<%= faq_data[i]._id %>" method="post">
+           <textarea required  class="faq-solution" name="faq-solution" cols="100" rows="4">
+
+           </textarea>
+          <div class="actn_btns">
+            <button type="button" class="cancel-<%= i %> btn btn-danger cancel_btn">Cancel</button>
+            <button type="submit" class="btn btn-success post_btn">Post</button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+
+    <!-- for showing answered questions. -->
+    <div class="question-wrapper <%= !is_answered?'dontshow':" " %>">
+
+      <div class="fa-ques">
+
+        <div class="faq-first-part">
+          <i class="fa-solid fa-caret-up"></i>
+          <span class="faq-scr-cnt">
+            <%= data["popularity"] %>
+          </span>
+          <i class="fa-solid fa-caret-down"></i>
+        </div>
+
+        <div class="faq-left-part">
+
+          <div class="question-part">
+            <%= data["question"] %>
+          </div>
+          <div class="solution-part">
+            <%= data["answer"].substring(0,100) %>...
+              <a class=" <%=i%> viewFullAnswer" href="#"> view full answer</a>
+          </div>
+        </div>
+
+        <div class="faq-right-part">
+          Answered by :
+          <br>
+          <img src=<%=data["profile-image-link"] %> alt="" class="faq-profile">
+        </div>
+
+      </div>
+
+      <div class="answer-box answer-box-<%=i%>">
+        <i class=" <%=i%> fa-solid fa-xmark"></i>
+        <br>
+        <%= data["answer"] %>
+      </div>
+
+    </div>
+
+
+
+<% } %>
+
+
+

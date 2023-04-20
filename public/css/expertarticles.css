@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+body{
+    background-color: #E6E4E4;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.your_blogs
+{
+    background-color: #E6E4E4;
+    /* padding-bottom: 30px; */
+    margin-bottom: -100px;
+    padding-bottom: 50px;
+}
+.title_expert
+{
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+}
+.your_blog
+{
+    background-color: rgb(255, 255, 255);
+    width: 700px;
+    height: 590px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    margin: 20px auto;
+    margin-bottom: 30px;
+
+}
+.your_blog .content
+{
+    font-weight: 400;
+    padding: 10px;
+}
+.your_blog .content h3{
+    font-weight: 600;
+}
+
+.blog_image
+{
+    width: 700px;
+    height: 350px;
+}
+
+.your_blog .edit ,.your_blog .delete
+{
+    margin: 15px;
+    height: 40px;
+    width: 150px;
+     font-size: 20px;
+    color: black;
+    transition: transform 0.2s;
+}
+.your_blog .edit
+{
+    color: white;
+ background-color: #24a0ed;
+ border: 2px solid darkblue;
+}
+.your_blog .edit
+{
+    color: white;
+ background-color: #24a0ed;
+ border: none;
+ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.your_blog .delete
+{
+    color: white;
+ background-color: #f44336;
+ border: none;
+ box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.your_blog .edit:hover
+{
+    transform: scale(1.1);
+}
+.your_blog .delete:hover
+{
+    transform: scale(1.1);
+}
+
+@media(max-width: 700px){
+    .your_blog{
+     width: 500px;
+    }
+    .your_blog .blog_image
+    {
+        width: 500px;
+        height: 250px;
+    }
+}
+
+@media(max-width: 550px){
+    .your_blog{
+     width: 350px;
+     height: 450px;
+    }
+    .your_blog .blog_image
+    {
+        width: 350px;
+        height: 150px;
+    }
+    .your_blog .edit,.your_blog .delete
+    {
+        width: 100px;
+    }
+}
+
+@media(max-width: 320px){
+    .your_blog{
+
+     width: 290px;
+     height: 420px;
+    }
+    .your_blog .blog_image
+    {
+        width: 290px;
+        height: 150px;
+    }
+    .your_blog .edit,.your_blog .delete
+    {
+        font-size: 16px;
+        width: 100px;
+        height: 25px;
+    }
+    .content h2,.content p
+    {
+        font-size: 14px;
+    }
+}
+

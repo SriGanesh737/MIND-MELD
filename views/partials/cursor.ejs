@@ -1,0 +1,104 @@
+
+<div class="outercursor">
+<div class="cursor">
+
+</div>
+</div>
+
+<style>
+.cursor{
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgb(255, 226, 226);
+    position: absolute;
+    border-radius: 50%;
+    transition-duration: 200ms;
+    pointer-events: none;
+    animation: anim .4s infinite alternate;
+}
+
+.outercursor{
+    border-radius: 50%;
+    box-sizing: content-box;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+   border: 7px solid rgb(57, 56, 56);
+   opacity: 0.6;
+   z-index: 300;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+    animation: anim2 .4s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes anim {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes anim2 {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes anim3 {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(2.7);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.expand {
+    opacity: 0.7 !important;
+    animation: anim3 .4s forwards;
+    border: 0.8px solid red;
+}
+
+
+</style>
+
+<script>
+        // $('input').click(function (e) {
+        //     // e.preventDefault();
+
+        //     // $('.cursor').css('display', 'none');
+        //     alert('hi');
+
+        // });
+
+        // $('input').css('border', '5px solid red');
+
+         $(document).ready(function () {
+
+                $('input').focusin(function () {
+                    $('.cursor,.outercursor').css('display', 'none');
+
+                });
+
+                $('input').focusout(function () {
+                    $('.cursor,.outercursor').css('display', 'block');
+                    
+                });
+            });
+
+
+
+
+</script>
+
+

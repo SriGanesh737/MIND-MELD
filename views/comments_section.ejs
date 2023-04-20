@@ -1,0 +1,169 @@
+
+
+<% for( let i = 0; i < comments_data.length; i++ ) { %>
+
+  <% let comment_info=comments_data[i]  %>
+
+          <div class="comment-parent-wrapper">
+
+            <div class="comment-container <%= comment_info['main_comment'].user_id==user_id?"your-comment":" " %>">
+              <div class="upvotes-part">
+                <div class="upvotes-wrapper">
+                  <button class="plus"><i class="fa-solid fa-2x fa-caret-up" style="color:hsl(238, 40%, 52%)"></i></button>
+                  <span class="upvotes-cnt">
+                    <%= comment_info['main_comment'].popularity %>
+                  </span>
+                  <button class="minus"><i class="fa-solid fa-2x fa-caret-down" style="color:hsl(238, 40%, 52%)"></i></button>
+                </div>
+
+              </div>
+              <div class="right-part">
+                <div class="comment-header"> <img class="comment-profile-image" src="<%= comment_info['main_comment'].profile_image_link %>"
+                    alt="">
+                  <span class="name"><%= comment_info['main_comment'].user_name %></span>
+                  <span class="youTag">You</span>
+                  <% let formatted_date=comment_info['main_comment'].posted_date;  formatted_date=formatted_date.getDate()+'-'+(formatted_date.getMonth()+1)+'-'+formatted_date.getFullYear() %>
+                  <div class="time"><%= formatted_date %></div>
+                  <a id="ri-<%= i %>" class="reply"><i class="fa-solid fa-reply"></i> Reply</a>
+
+
+                  <span class="edit"><i class="fa-solid fa-edit"></i> Edit</span>
+                  <span class="edit edit-2"><i class="fa-solid fa-edit"></i></span>
+                  <span class="delete"><i class="fa-solid fa-trash"></i> delete</span>
+                  <span class="delete delete-2"><i class="fa-solid fa-trash"></i> </span>
+
+
+                </div>
+
+                <div class="comment-info"><%= comment_info['main_comment'].comment_info %></div>
+              </div>
+            </div>
+
+            <!-- reply bar -->
+            <div id="reply-box-<%= i %>" class="reply-bar dontshow">
+
+            <form action="/posts/replycomment/<%= data['_id'] %>/<%= comment_info['main_comment']['_id'] %>?reply_for=<%= comment_info['main_comment']['user_name'] %>" method="post">
+          <input name="reply_box_value" placeholder="Enter your reply here" required type="text" class="reply-input-box">
+        <button type="button" id="ci-<%= i %>" class="btn btn-danger cancel_reply">Cancel</button>
+        <button type="submit" class="btn btn-success">Send</button>
+              </form>
+
+            </div>
+
+
+            <div class="replies-container ">
+
+              <% for( let j = 0; j < comment_info['replies'].length; j++ ) { %>
+             <% let single_reply=comment_info['replies'][j] %>
+
+                <div class="single-reply comment-container <%= single_reply.user_id==user_id?"your-comment":" " %> ">
+                  <div class="upvotes-part">
+                    <div class="upvotes-wrapper">
+                      <button class="plus"><i class="fa-solid fa-2x fa-caret-up" style="color:hsl(238, 40%, 52%)"></i></button>
+                      <span class="upvotes-cnt">
+                        <%= single_reply.popularity %>
+                      </span>
+                      <button class="minus"><i class="fa-solid fa-2x fa-caret-down" style="color:hsl(238, 40%, 52%)"></i></button>
+                    </div>
+
+                  </div>
+                  <div class="right-part">
+                    <div class="comment-header"> <img class="comment-profile-image" src="<%= single_reply.profile_image_link %>"
+                        alt="">
+                      <span class="name"><%= single_reply.user_name %></span>
+                      <span class="youTag">You</span>
+                      <% let formatted_date=single_reply.posted_date; formatted_date=formatted_date.getDate()+'-'+formatted_date.getMonth()+1+'-'+formatted_date.getFullYear() %>
+                      <div class="time"><%= formatted_date %></div>
+                      <a id="ri-<%= i %>-<%= j %>" class="reply"><i class="fa-solid fa-reply"></i> Reply</a>
+
+                      <span class="edit"><i class="fa-solid fa-edit"></i> Edit</span>
+                      <span class="edit edit-2"><i class="fa-solid fa-edit"></i></span>
+                      <span class="delete"><i class="fa-solid fa-trash"></i> delete</span>
+                      <span class="delete delete-2"><i class="fa-solid fa-trash"></i> </span>
+                    </div>
+
+                    <div class="comment-info">@<span class="tag-person"><%=single_reply.reply_for  %></span><%= single_reply.comment_info %></div>
+                  </div>
+                </div>
+
+                <!-- reply bar -->
+                <div id="reply-boxn-<%= i %>-<%= j %>" class="reply-bar dontshow">
+
+                  <form action="/posts/replycomment/<%= data['_id'] %>/<%= comment_info['main_comment']['_id']%>?reply_for=<%= single_reply['user_name'] %>" method="post">
+                    <input name="reply_box_value" placeholder="Enter your reply here" required type="text" class="reply-input-box">
+                    <button type="button" id="cin-<%= i %>-<%= j %>" class="btn btn-danger cancel_reply">Cancel</button>
+                    <button type="submit" class="btn btn-success">Send</button>
+                  </form>
+
+                </div>
+
+              <% } %>
+
+
+            </div>
+
+          </div>
+<% } %>
+
+
+
+
+
+
+
+
+
+
+       <!-- class name - your-comment makes  reply option invisible and adds delete and edit option -->
+    <!-- <div class="comment-parent-wrappeer">
+    <div class="comment-container your-comment">
+      <div class="upvotes-part">
+        <div class="upvotes-wrapper">
+          <button class="plus"><i class="fa-solid fa-2x fa-caret-up" style="color:hsl(238, 40%, 52%)"></i></button>
+          <span class="upvotes-cnt">
+            30
+          </span>
+          <button class="minus"><i class="fa-solid fa-2x fa-caret-down" style="color:hsl(238, 40%, 52%)"></i></button>
+        </div>
+
+      </div>
+      <div class="right-part">
+        <div class="comment-header">
+          <img class="comment-profile-image" src="../images/avatars/image-juliusomo.png" alt="">
+          <span class="name">juliusomo</span>
+          <span class="youTag">You</span>
+          <div class="time">3 days ago</div>
+          <a class="reply"><i class="fa-solid fa-reply"></i> Reply</a>
+
+          <span class="edit"><i class="fa-solid fa-edit"></i> Edit</span>
+          <span class="edit edit-2"><i class="fa-solid fa-edit"></i></span>
+          <span class="delete"><i class="fa-solid fa-trash"></i> delete</span>
+          <span class="delete delete-2"><i class="fa-solid fa-trash"></i> </span>
+        </div>
+
+        <div class="comment-info"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea fugit cumque
+          exercitationem nisi beatae molestias, nihil nesciunt fugiat temporibus omnis sed quasi similique
+          necessitatibus doloremque fuga? Accusantium totam iste nemo.</div>
+      </div>
+    </div>
+
+   <div class="replies-container">
+
+
+   </div>
+
+
+
+  </div> -->
+
+
+  <div class="comment-container write-comment">
+    <img class="comment-profile-image" src="../images/avatars/image-juliusomo.png" alt="">
+
+  <form action="/posts/comment/<%= data['_id'] %>" method="post">
+        <textarea placeholder="Add a comment..." name="comment-message" style="height:100px" cols="55" rows="3">
+        </textarea>
+        <button type="submit" class="send-btn">Send</button>
+  </form>
+
+  </div>

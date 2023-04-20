@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/Expert_profile.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine|Audiowide|Sofia|Trirong">
+    <script src="https://kit.fontawesome.com/f363f12a18.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+<body>
+
+    <%- include('partials/loading') %>
+    <%- include('partials/navbar') %>
+    <%- include('partials/cursor') %>
+
+<div class="bigDiv">
+    <div class="card">
+        <div class="imgbox">
+            <img src="<%= data.profile_image_link %>">
+
+        </div>
+        <div class="content">
+            <div class="details">
+                <!-- <h2>DR.SAMARAM<br><span>Sexologist</span></h2> -->
+                <h2><%= data.firstname %> <%= data.lastname %><br><span><%= data.domain %></span></h2>
+
+                <!-- <div class="data">
+                        <h3>3420<br><span>Posts</span></h3>
+                        <h3>120M<br><span>Followers</span></h3>
+                        <h3>285k<br><span>Likes</span></h3>
+                    </div> -->
+                <div class="data">
+                    <a href="<%= data.insta_link %>" class="instaicon"><i class="bi bi-instagram"></i></a>
+                    <a href="<%= data.github_link %>" class="githubicon"><i class="bi bi-github"></i></a>
+                    <a href="<%= data.facebook_link %>" class="linkedinicon"><i class="bi bi-linkedin"></i></i></a>
+                </div>
+                <div class="actionbtn">
+                    <button>Follow</button>
+                    <button>Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="desc">
+        <h3>Personal Information</h3>
+        <div class="info">
+            <div class="edit_details">
+                <a href="/user/edit_e"><i class="bi bi-pencil-square"><span>Edit profile</span></i></a>
+            </div>
+            <div class="firstname">
+                <h4 style="font-weight: 500;"> <b>FirstName:</b></h4>
+                <h4><%= data.firstname %></h4>
+            </div>
+            <div class="lastname">
+                <h4 style="font-weight: 500;"><b>LastName:</b></h4>
+                <h4><%= data.lastname %></h4>
+            </div>
+            <div class="Date-of-birth">
+                <h4 style="font-weight: 500;"><b>Date-of-birth:</b></h4>
+                 <h4><%= data.dateofbirth.getDate() %>/<%= data.dateofbirth.getMonth()+1 %>/<%= data.dateofbirth.getFullYear() %></h4>
+            </div>
+            <div class="Gender">
+                <h4 style="font-weight: 500;"><b>Gender:</b></h4>
+                <h4><%= data.gender %></h4>
+            </div>
+            <div class="emailicon" style="margin-bottom: 10px;">
+                <i class="bi bi-envelope" class="iconborder"></i>
+                <h4 style="display: flex;align-items: center;"><a href="#"><%= data.email %></a><br>
+                    <!-- <span>Mail Address</span></h4> -->
+            </div>
+            <div class="phoneicon" style="margin-bottom: 10px;">
+                <i class="bi bi-telephone" class="iconborder"></i>
+                <h4 style="display: flex;align-items: center;">+91 <%= data.phone %><br></h4>
+            </div>
+
+            <div class="education" style="margin-bottom: 10px;">
+                <i class="bi bi-book-half"></i>
+                <h4 style="display: flex;align-items: center;"><%= data.qualification %><br></h4></h4>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+    <%- include('partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/cursor.js"></script>
+    <script src="../js/navbar.js"></script>
+
+</body>
+
+</html>
+
+<!-- Tangerine -->

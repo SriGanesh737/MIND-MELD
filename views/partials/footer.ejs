@@ -1,0 +1,148 @@
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0 ;
+            box-sizing: border-box;
+        }
+
+        footer{
+            background-color:rgb(42 5 76) !important;
+            color: rgb(246, 255, 177);
+            /* position: relative; */
+            margin-top: 100px;
+            padding:20px 0;
+        }
+        .footer-col{
+            width: 33.33%;
+            /* text-align: center; */
+
+            /* padding: 0 10px; */
+        }
+
+
+        .footer-col h4{
+            font-size: 18px;
+            margin-bottom: 35px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .footer-col h4::after{
+         content: '';
+         position: absolute;
+         left: 0;
+         bottom: -10px;
+         background-color: rgba(0, 255, 21, 0.873);
+         height: 3px;
+         width: 40px;
+         box-sizing: border-box;
+        }
+
+        .footer-col li{
+            margin-bottom: 7px;
+
+        }
+
+        .quicklinks-uls{
+            display: flex;
+        }
+
+        .footer-col ul{
+            list-style-type: none;
+            padding-left: 5px;
+        }
+
+        .footer-col a{
+            font-size: 15px;
+            color: white;
+            text-decoration: none;
+            display: block;
+            /* margin-left: -25px;
+            margin-bottom: 20px; */
+            font-weight: 400;
+        }
+
+        .footer-col i{
+            margin-right: 10px;
+        }
+
+        .footer-col a:hover{
+            padding-left: 10px;
+            color: rgb(98, 255, 0);
+            font-weight: 700;
+        }
+
+          .copyright{
+    text-align: center;
+    border-top: 1px solid white;
+    padding: 20px;
+    margin-bottom: -10px;
+    background-color: rgb(42 5 76);
+    color: white;
+  }
+  .copyright i{
+    padding-right: 10px;
+  }
+  .copyright span{
+    padding-left: 5px;
+    line-height: 1.6;
+    font-weight: bold;
+    color: white;
+  }
+
+        @media only screen and (max-width:770px){
+          .footer-col{
+            width: 50%;
+            margin-bottom: 20px;
+          }
+        }
+
+        @media only screen and (max-width:500px){
+            .footer-col{
+                width: 100%;
+            }
+        }
+
+
+    </style>
+<footer>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4 class="navigations">Navigations</h4>
+                <ul>
+                    <li><a href="landingpage">Home</a></li>
+                    <li><a href="aboutus">About Us</a></li>
+                    <li><a href="contactus">Contact Us</a></li>
+                    <li><a href="askquery">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col foot-col-2">
+               <h4 class="quick-links">Quick Links</h4>
+               <ul>
+                    <li><a href="posts?topic=education">Education</a></li>
+                    <li><a href="posts?topic=fashion">Fashion</a></li>
+                    <li><a href="posts?topic=health">Health</a></li>
+
+                    <li><a href="posts?topic=sports">Sports</a></li>
+                    <li><a href="posts?topic=entertainment">Entertainment</a></li>
+                    <li><a href="posts?topic=news_updates">News_updates</a></li>
+
+            </ul>
+
+            </div>
+            <div class="footer-col coln-3">
+                <h4 class="contact-info">Contact Info</h4>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-phone"></i><span>+91 9273635224</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-envelope"></i></i><span>mindmeld@gmail.com</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-location-dot"></i><span>Sricity Chittoor ,517646</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<p class="copyright"><i class="fa-regular fa-copyright"></i>2023 Copyright:<span>MindMeld.com</span></p>

@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Oswald:wght@500;600&family=Playfair+Display:wght@700&family=Rubik:wght@700&display=swap');
+
+
+:root{
+    --background_color: rgba(196,181,253,1);
+    --bg_gray:rgba(31, 41, 55,1);
+    --headings: 'Rubik',sans-serif;
+    --numbers: 'Oswald', sans-serif;
+    --sub-headings:'Montserrat',sans-serif;
+}
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: var(--background_color);
+}
+
+h1{
+    font-family: var(--headings);
+}
+h3
+{
+    font-family: var(--headings);
+}
+
+.wide {
+    width: 200px;
+
+}
+
+.short{
+    width: 70px;
+}
+
+.hide{
+    display:none;
+}
+
+
+
+.short .side-nav-container .nav-item,.short .toggler {
+    padding-left: 0 !important;
+    font-size: 15px;
+    min-width: 20px;
+
+}
+
+.short .toggler{
+    padding-right: 0;
+    width: 30px;
+    /* text-align: center; */
+    margin-left: 20px;
+}
+
+.short .side-nav-container{
+    align-items: center;
+}
+
+
+
+.side-nav-container{
+
+    overflow: hidden;
+    padding-top: 20px;
+    min-height: 100vh;
+    /* width: 200px; */
+    position: fixed;
+    left: 0px;
+    background-color: var(--bg_gray);
+    display: flex;
+    flex-direction: column;
+    color: white;
+    z-index: 100;
+}
+
+.toggler{
+    color: white;
+    background-color: transparent;
+    padding: 5px 15px;
+    font-size: 20px;
+    border-radius: 7px;
+    border: 1px solid white;
+    margin-left: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.nav-items
+{
+    /* background-color: pink; */
+    width: 100%;
+    padding-left: 10px;
+
+}
+
+.nav-item{
+    /* background-color: blue; */
+
+    margin-top: 40px;
+    font-size: 25px;
+   padding: 5px 15px;
+   height: 50px;
+   /* border: 2px solid yellow; */
+display: flex;
+align-items: center;
+}
+
+.nav-item i{
+    margin-right: 30px;
+}
+
+/* .nav-item span{
+    display: block;
+} */
+
+.nav-items :first-child i{
+    margin-right: 20px;
+}
+
+.nav-items li:hover{
+    background-color: var(--background_color);
+    color: black;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    /* font-size: 25px; */
+}
+
+
+.right {
+    margin-left: 80px;
+    padding-top: 20px;
+    margin-right: 20px;
+}
+
+.admin-panel {
+    font-size: 50px;
+    text-shadow: 1px 1px 2px white, 0 0 25px beige, 0 0 5px rgb(255, 208, 0);
+}
+
+.stats{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 70px;
+    column-gap: 40px;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.users_stats,.experts_stats,.articles_stats{
+    width: 400px;
+    height: 200px;
+    background-color: beige;
+    display: flex;
+    border-radius: 10px;
+}
+
+.symbol
+{
+    height: 100%;
+    width: 100%;
+   /* border: 2px solid red; */
+   font-size: 40px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-end;
+   row-gap: 15px;
+
+}
+
+.symbol h2{
+    font-size: 23px;
+    margin-bottom: 20px;
+    font-family: var(--sub-headings);
+}
+
+.symbol span
+{
+    font-size: 40px;
+        font-weight: 800;
+        font-family: var(--numbers);
+        letter-spacing: 1px;
+}
+
+.recent-activities{
+    min-height: 600px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    display: flex;
+    /* background-color: yellow; */
+}
+
+.recently-joined{
+    width: 50%;
+    height: 100%;
+   /* border: 2px solid red; */
+padding-bottom: 20px;
+}
+
+.recently-posted{
+   width: 50%;
+   height: 100%;
+   /* border:2px solid blue; */
+padding-bottom: 20px;
+}
+
+.recent-activities h2{
+    font-size: 30px;
+    /* font-family: var(--sub-headings); */
+    font-family: 'Rubik',sans-serif;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    position: relative;
+    color: rgb(1, 54, 4);
+}
+
+.recent-activities h2::before{
+    content: ' ';
+    position: absolute;
+    bottom:-5px;
+    left: 2px;
+    width: 80px;
+    height: 5px;
+    border-radius: 2px;
+    background-color: rgb(4, 7, 46);
+}
+
+.recent-items
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    align-items: center;
+}
+
+
+
+.recent-item{
+    background-color: white;
+    border-radius: 7px;
+    height: 100px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sub-details{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px 10px;
+    font-family: var(--sub-headings);
+    font-weight: 300;
+}
+
+.title-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    justify-content: center;
+}
+
+.blog-title{
+    /* margin-bottom: 40px; */
+    font-size: 18px;
+    font-family: var(--sub-headings);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.blog-time{
+
+}
+
+.blog-author{
+
+}
+
+
+.name-container{
+    display: flex;
+    gap: 20px;
+    /* margin-left: 20px; */
+    justify-content: center;
+
+}
+
+.user-name{
+      font-size: 20px;
+    font-weight: 700;
+    font-family: var(--sub-headings);
+}
+
+
+.role_tag{
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    font-weight: 300;
+    align-items: center;
+    font-family: var(--sub-headings);
+    /* border: 2px solid green; */
+    border-radius: 4px;
+    background-color: rgb(250, 169, 169);
+}
+
+.topic-tag{
+    padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        font-weight: 300;
+        align-items: center;
+        font-family: var(--sub-headings);
+        /* border: 2px solid green; */
+        border-radius: 4px;
+        background-color: rgb(241, 254, 141);
+        height: 30px;
+        font-size: 15px;
+        margin-right: 5px;
+}
+
+
+
+
+
+@media only screen and (max-width:1300px){
+    .recent-activities{
+         flex-direction: column;
+         align-items: center;
+    }
+    .recently-joined,.recently-posted{
+        width: 700px;
+    }
+}
+
+@media only screen and (max-width:1000px)
+{
+    .recently-joined,
+        .recently-posted {
+            width: 500px;
+        }
+}
+
+@media only screen and (max-width:600px) {
+
+    .recently-joined,
+    .recently-posted {
+        width: 420px;
+    }
+
+    .admin-panel{
+        font-size: 25px;
+    }
+}

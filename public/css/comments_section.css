@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+body {
+  background-color: hsl(228, 33%, 97%);
+  /* padding-top: 40px; */
+}
+
+.comments-title{
+  margin-top: 20px;
+  margin-left: 40px;
+  margin-bottom: 30px;
+}
+
+
+.comment-container {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  margin-bottom: 20px;
+  background-color: hsl(0, 0%, 100%);
+  width: 800px;
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  font-family: "Rubik", sans-serif;
+}
+.comment-container .upvotes-part {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comment-container .upvotes-wrapper {
+  background-color: hsl(228, 33%, 97%);
+  border-radius: 7px;
+  width: 40px;
+  height: 65%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+  flex-direction: column;
+}
+.comment-container .upvotes-wrapper button {
+  background: transparent;
+}
+.comment-container .upvotes-wrapper .upvotes-cnt {
+  text-align: center;
+  font-weight: 500;
+  color: hsl(238, 40%, 52%);
+}
+.comment-container .right-part{
+  width: 100%;
+}
+.comment-container .comment-header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.comment-container .comment-profile-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.comment-container .name {
+  margin-right: 20px;
+  font-weight: 700;
+  color: hsl(212, 24%, 26%);
+}
+.comment-container .youTag {
+  margin-left: -10px;
+  margin-right: 15px;
+  background-color: hsl(238, 40%, 52%);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  /* display: none; */
+}
+.comment-container .time {
+  font-weight: 400;
+  color: hsl(211, 10%, 45%);
+}
+.comment-container .reply {
+  position: absolute;
+  right: 40px;
+  font-weight: 500;
+  color: hsl(238, 40%, 52%);
+  background: transparent;
+  cursor: pointer;
+}
+.comment-container .delete {
+  position: absolute;
+  right: 20px;
+  margin-right: 15px;
+  color: red;
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.comment-container .edit {
+  position: absolute;
+  right: 110px;
+  margin-right: 15px;
+  color: hsl(238, 40%, 52%);
+  padding: 3px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.comment-container .comment-info {
+  color: hsl(211, 10%, 45%);
+}
+
+/* these properties only for user comment so by default they need to be hidden */
+.your-comment .reply {
+  display: none;
+}
+
+.edit,.delete{
+  display: none;
+}
+
+
+
+/* showing for users comment */
+ .your-comment .edit,
+ .your-comment .delete {
+  display: block;
+}
+
+.your-comment .edit-2,.your-comment .delete-2{
+  display: none;
+}
+
+.youTag{
+  display:none;
+}
+
+.your-comment .youTag {
+  display: block !important;
+}
+
+
+.replies-container {
+  position: relative;
+  left: 15px;
+  width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 2px solid hsl(239, 57%, 85%);
+}
+.replies-container .single-reply {
+  width: 700px;
+  position: relative;
+  margin-left: 0;
+  left: 55px;
+}
+.replies-container .tag-person {
+  color: hsl(238, 40%, 52%);
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.write-comment {
+  padding-top: 30px;
+  padding-left: 20px;
+}
+.write-comment .send-btn {
+  background-color: hsl(238, 40%, 52%);
+  margin-top: 35px;
+  margin-left: 20px;
+  height: 40px;
+  width: 100px;
+  border-radius: 5px;
+  color: hsl(0, 0%, 100%);
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+}
+.write-comment textarea {
+  border: 1px solid hsl(212, 24%, 26%);
+  padding: 10px;
+  font-size: 17px;
+  border-radius: 3px;
+}
+
+.edit-2, .delete-2 {
+  display: none;
+}
+
+@media only screen and (max-width: 850px) {
+  .comment-parent-wrapper, .comment-container, .replies-container {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .replies-container .single-reply {
+    width: 80vw;
+  }
+  .comment-container .comment-info {
+    font-size: 11px;
+  }
+  .comment-container .name, .comment-container .upvotes-wrapper {
+    font-size: 13px;
+  }
+  .comment-container .time, .comment-container .reply {
+    font-size: 12px;
+  }
+  .comment-container .comment-profile-image {
+    width: 35px;
+    height: 35px;
+  }
+  .your-comment .youTag {
+    font-size: 10px;
+  }
+  .comment-container .delete {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  .comment-container .edit {
+    font-size: 12px;
+    right: 90px;
+  }
+  .fa-solid {
+    font-size: 13px;
+  }
+  .write-comment .send-btn {
+    font-size: 12px;
+    height: 30px;
+    width: 100px;
+    margin-right: 10px;
+  }
+}
+@media only screen and (max-width: 501px) {
+  .comment-container {
+    height: 90px;
+  }
+  .comment-parent-wrapper, .comment-container, .replies-container {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .replies-container .single-reply {
+    width: 80vw;
+    left: 30px;
+  }
+  .comment-container .name {
+    margin-right: 10px;
+  }
+  .comment-container .comment-info {
+    font-size: 8px;
+  }
+  .comment-container .name, .comment-container .upvotes-wrapper {
+    font-size: 9px;
+  }
+  .comment-container .time, .comment-container .reply {
+    font-size: 9px;
+  }
+  .comment-container .reply {
+    right: 20px;
+  }
+  .comment-container .comment-profile-image {
+    width: 25px;
+    height: 25px;
+  }
+  .your-comment .youTag {
+    font-size: 7px;
+  }
+  .comment-container .delete {
+    display: none;
+    font-size: 8px;
+    margin-right: 5px;
+    right: 10px;
+  }
+  .comment-container .edit {
+    display: none;
+    font-size: 8px;
+    right: 40px;
+    margin-right: 5px;
+  }
+  .fa-solid {
+    font-size: 13px;
+  }
+  .write-comment .send-btn {
+    font-size: 8px;
+    height: 30px;
+    width: 100px;
+    margin-right: 10px;
+  }
+  textarea {
+    height: 60px !important;
+  }
+  .comment-container .comment-header {
+    height: 40px;
+  }
+  .your-comment .edit-2, .your-comment .delete-2 {
+    display: block !important;
+  }
+  .write-comment {
+    padding-top: 10px;
+  }
+  .write-comment .send-btn {
+    margin-top: 20px !important;
+    height: 20px;
+  }
+}
+
+
+.reply-bar{
+  width: 700px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.reply-bar input{
+  width: 450px;
+  padding: 5px;
+  margin-right: 40px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 6px;
+}
+.reply-bar .btn{
+  margin-right: 20px;
+}

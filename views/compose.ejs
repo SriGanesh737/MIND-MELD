@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>compose</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+
+
+	<link rel="stylesheet" href="../css/compose.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/style.css">
+
+  <script src="https://kit.fontawesome.com/3e893105a3.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/decoupled-document/ckeditor.js"></script>
+
+
+</head>
+
+<body>
+	 <!-- Modal -->
+	 <div class="modal  fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h1 class="modal-title fs-5" id="exampleModalLabel">Content</h1>
+			  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- The toolbar will be rendered in this container. -->
+				<div id="toolbar-container"></div>
+
+				<!-- This container will become the editable. -->
+				<div id="editor">
+					<p>This is the initial editor content.</p>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			  <button type="button" class="save-btn btn btn-primary">Save changes</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+	<%- include('partials/loading') %>
+    <%- include('partials/navbar')-%>
+	<!-- <%- include('partials/cursor') %> -->
+
+	<div class="containerss">
+		<div class="left animated wow fadeInUp">
+			<img class="image " src="../images/Diary-bro.png"  style="border-radius: 15px;" alt="" height="670px" width="600px">
+		</div>
+		<div class="right animated wow fadeInDown">
+			<h1 style="margin-top: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Write a Blog of your Choice</h1>
+			<form action="" method="post">
+	<label for="field" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: 700;font-size: 20px;">Select Blog Feild:</label>
+<br>
+	<select name="topic" id="field" required>
+
+  <option value="education">Education</option>
+  <option value="lifestyle">Life Style</option>
+  <option value="health">Health</option>
+<option value="sports">Sports</option>
+<option value="entertainment">Entertainment</option>
+<option value="news_updates">News Updates</option>
+</select>
+<br>
+
+				<label for="title"
+					style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: 700;font-size: 18px;">Title:</label>
+				<br>
+				<input type="text" name="title" value="" id="title" class="input-title" required>
+				<br>
+
+				<label
+					style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: 700;font-size: 18px;">Content:</label>
+				<br>
+
+
+
+				<!-- Button trigger modal -->
+<button type="button" class="btn trigger-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+	<!-- <textarea  name="content" class="input-content" cols="100" rows="10"></textarea> -->
+	<div class="input-content"></div>
+  </button>
+    <input type="hidden" class="blog_content_html" name="blog_content_html" value="">
+
+
+           <br>
+				<label
+					style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: 700;font-size: 18px;">Markdown:</label>
+				<br>
+				<div class="header">
+
+				<input type="text" id="myInput" placeholder="Tag..." >
+                   <span class="addBtn">Add</span>
+				</div>
+				   <ul id="myUL">
+					<!-- <li>tag1 <span class="close">&times;</span> </li> -->
+				  </ul>
+				<br>
+				
+				<input type="hidden" name="tags_string" class="tags_string" value=" ">
+
+                <label
+					style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: 700;font-size: 18px;
+					margin-bottom: 15px;">Image Attachment:</label>
+
+
+
+					 <!-- <input type="file" class="form-control" id="image" name="image" accept="image/png, image/jpeg" style="width:400px"> -->
+
+					 <input style="margin-bottom: 15px;width: 300px;" type="text" name="img_link" required>
+				<br>
+
+				<button type="submit" class="submit">POST ARTICLE</button>
+			</form>
+		</div>
+
+		<!-- <img src="/images/doctor.jpg" alt="asdgfsadfgv"> -->
+
+	</div>
+
+	<%- include('partials/footer') %>
+
+	<script>
+				   DecoupledEditor
+						.create(document.querySelector('#editor'))
+						.then(editor => {
+							const toolbarContainer = document.querySelector('#toolbar-container');
+
+							toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+						})
+						.catch(error => {
+							console.error(error);
+						});
+</script>
+	<script src="../js/compose.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="../js/navbar.js"></script>
+	<script src="../js/cursor.js"></script>
+</body>
+
+</html>

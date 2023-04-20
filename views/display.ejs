@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/comments_section.css">
+    <link rel="stylesheet" href="../css/display.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <script src="https://kit.fontawesome.com/f363f12a18.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body style="background-image: url('../images/background2.jpg');" >
+
+
+    <%- include('partials/loading') %>
+    <%- include('partials/navbar')-%>
+    <%- include('partials/cursor') %>
+
+    <h1 class="heading animated wow bounceIn"><%= data['title'] %></h1>
+   <div class="animated wow fadeInUp">
+    <img class="image" src="<%= data["image_link"] %>" alt="image" width="1000px" height="500px">
+</div>
+
+
+    <h2 class="written animated wow fadeIn">-- Written by <i><%= data["author_name"] %> --</i></h2>
+    <h3 class="date"><%= data['date_of_publish'].getDate() %>-<%= data['date_of_publish'].getMonth()+1 %>-<%= data['date_of_publish'].getFullYear() %></h3>
+
+    <a href="/bookmarks/addBookmark/<%= data['_id'] %>" class="bookmark-link">
+<button class="addtowishlist"><i class="fa-solid fa-bookmark"></i> Add to Bookmarks</button>
+
+    </a>
+
+
+    <div class="content animated wow fadeIn">
+        <%- data['content'] %>
+    </div>
+
+    <!-- <div class="rating">
+        <i style="font-size: 40px;padding-right: 10px;" class="fa-solid fa-thumbs-up rated"></i>
+        <i style="font-size: 40px;" class="fa-solid fa-thumbs-down unrated"></i>
+    </div> -->
+    <div class="rating" style="display: flex;align-items: center;justify-content: center;">
+        <form action="/posts/liked/<%= data['_id']%>" method="post">
+            <div class="liked">
+                <button type="submit" class="submitlike"><i
+                        style="font-size: 40px;padding-right: 10px;<%=value==1?'color:rgb(6, 108, 191);':'' %>"
+                        class="fa-solid fa-thumbs-up rated"></i></button>
+                <h4>
+                    <%= data['likes'] %>
+                </h4>
+        </form>
+    </div>
+    <form action="/posts/disliked/<%= data['_id']%>" method="post">
+        <div class="disliked">
+            <button type="submit" class="submitdislike"><i
+                    style="font-size: 40px;<%=value==2?'color:rgb(6, 108, 191);':'' %>"
+                    class="fa-solid fa-thumbs-down unrated"></i></button>
+            <h4>
+                <%= data['dislikes'] %>
+            </h4>
+        </div>
+    </form>
+    </div>
+
+    <h2 style="text-align: center;">***** Thank You *****</h2>
+
+    <h1 class="comments-title">Comments</h1>
+
+<div class="comments-section">
+    <%- include('comments_section') %>
+</div>
+
+<%- include('partials/footer') %>
+
+
+
+<script src="../js/cursor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/navbar.js"></script>
+    <script src="../js/display.js"></script>
+    <script src="../js/comments_section.js"></script>
+</body>
+
+
+</html>

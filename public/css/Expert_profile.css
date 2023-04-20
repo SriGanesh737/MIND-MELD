@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, verdana;
+}
+
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url(./subtle-prism.png);
+
+} */
+
+.bigDiv {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    background-image: url(../images/subtle-prism.png);
+    min-height: 100vh;
+    margin-bottom: -120px;
+}
+
+.card {
+    position: relative;
+    width: 350px;
+    height: 200px;
+    /* height: 450px; */
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+    transition: 0.5s;
+    display: flex;
+}
+
+.card:hover {
+    height: 500px;
+}
+
+.imgbox {
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transition: 0.9s;
+}
+
+.imgbox img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* margin-bottom: 40px; */
+}
+
+
+
+.card:hover .imgbox {
+    width: 250px;
+    height: 250px;
+}
+
+.card .content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.card .content .details {
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    transition: 0.5s;
+    transform: translateY(150px);
+}
+
+.card:hover .content .details {
+    transform: translateY(0px);
+}
+
+.card .content .details h2 {
+    font-size: 1.25em;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.2em;
+}
+
+.card .content .details h2 span {
+    font-size: 0.75em;
+    font-weight: 500;
+    opacity: 0.5;
+    /* margin-bottom: 20px; */
+}
+
+.card .content .details .data {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    gap: 15px;
+}
+
+.card .content .details .data .instaicon {
+    border-radius: 50%;
+    background-color: pink;
+    padding: 15px;
+    color: black;
+}
+
+.card .content .details .data .githubicon {
+    border-radius: 50%;
+    background-color: pink;
+    padding: 15px;
+    color: black;
+}
+
+.card .content .details .data .linkedinicon {
+    border-radius: 50%;
+    background-color: pink;
+    padding: 15px;
+    color: black;
+}
+
+.card .content .details .data h3 {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+
+.card .content .details .data h3 span {
+    font-size: 0.85em;
+    font-weight: 400;
+    opacity: 0.5;
+}
+
+.card .content .details .actionbtn {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card .content .details .actionbtn button {
+    padding: 10px 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    font-weight: 500;
+    background: #ff5f95;
+    color: #fff;
+    cursor: pointer;
+}
+
+.card .content .details .actionbtn button:nth-child(2) {
+    border: 1px solid #999;
+    color: #999;
+    background: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+.info {
+    padding: 20px;
+}
+
+.iconborder {
+    background-color: #999;
+    border-radius: 30%;
+}
+
+.desc {
+    width: 350px;
+    height: 500px;
+    background-color: White;
+    border-radius: 30px;
+    box-sizing: border-box;
+    font-size: 15px !important;
+}
+
+.desc h4{
+    font-size: 17px !important;
+}
+
+.desc h3 {
+    padding-left: 30px;
+    padding-top: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #555;
+    line-height: 10px;
+    margin-top: 20px;
+}
+
+/* .emailicon {
+    display: flex;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    gap: 15px;
+} */
+
+.phoneicon,
+.emailicon,
+.whatsappicon,
+.education {
+    display: flex;
+    /* margin-bottom: 5px; */
+   
+   border-radius: 50%;
+    gap: 15px;
+}
+
+.phoneicon i,
+.emailicon i,
+.whatsappicon i,
+.education i {
+    /* padding: 8px; */
+    display: flex;
+    background-color: pink;
+    /* margin-bottom: 30px; */
+    /* border-bottom: 10px;
+     */
+     /* gap: 10px; */
+    height: 40px;
+      width: 40px;
+      align-items: center;
+   justify-content: center;
+    border-radius: 50%;
+
+}
+
+.firstname {
+    display: flex;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    gap: 15px;
+}
+
+.lastname {
+    display: flex;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    gap: 15px;
+}
+
+.Date-of-birth {
+    display: flex;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    gap: 15px;
+}
+
+.Gender {
+    display: flex;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    gap: 15px;
+}
+
+.icondiv {
+    position: relative;
+    bottom: 0;
+}
+
+.edit_details {
+    padding: 0px 0px 20px 0px;
+    display: flex;
+    padding-left: 65%;
+
+}
+
+.edit_details span {
+    padding-left: 5px;
+}
+
+.edit_details:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+@media(max-width: 767px) {
+    .bigDiv {
+        margin-top: 0px;
+        padding-top: 90px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: -90px;
+        padding-bottom: 40px;
+
+    }
+}
+
+@media (max-width: 340px) and (max-width:767px) {
+    .bigDiv {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.Other_info h4 {
+    font-size: 1.20em;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.2em;
+    text-decoration: dotted;
+}

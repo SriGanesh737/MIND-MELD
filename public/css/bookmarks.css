@@ -1,0 +1,160 @@
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Oswald:wght@500&display=swap');
+
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+body{
+    background-color: #c2e2ff;
+    min-height: 100vh;
+}
+
+.bookmarked-heading{
+  color:#333333;
+  font-family: 'Oswald', sans-serif;
+  font-size: 3rem;
+  margin-top: 20px;
+}
+
+
+.cards{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  display: flex;
+  column-gap: 50px;
+  row-gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 70vh;
+  align-items: center;
+}
+
+.bookmark-image-container{
+  width: 600px;
+  height:410px ;
+}
+
+
+.card-img-top{
+  /* height: 280px; */
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+.card{
+  height: 410px;
+  /* width: 600px; */
+  display: flex;
+  flex-direction: row;
+}
+
+.card-body{
+  width: 350px;
+  padding-left: 20px;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+.card .card-title{
+  margin-bottom: 20px;
+}
+
+.card .date-part{
+  color: #827b7b;
+  font-weight: 500;
+}
+
+.card-body .remove-from-bookmarks{
+  padding: 5px 10px;
+  color: red;
+  margin-bottom: 10px;
+  font-weight: 500;
+  border: none;
+  transition: ease-in 0.3s;
+
+
+}
+
+.remove-from-bookmarks:hover{
+  background-color: rgb(253, 52, 52);
+  color: white;
+  border-radius: 5px;
+
+}
+
+@media only screen and (max-width:1000px){
+  .bookmarked-heading{
+    text-align: center;
+
+  }
+       .card{
+height: 250px;
+       }
+       .bookmark-image-container{
+        width: 300px;
+        height: 250px;
+       }
+
+      .card .card-title{
+        font-size: 17px;
+        margin-bottom: 5px;
+      }
+      .card-text{
+        font-size: 12px;
+      }
+      .writtenby,.date-part{
+        font-size: 11px;
+        margin-bottom: 0;
+      }
+      .card-body .remove-from-bookmarks{
+        font-size: 12px;
+        margin-top: 5px;
+        margin-top: 70px;
+      }
+}
+
+@media only screen and (max-width:680px){
+
+
+  .bookmarked-heading{
+    text-align: center;
+    font-size: 30px;
+
+  }
+       .card{
+        width: 260px;
+        height: 350px;
+flex-direction: column;
+       }
+       .bookmark-image-container{
+        width: 260px;
+        height: 160px;
+       }
+
+      .card .card-title{
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+      .card-text{
+        font-size: 10px;
+      }
+      .writtenby,.date-part{
+        font-size: 11px;
+        margin-bottom: 0;
+      }
+      .card-body .remove-from-bookmarks{
+        font-size: 12px;
+        margin-top: 5px;
+      }
+      .card-body{
+        width:260px ;
+
+      }
+}

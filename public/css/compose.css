@@ -1,0 +1,409 @@
+body{
+    background: radial-gradient(circle, rgba(198,193,194,1) 0%, rgba(238,241,246,1) 100%) !important;
+    text-align:center ;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+ .containerss
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.left
+{
+    display: flex;
+    align-items: center;
+    width:600px;
+    height:600px;
+}
+.left img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.right
+{
+
+    text-align: left;
+    margin-left: 2rem;
+}
+.right .input-title
+{
+    width: 480px;
+    height: 30px;
+    font-weight: 500;
+    font-size: 20px;
+}
+.input-content
+{
+    width: 500px;
+    background-color: white;
+        height: 300px;
+        overflow: scroll;
+        text-align: start;
+}
+.input-markdown
+{
+    width: 600px;
+}
+.right select
+{
+    width: 200px;
+    height:30px;
+    font-size: 16px;
+}
+.right option
+{
+    font-size: 16px;
+}
+.right ul {
+    margin: 0;
+    padding: 0;
+    display:flex;
+    width:600px;
+    flex-wrap: wrap;
+  }
+  .right ul li{
+    cursor: pointer;
+    position: relative;
+    /* width: 170px; */
+    display: flex;
+    /* margin: 3px; */
+    margin-top: 7px;
+    margin-right: 10px;
+    padding: 5px 3px 5px 10px;
+    background: #4BB543;
+    font-size: 18px;
+    transition: 0.2s;
+
+    border-radius: 4px;
+
+    /* make the list items unselectable */
+    /* -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+  }
+
+  .close {
+    /* position: absolute; */
+
+    width: 25px;
+    /* font-size: 20px; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    right: 0;
+    /* margin-bottom: -10px; */
+    margin-left: 10px;
+    /* padding: 5px; */
+
+  }
+  .close:hover {
+    background-color: #f44336;
+    color: white;
+  }
+
+  /* .ck.ck-content.ck-editor__editable.ck-rounded-corners.ck-editor__editable_inline.ck-blurred {
+    height: 60vh;
+    width: 95vw;
+} */
+
+.modal-dialog{
+    margin-left: 3vw !important;
+}
+
+.modal-content{
+    width: auto !important;
+}
+
+.trigger-btn{
+    border: none;
+}
+
+
+.ck-editor__editable_inline {
+    height: 60vh;
+    width: 90vw;
+}
+
+
+.submit
+{
+    width:250px;
+    height: 40px;
+    font-size: 20px;
+    background-color: rgba(16, 16, 15, 0.967);
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-color: rgb(121, 121, 37);
+    margin-bottom: 30px;
+
+}
+.submit:hover{
+   background-color: rgb(146 227 169);
+   color: black;
+   border-color: rgb(2, 81, 2);
+}
+.addBtn {
+    padding: 8px;
+    width: 25%;
+    background: black;
+    color: #fefefe;
+
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+  }
+#myInput
+{
+    width: 300px;
+    height: 30px;
+}
+
+@media only screen and (max-width: 1400px){
+    .left
+    {
+        width:550px;
+    }
+    .input-title
+{
+    width: 500px;
+
+}
+.input-content
+{
+    width: 500px;
+}
+.input-markdown
+{
+    width: 500px;
+}
+}
+@media only screen and (max-width: 1200px){
+    .left
+    {
+        width:480px;
+        height: 500px;
+    }
+    .input-title
+{
+    width: 460px;
+
+}
+.right .input-content
+{
+    width: 460px;
+}
+.right .input-markdown
+{
+    width: 460px;
+}
+
+.ck-editor__editable_inline {
+    height: 60vh;
+}
+
+ .modal-content {
+     width: 950px !important;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .ck-content{
+    width: 900px;
+ }
+
+.modal-dialog{
+    margin-left:  3.5vw !important;
+}
+
+}
+@media only screen and (max-width: 1000px){
+
+    .containerss
+    {
+        display: flex;
+        flex-direction: column;
+
+    }
+    .left{
+        width: 640px;
+        height: 640px;
+        margin-left: auto;
+       margin-right: auto;
+
+    }
+    .right
+    {
+        margin-left: auto;
+       margin-right: auto;
+    }
+    .input-title
+    {
+        width: 600px;
+        margin-left: auto;
+       margin-right: auto;
+
+    }
+    .input-content
+    {
+        width: 600px;
+    }
+    .input-markdown
+    {
+        width: 600px;
+    }
+   .modal-content {
+       width: 750px !important;
+       margin-left: auto;
+       margin-right: auto;
+   }
+
+   .ck-content {
+       width: 700px;
+   }
+
+   .modal-dialog {
+       margin-left: 70px !important;
+   }
+}
+
+@media only screen and (max-width:830px){
+    .modal-content {
+            width: 500px !important;
+        }
+
+        .ck-content {
+            width: 450px;
+        }
+    .modal-dialog{
+        margin-left: 7vw !important;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    .containerss
+    {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .left
+    {
+        height: 500px;
+        width: 500px;
+        margin-left: auto;
+       margin-right: auto;
+    }
+    .right
+    {
+        margin-left: auto;
+       margin-right: auto;
+       width: 500px;
+    }
+    .right .input-title
+    {
+        width: 400px;
+
+    }
+    .right .input-content
+    {
+        width: 400px;
+    }
+    .right .input-markdown
+    {
+        width: 400px;
+    }
+
+
+
+}
+@media only screen and (max-width: 500px){
+    .containerss
+    {
+        display: flex;
+        flex-direction: column;
+    }
+    .left
+    {
+       height: 350px;
+       width: 350px;
+       margin-left: auto;
+       margin-right: auto;
+    }
+    .right{
+
+
+        width: 350px;
+        margin-left: 20px;
+        margin-right: 0;
+
+    }
+    .input-title
+    {
+        width: 280px;
+
+    }
+    .input-content
+    {
+        width: 280px;
+    }
+    .input-markdown
+    {
+        width: 280px;
+    }
+}
+
+@media only screen and (max-width:580px){
+
+    .modal-content {
+            width: 350px !important;
+        }
+
+        .ck-content {
+            width: 330px;
+        }
+
+        .modal-dialog {
+            margin-left: 10px !important;
+        }
+
+}
+
+@media only screen and (max-width: 400px){
+    .containerss
+    {
+        /* justify-content: left; */
+        display: flex;
+        flex-direction: column;
+    }
+    .left
+    {
+       height: 300px;
+       width: 300px;
+       margin-left: auto;
+       margin-right: auto;
+    }
+    .right
+    {
+        width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .input-title
+    {
+        width: 250px;
+
+    }
+    .input-content
+    {
+        width: 250px;
+    }
+   #myInput{
+        width:190px;
+    }
+}

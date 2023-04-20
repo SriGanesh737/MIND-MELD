@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mind Meld</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/landingpage.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/3e893105a3.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body>
+
+  <%- include('partials/loading') %>
+  <%- include('partials/navbar') -%>
+    <%- include('partials/cursor') %>
+
+
+      <h1 class="title wow fadeInDown">MIND MELD</h1>
+      <div class="cards">
+        <div id="health" class="card  wow fadeInLeft" data-wow-delay="0.3s">
+          <div class="img-top-container">
+                <img class="card-img-top" src="./images/healthmain.jpg" alt="Card image cap">
+          </div>
+
+          <div class="card-body">
+            <h3 class="card-title">Health</h3>
+            <p class="card-text" style="font-size: 15px;text-align: justify;">It features informative and
+              well-researched blogs on various health topics like nutrition,mental health and disease prevention.These
+              are written by healthcare professionals, offering valuable insights and tips for maintaining optimal
+              health and wellness.</p>
+
+          </div>
+        </div>
+        <div id="lifestyle" class="card  wow fadeInUp" data-wow-delay="0.4s">
+          <div class="img-top-container">
+
+            <img class="card-img-top" src="./images/fashionmain.jpg" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Fashion</h3>
+            <p class="card-text" style="font-size: 15px;text-align: justify;">This offers a diverse collection of
+              lifestyle blogs that cover topics such as fashion, beauty, travel, and home decor.
+              Written by expert writers with a passion for lifestyle and provide inspiration, tips, and advice for
+              enhancing your daily life and living your best life.</p>
+
+          </div>
+        </div>
+        <div id="education" class="card  wow fadeInRight" data-wow-delay="0.5s">
+
+          <div class="img-top-container">
+
+            <img class="card-img-top" src="./images/educationmain.jpg" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Education</h3>
+            <p class="card-text" style="font-size: 15px;text-align: justify;">It features a range of high-quality
+              education blogs covering topics like educational technology and educational psychology.
+              written by experienced educators and researchers and offer insights and advice for learning outcomes at
+              all levels of education.</p>
+
+          </div>
+        </div>
+        <div id="sports" class="card  wow fadeInLeft" data-wow-delay="0.3s">
+          <div class="img-top-container">
+
+            <img class="card-img-top" src="./images/sportsmain.jpg" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Sports</h3>
+            <p class="card-text" style="font-size: 15px;text-align: justify;"> We provide in-depth coverage of all your
+              favorite sports, from the latest scores and highlights to in-depth analysis of the biggest stories in
+              sports. writers bring a wealth of knowledge and passion to every post. </p>
+          </div>
+        </div>
+        <div id="entertainment" class="card  wow fadeInUp" data-wow-delay="0.4s">
+          <div class="img-top-container">
+
+            <img class="card-img-top" src="./images/entertainmentmain.cms" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Entertainment</h3>
+            <p class="card-text" style="font-size: 15px;text-align: justify;">It provides content
+              related to movies, TV shows, music and pop culture. It typically features articles,
+              reviews, news, and opinions written by journalists, critics.It aim to engage
+              and entertain their audience by providing them with interesting and informative content. </p>
+
+          </div>
+        </div>
+        <div id="news_updates" class="card  wow fadeInRight" data-wow-delay="0.3s">
+          <div class="img-top-container">
+
+            <img class="card-img-top" src="./images/newsheadlines.png" alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">News Updates</h3>
+            <p class="card-text" style="font-size: 15px;text-align: justify;">It
+              provides up-to-date and informative content on current events and breaking news from various fields such
+              as politics, economics, sports, technology, and entertainment. It typically features articles
+              and analysis written by journalists or experts in their fields.
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <%- include('partials/footer') %>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+          crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+
+        <script>
+          new WOW().init();
+        </script>
+        <script src="../js/cursor.js"></script>
+        <script src="../js/landingpage.js"></script>
+        <script src="../js/navbar.js"></script>
+
+
+</body>
+
+
+</html>

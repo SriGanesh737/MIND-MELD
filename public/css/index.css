@@ -1,0 +1,181 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* font-family: 'Libre Baskerville', serif; */
+}
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(29, 4, 41);
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    z-index: -1;
+}
+
+.project_name_container{
+    position: absolute;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    z-index: 10;
+    top: 5%;
+    left: 3%;
+    /* transform: translate(-50%, -50%); */
+}
+
+.mindmeld{
+    /* text-align: center; */
+    color: white;
+    font-size: 80px;
+}
+.hrefs
+{
+    position: absolute;
+    display: flex;
+    top: 8%;
+    right: 3%;
+    color: white;
+}
+.navi
+{
+    margin-right: 30px;
+    text-decoration: none;
+   
+}
+.navi a{
+    color: white;
+    font-size: 30px;
+   text-decoration: none;
+   transition: transform 0.5s;
+}
+.bottom-btns{
+   color: WHITE;
+   position: absolute;
+   /* width:300px; */
+   /* height: 100px; */
+   top: 50%;
+   left: 50%;
+    /* position: absolute; */
+   
+    text-align: center;
+    transform: translate(-50%,-50%);
+    /* display: flex; */
+    /* justify-content: space-around; */
+}
+.explore
+{
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+.signup,.login{
+    width: 170px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: transparent;
+    color: white;
+    border: 2px solid #009688;
+    transition: all 0.5s;
+    animation: animate1;
+}
+
+
+  
+  .navi a:hover {
+    color: #009688;
+  }
+
+.signup:hover
+{
+    transform: scale(1.1);
+    background-color:#009688 ;
+}
+.login:hover
+{
+    transform: scale(1.1);
+    background-color:#009688 ;
+}
+.signup a,.login a{
+    color: white;
+    text-decoration: none;
+}
+
+@media only screen and (max-width:900px)
+{
+    .navi
+    {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:750px)
+{
+    .navi
+    {
+        display: none;
+    }
+    .explore{
+        font-size: 30px;
+    }
+    .mindmeld
+    {
+        font-size: 50px;
+    }
+    .login,.signup{
+        margin-bottom: 10px;
+        width: 100px;
+    }
+}
+@media only screen and (max-width:500px)
+{
+    .navi
+    {
+        display: none;
+    }
+    .explore{
+        font-size: 30px;
+    }
+    .mindmeld
+    {
+        font-size: 40px;
+    }
+    .login,.signup{
+        margin-bottom: 10px;
+        width: 80px;
+        
+    }
+    .login,.signup {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width:400px)
+{
+    .navi
+    {
+        display: none;
+    }
+    .explore{
+        font-size: 20px;
+    }
+    .mindmeld
+    {
+        font-size: 40px;
+    }
+    .login,.signup{
+        margin-bottom: 10px;
+        width: 60px;
+        height: 30px;
+        
+    }
+    .login,.signup {
+        font-size: 13px;
+    }
+}

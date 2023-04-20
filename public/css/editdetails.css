@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(223, 212, 220);
+}
+
+form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #b2d1c6;
+    border-radius: 5px;
+}
+
+h1 {
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size:3em;
+
+}
+.one
+{
+    margin-right: 0;
+}
+
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+small {
+    display: inline-block;
+    margin-bottom: 10px 10px;
+    font-size: 15px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 auto;
+    display: block;
+
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+@media(max-width: 500px) {
+    form {
+        max-width: 400px;
+    }
+    .complete{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 320px) and (max-width:620px) {
+    form {
+        max-width: 300px;
+    }
+
+}
+
+
+.complete{
+    display: flex;
+    gap: 30px;
+}
+
+.profile_picture{
+    margin-top: 20px;
+}

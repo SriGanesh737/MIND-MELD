@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/loginpage.css">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+  <%- include('partials/loading') %>
+<%- include('partials/cursor') %>
+
+  <div class="total animated wow fadeIn" >
+    <div class="left animated wow slideInLeft">
+
+      <div class="vid">
+        <video width="170px" height="170px" autoplay muted loop>
+          <source src="../images/Question - 69588.mp4" type="video/mp4">
+        </video>
+      </div>
+      <h2 class="welcome animated wow flipInX">
+        Welcome to
+      </h2>
+
+      <img class="meld animated wow fadeInUp" src="../images/title5.png" alt="" data-wow-delay="0.3s">
+
+
+      <div class="caption animated wow fadeInDown" data-wow-delay="0.4s">The writing of a good Blog is a talent, but the conveying it is an art.</div>
+
+
+      <div class="slideshow-container animated wow fadeIn">
+
+      <div class="mySlides fade ">
+        <img src="../images/health-12.jpg" class="slides aminated wow fadeIn" style="border-radius: 15px;">
+      </div>
+
+      <div class="mySlides fade aminated wow fadeIn">
+        <img src="../images/study2.jpg" class="slides" style="border-radius: 15px;">
+      </div>
+
+      <div class="mySlides fade aminated wow fadeIn">
+        <img src="../images/lifestyle.jpg" class="slides" style="border-radius: 15px;">
+      </div>
+    </div>
+
+    </div>
+
+
+
+
+    <div class="right animated wow slideInRight">
+      <div class="loginimage">
+        <img src="../images/mm.jpg" height="120px" width="120px" style="border-radius: 50%;" class="name" alt="">
+      </div>
+      <div class="wrapper">
+        <h1>LOGIN PAGE</h1>
+        <div class="form-container">
+          <div class="slide-controls">
+            <input type="radio" name="slide" id="login" checked>
+            <input type="radio" name="slide" id="signup" >
+            <label for="login" class="slide login">Login</label>
+
+            <a href="signup" class="slide signup" style="text-decoration: none;">SignUp</a>
+
+            <div class="slider-tab"></div>
+          </div>
+          <div class="form-inner">
+            <form action="/login" method="post" class="login" >
+              <div class="field">
+                <input type="email" name="email" placeholder="Email Address" required autocomplete="off">
+              </div>
+              <div class="field" style="margin-bottom: 10px;">
+                <input type="password" name="password" placeholder="Password" class="pswd" required autocomplete="off">
+              </div>
+              <span style="color:red;margin-top: 20px;font-size: 18px;"><%=data1 %></span>
+              <div class="field btn animated wow zoomIn" data-wow-delay="0.5s">
+                <div class="btn-layer"></div>
+                <input type="submit" value="Login">
+              </div>
+              <div class="signup-link">Not a member? <a href="signup">Signup now</a></div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="../js/loginpage.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+  <script src="../js/cursor.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+</body>
+
+</html>
