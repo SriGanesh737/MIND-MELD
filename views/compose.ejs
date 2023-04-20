@@ -61,7 +61,7 @@
 		</div>
 		<div class="right animated wow fadeInDown">
 			<h1 style="margin-top: 0;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Write a Blog of your Choice</h1>
-			<form action="" method="post">
+			<form action="/posts/compose?id=<%= data.id %>" method="post">
 	<label for="field" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-weight: 700;font-size: 20px;">Select Blog Feild:</label>
 <br>
 	<select name="topic" id="field" required>
@@ -108,7 +108,7 @@
 					<!-- <li>tag1 <span class="close">&times;</span> </li> -->
 				  </ul>
 				<br>
-				
+
 				<input type="hidden" name="tags_string" class="tags_string" value=" ">
 
                 <label

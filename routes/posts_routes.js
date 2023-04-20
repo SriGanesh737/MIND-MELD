@@ -355,6 +355,56 @@ router.delete('/:article_id/:comment_id', (req, res) => {
     }).catch((err) => {
         console.log(err);
     })
+});
+
+//this is filter apply handler
+router.post('/', (req, res) => {
+    console.log(req.body);
+    const registeras = req.session.registeras;
+    let { search_value,based_on, topic_name, filter_option } = req.body;
+    let topic_lower = topic_name.toLowerCase();
+    search_value = search_value.toLowerCase();
+    let sort_basis = -1;
+    if (filter_option == 'oldest first') sort_basis = 1;
+
+
+    if (filter_option == 'most liked') {
+        article_model.find({ topic: topic_lower }).sort({ likes:-1 }).then((data) => {
+            const filtered_data = data.filter((article) => {
+                if (based_on == 'title' && article.title.toLowerCase().includes(search_value)) return true;
+                else if (based_on == 'tags') {
+                    const tags = article.tags;
+                    for (let i = 0; i < tags.length; i++) {
+                        if (tags[i].toLowerCase().includes(search_value)) return true;
+                    }
+                }
+            });
+            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras });
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+    else {
+        console.log(sort_basis, "...");
+        article_model.find({ topic: topic_lower }).sort({ date_of_publish: sort_basis }).then((data) => {
+            console.log(data)
+            const filtered_data = data.filter((article) => {
+                if (based_on == 'title' && article.title.toLowerCase().includes(search_value)) return true;
+                else if (based_on == 'tags') {
+                    const tags = article.tags;
+                    for (let i = 0; i < tags.length; i++) {
+                        if (tags[i].toLowerCase().includes(search_value)) return true;
+                    }
+                }
+            });
+            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras });
+
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
 })
 
 
