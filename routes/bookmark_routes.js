@@ -13,9 +13,11 @@ router.get('/',isAuth,(req, res) => {
         (data) => {
             if (!data) {
                 console.log("no bookmarks...");
-                res.write("NO Bookmarks Added");
+            //   hello=[]
+                res.render('bookmarks', { 'bookmarked_data': [], 'registeras': registeras });
                 res.end();
             }
+            else {
             bookmarks_ids = data.bookmarks_ids;
             article_model.find({ _id: { $in: bookmarks_ids } }).then((bookmarked_data) => {
                 // console.log('bookmarked data found', bookmarked_data);
@@ -24,6 +26,8 @@ router.get('/',isAuth,(req, res) => {
                 .catch((err) => {
                     console.log(err);
                 })
+            }
+            
         }
     ).catch((err) => {
         console.log(err);
