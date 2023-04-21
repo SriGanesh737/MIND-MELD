@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const user_model = require('../models/user');
 const expert_model = require('../models/expert');
 const {isAuth} = require('../controllers/isAuth');
+const admin_model=require('../models/admin_model.js');
 
 
 let em = "";
@@ -115,11 +116,40 @@ router.get('/login', logger2, (req, res) => {
 router.post('/login',async (req, res) => {
     email = req.body.email;
     password = req.body.password;
+    const person3=await admin_model.findOne({email:email});
     const person=await user_model.findOne({email:email})
     const person1=await expert_model.findOne({email:email})
-    console.log(person)
-    console.log(person1)
-    if(person!=null)
+    console.log(person3);
+     if(person3!=null)
+     {
+        let  result=await  bcrypt.compare(password, person3.password);
+        if(result===true)
+        {
+                req.session.isAuth = true;
+                let registeras = 'admin';
+                req.session.registeras = 'admin';
+                data1 = "";
+                req.session.profile_data = person3._id;
+                req.session.user_name = person3.firstname;
+                req.session.profile_image_link = person3.profile_image_link;
+
+                res.redirect('/admin')
+        }
+        else
+            {
+            data1 = "Incorrect Login details";
+             res.redirect('/login')
+            }
+        
+     }
+     
+
+
+
+
+
+
+    else if(person!=null)
     {
      let  result=await  bcrypt.compare(password, person.password)
             if (result === true)
