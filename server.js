@@ -72,6 +72,21 @@ app.get('/all_articles',async (req,res)=>{
   let articles=await article_model.find({});
   res.render('all_articles',{articles:articles})
 })
+app.get("/all_experts",async (req,res)=>{
+  let experts=await expert_model.find({})
+  const count=await Promise.all(experts.map(async (expert)=>{
+   number=await article_model.find({author_id:expert._id})
+   length=number.length;
+   return length;
+  }))
+  console.log(count)
+  res.render('all_experts',{experts:experts,count:count})
+})
+app.get('/expertshow/:id',async (req,res)=>{
+  id=req.params.id
+  expert=await expert_model.find({_id:id})
+  res.render('Expert_profile', {'data':expert[0],'registeras':'expert' });
+})
 app.get('*', (req, res) => {
   // console.log(req);
 });

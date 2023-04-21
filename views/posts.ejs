@@ -128,6 +128,13 @@
           <span class="text-desc dontshow">
             <%= articles_data[i]["content"].substring(0,250) %>...
           </span>
+          <div style="justify-content: right;display: flex;">
+            <i style="font-size: 18px;margin-right: 5px;margin-top: 3px;color: rgb(6, 108, 191);"
+              class="fa-solid fa-arrow-up"></i>
+            <h5 style="">
+              <%=articles_data[i]["likes"] %>
+            </h5>
+          </div>
         </div>
       </div>
     <% } %>

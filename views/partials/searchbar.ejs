@@ -1,14 +1,20 @@
 <div class="searchbar-container d-flex">
-    <form class=" searchbar-form d-flex">
-        <input class=" mysearchbar form-control me-2" type="search" placeholder="Search" aria-label="Search">
-
+    <form class=" searchbar-form d-flex" method='post'>
+        <input name="search_value" class=" mysearchbar form-control me-5" type="search" placeholder="Search" aria-label="Search">
+        <input type="hidden" name="topic_name" value="<%= topic %>">
+        <div class="form-group tags_or_title">
+          <select class="form-control" name="based_on" id="filter_based_on">
+            <option value="title">Based on Title</option>
+            <option value="tags">Based on Tags </option>
+          </select>
+        </div>
         <div class="form-group myfilterdropdown">
-            <select class="myselect form-control" id="filterSelect">
-              <option>Newest First </option>
-              <option>Oldest First</option>
-              <option>Most Liked First</option>
+            <select name="filter_option" class="myselect form-control" id="filterSelect">
+              <option value="newest first">Newest First </option>
+              <option value="oldest first">Oldest First</option>
+              <option value="most liked">Most Liked First</option>
             </select>
-          </div>
+        </div>
 
         <button class="btn btn-outline-success" type="submit">Search</button>
 
