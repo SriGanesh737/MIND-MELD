@@ -21,11 +21,11 @@
                <button class="toggler"><i class="fa-solid fa-bars"></i></button>
 
                <ul class="nav-items">
-                <a href="/admin" style="text-decoration: none;color: white;"><li  class="nav-item"><i class="fa-solid fa-user"></i><span class="hide">Dashboard</span></li></a> 
+                <a href="/admin" style="text-decoration: none;color: white;"><li  class="nav-item"><i class="fa-solid fa-user"></i><span class="hide">Dashboard</span></li></a>
                 <a href="/landingpage" style="text-decoration: none;color: white;"><li  class="nav-item"><i class="fa-solid fa-house"></i><span class="hide">Home</span></li></a>
-                  <a href="/admin/all_experts" style="text-decoration: none;color: white;"><li  class="nav-item"><i class="fa-solid fa-user-tie"></i><span class="hide">Experts</span></li></a> 
-                  <a href="/admin/all_articles" style="text-decoration: none;color: white;"><li class="nav-item"><i class="fa-sharp fa-solid fa-newspaper"></i><span class="hide">Articles</span></li></a>        
-                  <a href="/askquery?is_solved=true" style="text-decoration: none;color: white;"> <li class="nav-item"><i class="fa-solid fa-message"></i><span class="hide">Queries</span></li></a>        
+                  <a href="/admin/all_experts" style="text-decoration: none;color: white;"><li  class="nav-item"><i class="fa-solid fa-user-tie"></i><span class="hide">Experts</span></li></a>
+                  <a href="/admin/all_articles" style="text-decoration: none;color: white;"><li class="nav-item"><i class="fa-sharp fa-solid fa-newspaper"></i><span class="hide">Articles</span></li></a>
+                  <a href="/askquery?is_solved=true" style="text-decoration: none;color: white;"> <li class="nav-item"><i class="fa-solid fa-message"></i><span class="hide">Queries</span></li></a>
                </ul>
            </nav>
     </div>
@@ -84,7 +84,7 @@
                         </div>
                         <% } %>
                         <h3 style="font-size: 30px;text-align: left;">Users</h3>
-                       
+
                         <% for(let i=0;i<2;i++) {%>
                             <div class="recent-item">
                                 <div class="name-container">
@@ -95,7 +95,7 @@
                                        User
                                     </span>
                                 </div>
-    
+
                                 <div class="sub-details">
                                     <div class="email"><%= userdata[i].email %></div>
                                     <div class="phone"><%= userdata[i].phone %></div>
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                  <%} %>
-                    
+
 
                 </div>
                </div>
