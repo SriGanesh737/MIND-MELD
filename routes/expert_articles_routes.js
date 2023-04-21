@@ -8,7 +8,7 @@ router.get('/',isAuth, (req, res) => {
     const expert_id = req.session.profile_data;
     article_model.find({ author_id: expert_id }).then((expert_articles_data) => {
 
-            res.render('expert_articles', { data: expert_articles_data, 'registeras': registeras });
+            res.render('expert_articles', { data: expert_articles_data, 'registeras': registeras,page:"yourwork" });
 
     })
 
