@@ -9,7 +9,7 @@
           </select>
         </div>
 
-        <div class="form-group myfilterdropdown <%= page!="posts"?"dontshow":"" %>">
+        <div class="form-group myfilterdropdown <%= page=="bookmarks"?"dontshow":"" %>">
             <select name="filter_option" class="myselect form-control" id="filterSelect">
               <option value="newest first">Newest First </option>
               <option value="oldest first">Oldest First</option>
@@ -29,7 +29,7 @@
           </select>
         </div>
 
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="searchbar_btn btn btn-outline-success" type="submit">Search</button>
 
 
     </form>

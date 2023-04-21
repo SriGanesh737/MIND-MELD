@@ -14,14 +14,14 @@ router.get('/',isAuth,(req, res) => {
             if (!data) {
                 console.log("no bookmarks...");
             //   hello=[]
-                res.render('bookmarks', {topic:"",'bookmarked_data': [], 'registeras': registeras,is_empty:true });
+                res.render('bookmarks', {topic:"",'bookmarked_data': [], 'registeras': registeras });
                 res.end();
             }
             else {
             bookmarks_ids = data.bookmarks_ids;
             article_model.find({ _id: { $in: bookmarks_ids } }).then((bookmarked_data) => {
                 // console.log('bookmarked data found', bookmarked_data);
-                res.render('bookmarks', { topic:"",'bookmarked_data': bookmarked_data, 'registeras': registeras,is_empty:false,page:"bookmarks" });
+                res.render('bookmarks', { topic:"",'bookmarked_data': bookmarked_data, 'registeras': registeras,page:"bookmarks" });
             })
                 .catch((err) => {
                     console.log(err);
@@ -112,7 +112,7 @@ router.post('/', (req, res) => {
             if (!data) {
                 console.log("no bookmarks...");
                 //   hello=[]
-                res.render('bookmarks', { topic: "", 'bookmarked_data': [], 'registeras': registeras, is_empty: true });
+                res.render('bookmarks', { topic: "", 'bookmarked_data': [], 'registeras': registeras });
                 res.end();
             }
             else {
@@ -122,7 +122,7 @@ router.post('/', (req, res) => {
                     let filtered_data = bookmarked_data;
                     // filtering based on topic if required
                     if (choose_topic != "") {
-                         filtered_data = bookmarked_data.filter((article) => {
+                        filtered_data = bookmarked_data.filter((article) => {
                             return article.topic == choose_topic;
                         })
                     }
@@ -137,7 +137,7 @@ router.post('/', (req, res) => {
                         }
                     });
 
-                    res.render('bookmarks', { topic: "", 'bookmarked_data': filtered_data, 'registeras': registeras, is_empty: false, page: "bookmarks" });
+                    res.render('bookmarks', { topic: "", 'bookmarked_data': filtered_data, 'registeras': registeras, page: "bookmarks" });
                 })
                     .catch((err) => {
                         console.log(err);
@@ -149,6 +149,6 @@ router.post('/', (req, res) => {
         console.log(err);
     });
 
-})
+});
 
 module.exports = router;

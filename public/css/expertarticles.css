@@ -6,6 +6,7 @@ body{
 }
 .your_blogs
 {
+    margin-top: 50px;
     background-color: #E6E4E4;
     /* padding-bottom: 30px; */
     margin-bottom: -100px;
@@ -16,6 +17,7 @@ body{
     text-align: center;
     font-size: 50px;
     font-weight: 600;
+    margin-bottom: 30px;
 }
 .your_blog
 {

@@ -13,6 +13,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
       <script src="https://kit.fontawesome.com/3e893105a3.js" crossorigin="anonymous"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+      <link rel="stylesheet" href="../css/searchbar.css">
       <link rel="stylesheet" href="../css/expertarticles.css">
 </head>
 <body>
@@ -22,6 +23,9 @@
     <%- include('partials/cursor') %>
 
     <h1 class="title_expert">Your Blogs</h1>
+
+    <%- include('partials/searchbar') %>
+
     <% if(data.length!==0) { %>
    <div style="min-height: 600px;" class="your_blogs">
 
@@ -48,7 +52,7 @@
  <% }%>
  <% if(data.length==0) { %>
   <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
-   
+
     <img src="../images/null.png" alt="">
  </div>
   <%} %>
