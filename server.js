@@ -15,7 +15,7 @@ const expert_articles_routes = require('./routes/expert_articles_routes.js');
 const user_model = require('./models/user.js');
 const expert_model = require('./models/expert.js');
 const article_model = require('./models/article_model.js');
-// hello
+const admin_routes=require('./routes/adminroutes.js');
 
 app.use(express.json());
 dotenv.config();
@@ -55,6 +55,7 @@ app.use('/aboutus', about_us_routes);
 app.use('/askquery', ask_query_route);
 app.use('/bookmarks', bookmarks_routes);
 app.use('/expert_articles', expert_articles_routes);
+app.use('/admin',admin_routes);
 
 app.get('/admin', (req, res) => {
   user_model.find({}).then((userdata)=>{
