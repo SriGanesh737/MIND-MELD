@@ -53,6 +53,7 @@ router.post('/answer/:question_id', (req, res) => {
             { $set: { is_answered: true, expert_id: exp_id, "profile-image-link": profile_image_link,answer:answer } }
         ).then(() => {
             console.log('solution added succesfully');
+            res.redirect('/askquery?is_solved=true');
         })
             .catch((err) => {
                 console.error(err);
@@ -65,7 +66,7 @@ router.post('/answer/:question_id', (req, res) => {
 
 
 
-    res.redirect('/askquery?is_solved=true');
+
 });
 
 
