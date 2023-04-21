@@ -1,10 +1,16 @@
 
-<form action="/askquery/filter" class="<%= registeras=='user'?'dontshow':" " %>" action="" method="post">
-      <label class="label_show" for="show_dontshow">Status:</label>
+<form action="/askquery/filter" class="filter_form_faq_page " action="" method="post">
+      <label class="label_show" for="show_dontshow">Filter:</label>
       <select class="filter_select" name="is_solved" id="show_dontshow">
         <option value="true">Solved</option>
         <option value="false">Unsolved</option>
       </select>
+      <select name="all_or_your" class="all_or_your_select">
+        <option value="all">All Questions</option>
+        <option value="your">Your Questions</option>
+        <option class="<%= registeras=='user'?"dontshow":"" %>" value="solved">Answered by you</option>
+      </select>
+      <input class="search_question_input" type="search" placeholder="Search for something" name="search_value" >
       <button class="filter_apply" type="submit">Apply</button>
 </form>
 
@@ -25,15 +31,13 @@
           <%= data['question'] %>
         </div>
 
-        <button class="<%= i %> answer">
+        <button class="<%= i %> answer <%=(registeras!="expert"&&registeras!="admin")? "dontshow":"" %>">
           Answer
         </button>
       </div>
       <div class="solution-<%= i %> solution-form dontshow">
-        <form  action="askquery/answer/<%= faq_data[i]._id %>" method="post">
-           <textarea required  class="faq-solution" name="faq-solution" cols="100" rows="4">
-
-           </textarea>
+        <form  action="/askquery/answer/<%= faq_data[i]._id %>" method="post">
+           <textarea required  class="faq-solution" name="faq-solution" cols="100" rows="4"></textarea>
           <div class="actn_btns">
             <button type="button" class="cancel-<%= i %> btn btn-danger cancel_btn">Cancel</button>
             <button type="submit" class="btn btn-success post_btn">Post</button>
@@ -80,8 +84,11 @@
 
       <div class="answer-box answer-box-<%=i%>">
         <i class=" <%=i%> fa-solid fa-xmark"></i>
-        <br>
-        <%= data["answer"] %>
+        <!-- <br> -->
+        <span class="answer_text">
+          <%= data["answer"] %>
+        </span>
+
       </div>
 
     </div>
