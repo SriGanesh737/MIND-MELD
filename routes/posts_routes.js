@@ -16,7 +16,7 @@ router.get('/',isAuth, (req, res) => {
     const registeras = req.session.registeras;
     // console.log(topic,'...')
     article_model.find({ topic: topic }).then((data) => {
-        res.render('posts', { topic: topic.toUpperCase(), articles_data: data, 'registeras': registeras });
+        res.render('posts', { topic: topic.toUpperCase(), articles_data: data, 'registeras': registeras,page:"posts" });
 
     }).catch((err) => {
         console.log(err);
@@ -370,7 +370,7 @@ router.delete('/:article_id/:comment_id', (req, res) => {
 router.post('/', (req, res) => {
     console.log(req.body);
     const registeras = req.session.registeras;
-    let { search_value,based_on, topic_name, filter_option } = req.body;
+    let { search_value, based_on, topic_name, filter_option } = req.body;
     let topic_lower = topic_name.toLowerCase();
     search_value = search_value.toLowerCase();
     let sort_basis = -1;
@@ -378,17 +378,17 @@ router.post('/', (req, res) => {
 
 
     if (filter_option == 'most liked') {
-        article_model.find({ topic: topic_lower }).sort({ likes:-1 }).then((data) => {
+        article_model.find({ topic: topic_lower }).sort({ likes: -1 }).then((data) => {
             const filtered_data = data.filter((article) => {
-                if (based_on == 'title' && article.title.toLowerCase().includes(search_value)) return true;
+                if (based_on == 'title' && article.title.toLowerCase().includes(search_value.toLowerCase())) return true;
                 else if (based_on == 'tags') {
                     const tags = article.tags;
                     for (let i = 0; i < tags.length; i++) {
-                        if (tags[i].toLowerCase().includes(search_value)) return true;
+                        if (tags[i].toLowerCase().includes(search_value.toLowerCase())) return true;
                     }
                 }
             });
-            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras });
+            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts" });
 
         }).catch((err) => {
             console.log(err);
@@ -407,14 +407,14 @@ router.post('/', (req, res) => {
                     }
                 }
             });
-            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras });
+            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts" });
 
         }).catch((err) => {
             console.log(err);
         })
     }
 
-})
+});
 
 
 module.exports = router;
