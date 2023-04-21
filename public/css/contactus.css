@@ -38,7 +38,7 @@ body{
 .contactus-container{
     margin-top: 70px;
     width: 1000px;
-    height: 600px;
+    height: 650px;
     display: flex;
 
     margin-left: auto;
@@ -79,6 +79,7 @@ body{
 
 .contactus-right{
     padding: 5px 20px;
+    overflow-y: scroll;
     width: 500px;
     height: 600px;
     background-color: rgb(181 250 161);
@@ -104,13 +105,15 @@ body{
     border: none;
     outline: none;
     height: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     border-radius: 5px;
     padding-left: 10px;
     font-size: 15px;
 }
 
 .contactus-right textarea{
+    margin-top: 5px;
     width: 95%;
     border: none;
     outline: none;

@@ -83,13 +83,14 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
     {
         float: right;
     }
-    .topic
+    .topicsss
     {
         margin-left: 10px;
         background-color: rgb(206, 174, 132);
-        padding: 7px;
+        padding: 5px;
         /* width: 20px; */
-        height: 20px;
+        height: 23px;
+        box-sizing: content-box;
         border-radius: 2px;
         font-size: 17px;
     }
@@ -113,17 +114,41 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
     display: flex;
     flex-wrap: wrap;
  }
- .tag{
+ .ettag{
     padding: 5px;
-    border: 2px solid black;
+    border: 2px solid rgb(146, 118, 118);
     margin: 5px;
  }
  .writer
  {
     margin-top: auto;
+    
+    
     /* justify-content: flex-end; */
     margin-right: 10px;
     text-align: right;
+ }
+ a .delete
+ {
+    border-radius: 5px;
+    /* margin-left: 5px; */
+    /* left: 0; */
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 40, 40, 0.97);
+   height: 30px;
+   width: 140px;
+   font-size: 16px;
+ }
+ .deletion
+ {
+    text-align: center;
+    margin-top: 5px;
+ }
+ .right
+ {
+    margin-bottom: 20px;
  }
 </style>
 <body>
@@ -157,11 +182,11 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
         <div class="content">
             <div class="titler">
                 <div class="title"><%= articles[i].title.substring(0,50)  %>...</div>
-                <div class="topic"><%=articles[i].topic %></div>
+                <div class="topicsss"><%=articles[i].topic %></div>
             </div>
             <div class="tags">
                 <% for(let j=0;j<Math.min(articles[i].tags.length,3);j++) {%>
-                <div class="tag"><%=articles[i].tags[j] %></div>
+                <div class="ettag"><%=articles[i].tags[j] %></div>
                 <!-- <div class="tag">jerkierjre</div> -->
                 <!-- <div class="tag">eiertreutrehtreujhtretre ...</div> -->
                 <!-- <div class="tag">jreierioreeirtnykyjiyrtuytreo</div> -->
@@ -169,9 +194,16 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
             </div>
             
         </div>
+     
+        
         <div class="writer">
            -- <%= articles[i].author_name %>
+           <div class="deletion">
+           
+            <a href="/expert_articles/delete/<%=articles[i]._id %>" style="text-decoration: none;color: white;margin-left: 0;"><button class="delete">DELETE</button></a>
+        </div>
          </div>
+         
         </div>
     </a>
         <% } %>

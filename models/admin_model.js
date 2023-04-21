@@ -54,6 +54,10 @@ const admin_schema=new Schema({
     profile_image_link: {
         type: String,
         default:'https://th.bing.com/th/id/OIP.z4no5tqp2ryBdMMD5NU9OgHaEv?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
+    },
+    doj:{
+        type: Date,
+        default: Date.now()
     }
 })
 const admin_model = mongoose.model('admin_model', admin_schema);

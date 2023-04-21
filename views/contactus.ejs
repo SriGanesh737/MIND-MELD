@@ -31,7 +31,7 @@
                 <p class="single-link"><i class="fa-solid fa-location-crosshairs"></i>Indian Institute of Information Technology ,
                 Sricity</p>
                 <p class="single-link"><i class="fa-solid fa-phone"></i>+91 1234567890</p>
-                <p class="single-link"><i class="fa-solid fa-envelope"></i> mindmeldhelp@gmail.com</p>
+                <p class="single-link"><i class="fa-solid fa-envelope"></i> contactmindmeld2003@gmail.com</p>
                 <p class="single-link"><i class="fa-brands fa-facebook"></i>facebook</p>
                 <p class="single-link"><i class="fa-brands fa-linkedin"></i>linked in</p>
                 <p class="single-link"><i class="fa-brands fa-twitter"></i>twitter</p>
@@ -44,14 +44,18 @@
             <h2 class="contactus-title">
                 Send a message
             </h2>
-          <form action="" class="contactus-form">
-              <input placeholder="First Name" type="text" name="first-name" class="first-name">
-              <input placeholder="Last Name" type="text" name="last-name" class="last-name">
+          <form action="/contactus" method="post" class="contactus-form myform">
+              <input placeholder="First Name" type="text" name="firstname" class="firstname">
+              <span class="incfn" style="color: rgba(243, 26, 26, 0.819);"></span>
+              <input placeholder="Last Name" type="text" name="lastname" class="lastname">
+              <span class="incln" style="color: rgba(243, 26, 26, 0.819);"></span>
               <input placeholder="Email" type="email" name="email" class="email">
-              <input placeholder="Phone Number" type="text" name="phone-no" class="phone-no">
+              <input placeholder="Phone Number" type="text" name="phoneno" class="phoneno">
+              <span class="incph" style="color: rgba(243, 26, 26, 0.819);"></span>
               <textarea name="message" id="contactus-msg" cols="30" rows="20" class="message"placeholder="Leave a Message"></textarea>
-
-              <button class="contactus-submit" type="submit">Submit</button>
+              <p><%=data %></p>
+              
+              <button class="contactus-submit register" type="submit">Submit</button>
           </form>
         </div>
     </div>
@@ -69,6 +73,8 @@
                     console.log('callback - particles.js config loaded');
                 });
             };
+
     </script>
+    <script src="../js/contactus.js"></script>
 </body>
 </html>

@@ -17,6 +17,7 @@ const expert_model = require('./models/expert.js');
 const article_model = require('./models/article_model.js');
 const admin_model=require('./models/admin_model.js');
 const admin_routes=require('./routes/adminroutes.js');
+const query_model = require('./models/query_model.js');
 const bcrypt = require('bcryptjs');
 
 
