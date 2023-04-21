@@ -7,7 +7,8 @@ const posts_c = require('../controllers/posts_c');
 const { isAuth } = require('../controllers/isAuth');
 const comment_model = require('../models/comment_model');
 const user_model = require('../models/user');
-const formatDate=require('../controllers/date_formatter')
+const formatDate=require('../controllers/date_formatter');
+const admin_model = require('../models/admin_model');
 
 
 router.get('/',isAuth, (req, res) => {
@@ -145,6 +146,7 @@ router.post('/compose', (req, res) => {
         let exp_details = {}
         expert_model.findOne({ _id: exp_id }).then((data) => {
             // console.log(data);
+            if(data!=null){
             exp_details = {
                 author_id: exp_id,
                 author_name: data.firstname + " " + data.lastname
@@ -161,10 +163,34 @@ router.post('/compose', (req, res) => {
                     console.log(err);
                 });
 
-        }).catch((err) => {
+       } }).catch((err) => {
             console.log(err);
 
         })
+        admin_model.findOne({ _id: exp_id }).then((data) => {
+            // console.log(data);
+            if(data!=null){
+            exp_details = {
+                author_id: exp_id,
+                author_name: data.firstname + " " + data.lastname
+            }
+            details = { ...details, ...exp_details };
+            //  console.log('details are: ', details);
+
+            const new_blog = new article_model(details);
+
+            new_blog.save().then(() => {
+                console.log('blog data saved successfully...');
+            })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+       } }).catch((err) => {
+            console.log(err);
+
+        })
+        
         res.redirect('/posts/compose');
     }
     else {

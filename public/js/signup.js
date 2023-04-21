@@ -107,4 +107,5 @@ function checkpassword(str) {
       form.submit(); // submit the form
     
   } 
+  
 });

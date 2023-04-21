@@ -8,10 +8,10 @@ const user_model = require('../models/user');
 router.get('/', (req, res) => {
    const registeras=req.session.registeras;
    if(registeras=='admin'){
-    user_model.find({}).then((userdata)=>{
-      expert_model.find({}).then((expertdata)=>{
+    user_model.find({}).sort({doj:-1}).then((userdata)=>{
+      expert_model.find({}).sort({doj:-1}).then((expertdata)=>{
   
-      article_model.find({}).then((articles)=>{
+      article_model.find({}).sort({dateofpublish:-1}).then((articles)=>{
   
         res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles });
       })
