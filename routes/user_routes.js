@@ -3,6 +3,7 @@ const router = express.Router();
 const bookmarked_data = require('../infos/bookmarked_data');
 const user_model = require('../models/user');
 const expert_model = require('../models/expert');
+const admin_model=require('../models/admin_model.js');
 let expert_articles_data = [
 
 ];
@@ -77,8 +78,16 @@ router.post('/edit_e',async (req,res)=>{
 
 router.get('/',isAuth,async (req, res) => {
     // console.log(req.session.id)
-
-const profile_details=await expert_model.findOne({_id:req.session.profile_data});
+    const registeras=req.session.registeras;
+    let profile_details={}
+if(registeras=='expert')
+{
+ profile_details=await expert_model.findOne({_id:req.session.profile_data});
+}
+else
+{
+ profile_details=await admin_model.findOne({_id:req.session.profile_data});
+}
 // profile_details={
 //     firstname:details.firstname,
 //     lastname:details.lastname,

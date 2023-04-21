@@ -31,6 +31,8 @@ router.get('/',isAuth, (req, res) => {
 router.get('/compose', isAuth, (req, res) => {
     articleid = req.query.id;
     const registeras = req.session.registeras;
+    if(registeras=='expert'|| registeras=='admin')
+    {
     if (articleid == null) {
         console.log('here')
         data = {
@@ -63,6 +65,13 @@ router.get('/compose', isAuth, (req, res) => {
             res.render('compose', { 'registeras': registeras, 'data': data })
         })
     }
+}
+else
+{
+    res.render('notfound')
+}
+
+
 });
 
 router.get('/:article_id',isAuth, (req, res) => {

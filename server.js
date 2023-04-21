@@ -15,7 +15,23 @@ const expert_articles_routes = require('./routes/expert_articles_routes.js');
 const user_model = require('./models/user.js');
 const expert_model = require('./models/expert.js');
 const article_model = require('./models/article_model.js');
-// hello
+const admin_model=require('./models/admin_model.js');
+const admin_routes=require('./routes/adminroutes.js');
+const bcrypt = require('bcryptjs');
+
+
+
+
+// admin_creation();
+// async function admin_creation()
+// {
+//   pswd='admin@123';
+//   const hashedpswd = await bcrypt.hash(pswd, 12);
+//   const admin=new admin_model({
+//     firstname:'Mind meld',lastname:'admin',email:'adminmeld@gmail.com',password:hashedpswd,phone:'8975471234',gender:'M',insta_link:'https://www.instagram.com/',facebook_link:'https://www.linkedin.com/feed/',qualification:'PHD in Informatics',profile_image_link:'https://th.bing.com/th/id/OIP.z4no5tqp2ryBdMMD5NU9OgHaEv?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
+// })
+// admin.save().then(() => console.log('Document saved')).catch((err) => console.error(err));
+// }
 
 app.use(express.json());
 dotenv.config();
@@ -55,39 +71,39 @@ app.use('/aboutus', about_us_routes);
 app.use('/askquery', ask_query_route);
 app.use('/bookmarks', bookmarks_routes);
 app.use('/expert_articles', expert_articles_routes);
+app.use('/admin',admin_routes);
 
-app.get('/admin', (req, res) => {
-  user_model.find({}).then((userdata)=>{
-    expert_model.find({}).then((expertdata)=>{
+// app.get('/admin', (req, res) => {
+//   user_model.find({}).then((userdata)=>{
+//     expert_model.find({}).then((expertdata)=>{
 
-    article_model.find({}).then((articles)=>{
+//     article_model.find({}).then((articles)=>{
 
-      res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles });
-    })
-  })
-})
-});
-app.get('/all_articles',async (req,res)=>{
-  let articles=await article_model.find({});
-  res.render('all_articles',{articles:articles})
-})
-app.get("/all_experts",async (req,res)=>{
-  let experts=await expert_model.find({})
-  const count=await Promise.all(experts.map(async (expert)=>{
-   number=await article_model.find({author_id:expert._id})
-   length=number.length;
-   return length;
-  }))
-  console.log(count)
-  res.render('all_experts',{experts:experts,count:count})
-})
+//       res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles });
+//     })
+//   })
+// })
+// });
+
+
 app.get('/expertshow/:id',async (req,res)=>{
-  id=req.params.id
+  const registeras=req.session.registeras;
+  if(registeras=='admin')
+  {
+  id=req.params.id;
+  // console.log(id)
   expert=await expert_model.find({_id:id})
   res.render('Expert_profile', {'data':expert[0],'registeras':'expert' });
+  }
+
+  else
+{
+res.render('notfound')
+}
 })
 app.get('*', (req, res) => {
   // console.log(req);
+  res.render('notfound')
 });
 
 
