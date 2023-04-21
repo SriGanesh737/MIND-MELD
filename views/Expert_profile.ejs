@@ -52,7 +52,8 @@
         <h3>Personal Information</h3>
         <div class="info">
             <div class="edit_details">
-                <a href="/user/edit_e"><i class="bi bi-pencil-square"><span>Edit profile</span></i></a>
+                <%if(registeras=='expert') {%>  <a href="/user/edit_e"><i class="bi bi-pencil-square"><span>Edit profile</span></i></a> 
+                <% }%>
             </div>
             <div class="firstname">
                 <h4 style="font-weight: 500;"> <b>FirstName:</b></h4>
