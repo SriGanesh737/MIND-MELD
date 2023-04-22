@@ -9,7 +9,7 @@ const admin_schema=new Schema({
     firstname:{
         type: String,
         required: [true, 'firstname is required'],
-        
+
     },
     lastname: {
         type: String,

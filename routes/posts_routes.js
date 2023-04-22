@@ -17,7 +17,7 @@ router.get('/',isAuth, (req, res) => {
     const registeras = req.session.registeras;
     // console.log(topic,'...')
     article_model.find({ topic: topic }).then((data) => {
-        res.render('posts', { topic: topic.toUpperCase(), articles_data: data, 'registeras': registeras,page:"posts" });
+        res.render('posts', { topic: topic.toUpperCase(), articles_data: data, 'registeras': registeras, page: "posts", is_blocked: req.session.is_blocked });
 
     }).catch((err) => {
         console.log(err);
@@ -46,7 +46,7 @@ router.get('/compose', isAuth, (req, res) => {
             imagelink: '',
             tagstring: ''
         }
-        res.render('compose', { 'registeras': registeras, 'data': data })
+        res.render('compose', { 'registeras': registeras, 'data': data, is_blocked: req.session.is_blocked })
     }
     else {
         // console.log('heello editing')
@@ -65,7 +65,7 @@ router.get('/compose', isAuth, (req, res) => {
                 tagstring: tagstring
             }
             // console.log(blog)
-            res.render('compose', { 'registeras': registeras, 'data': data })
+            res.render('compose', { 'registeras': registeras, 'data': data, is_blocked: req.session.is_blocked })
         })
     }
 }
@@ -115,7 +115,7 @@ router.get('/:article_id',isAuth, (req, res) => {
                         })
                     );
                     //  console.log(all_comments,'.>__<.');
-                    res.render('display', { data: data, 'registeras': registeras, 'comments_data': all_comments,value:value,user_id:user_id });
+                    res.render('display', { data: data, 'registeras': registeras, 'comments_data': all_comments, value: value, user_id: user_id, is_blocked: req.session.is_blocked });
                 })
                 .catch((err) => {
                     console.log(err);
@@ -194,7 +194,7 @@ router.post('/compose', (req, res) => {
             console.log(err);
 
         })
-        
+
     }
     else {
 
@@ -417,7 +417,7 @@ router.post('/', (req, res) => {
                     }
                 }
             });
-            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts" });
+            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts", is_blocked: req.session.is_blocked });
 
         }).catch((err) => {
             console.log(err);
@@ -436,7 +436,7 @@ router.post('/', (req, res) => {
                     }
                 }
             });
-            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts" });
+            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts", is_blocked: req.session.is_blocked });
 
         }).catch((err) => {
             console.log(err);

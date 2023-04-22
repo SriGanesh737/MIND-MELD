@@ -9,8 +9,10 @@ const nodemailer=require('nodemailer');
 const query_model = require('../models/query_model.js');
 
 // const { isAuth } = require('../controllers/isAuth');
+
 router.get('/',isAuth, (req, res) => {
-   const registeras=req.session.registeras;
+  const registeras = req.session.registeras;
+  const is_blocked = req.session.is_blocked;
    if(registeras=='admin'){
     user_model.find({}).sort({doj:-1}).then((userdata)=>{
       expert_model.find({}).sort({doj:-1}).then((expertdata)=>{
@@ -18,7 +20,7 @@ router.get('/',isAuth, (req, res) => {
       article_model.find({}).sort({dateofpublish:-1}).then((articles)=>
       {
 
-        res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles });
+        res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles,is_blocked:is_blocked });
       })
     })
   })
@@ -29,24 +31,22 @@ else
 }
   });
 
-
-
 router.get('/all_articles',isAuth, async (req, res) => {
 
   const registeras = req.session.registeras;
+  const is_blocked = req.session.is_blocked;
   if (registeras == 'admin') {
     let articles = await article_model.find({});
-    res.render('all_articles', { articles: articles, topic: "", page: "all_articles" })
+    res.render('all_articles', { articles: articles, topic: "", page: "all_articles",is_blocked:is_blocked })
   }
   else {
     res.render('notfound')
   }
 });
 
-
-
 router.get("/all_experts",isAuth, async (req, res) => {
   const registeras = req.session.registeras;
+  const is_blocked = req.session.is_blocked;
   if (registeras == 'admin') {
     let experts = await expert_model.find({})
     const count = await Promise.all(experts.map(async (expert) => {
@@ -55,7 +55,8 @@ router.get("/all_experts",isAuth, async (req, res) => {
       return length;
     }))
     // console.log(count)
-    res.render('all_experts', { experts: experts, count: count })
+    res.render('all_experts', {
+      experts: experts, count: count, is_blocked: is_blocked})
   }
 
 
@@ -64,14 +65,14 @@ router.get("/all_experts",isAuth, async (req, res) => {
   }
 });
 
-
 router.get('/expertshow/:id',isAuth, async (req, res) => {
   const registeras = req.session.registeras;
+  const is_blocked = req.session.is_blocked;
   if (registeras == 'admin') {
     id = req.params.id;
     console.log(id)
     expert = await expert_model.find({ _id: id })
-    res.render('Expert_profile', { 'data': expert[0], 'registeras': 'expert' });
+    res.render('Expert_profile', { 'data': expert[0], 'registeras': 'expert',is_blocked:is_blocked });
   }
 
   else {
@@ -132,7 +133,7 @@ router.post('/all_articles', async(req, res) => {
     }
   });
 
-  res.render('all_articles', { articles: filtered_articles, topic: "", page: "all_articles" })
+  res.render('all_articles', { articles: filtered_articles, topic: "", page: "all_articles", is_blocked: req.session.is_blocked })
 
 });
 
@@ -151,7 +152,7 @@ router.post('/all_experts/search',async (req,res)=>{
       length=number.length;
       return length;
      }))
-     res.render('all_experts',{experts:experts,count:count})   
+    res.render('all_experts', { experts: experts, count: count, is_blocked: req.session.is_blocked })
   }
   else
   {
@@ -170,11 +171,30 @@ router.post('/all_experts/search',async (req,res)=>{
       length=number.length;
       return length;
      }))
-     res.render('all_experts',{experts:newexperts,count:count})    
+    res.render('all_experts', { experts: newexperts, count: count, is_blocked: req.session.is_blocked })
   }
-  
+
 
 })
+
+
+router.post('/remove_expert', async (req, res) => {
+  const expert_id = req.body.expert_id;
+  // console.log(expert_id);
+  await expert_model.deleteOne({ _id: expert_id });
+  console.log("expert removed successfully");
+  res.redirect('/admin/all_experts');
+});
+
+router.post('/block_expert', async(req, res) => {
+  const expert_id = req.body.expert_id;
+  const expert_details = await expert_model.findOne({ _id: expert_id });
+  await expert_model.findByIdAndUpdate(expert_id, { is_blocked:!expert_details.is_blocked  });
+  if(expert_details.is_blocked)console.log("expert unblocked successfully");
+  else console.log("expert unblocked successfully");
+  res.redirect('/admin/all_experts');
+
+});
 
 
 let sentdata="";
@@ -238,5 +258,6 @@ function logger5(req,res,next)
   sentdata="";
 
 }
+
 
   module.exports = router;
