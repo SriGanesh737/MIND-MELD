@@ -6,6 +6,7 @@ const expert_model = require('../models/expert');
 const article_model = require('../models/article_model');
 const user_model = require('../models/user');
 const nodemailer=require('nodemailer');
+const query_model = require('../models/query_model.js');
 
 // const { isAuth } = require('../controllers/isAuth');
 router.get('/',isAuth, (req, res) => {
@@ -77,6 +78,26 @@ router.get('/expertshow/:id',isAuth, async (req, res) => {
     res.render('notfound')
   }
 });
+
+
+router.get('/query',async (req,res)=>{
+  const registeras = req.session.registeras;
+  query_data=await query_model.find({isresolved:false});
+
+  res.render('query_page',{query_data:query_data})
+})
+router.post('/query/:id',async (req,res)=>{
+  id=req.params.id;
+  console.log(id);
+  let updated=await query_model.updateOne({_id:id},{$set:{isresolved:true}});
+  console.log(updated);
+  res.redirect('/admin/query');
+})
+
+
+
+
+
 
 router.post('/all_articles', async(req, res) => {
   console.log(req.body);
