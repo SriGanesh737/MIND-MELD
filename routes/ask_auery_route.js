@@ -39,9 +39,9 @@ router.post('/', (req, res) => {
 
 router.post('/filter', async(req, res) => {
     console.log(req.body);
-    const filter = req.body.is_solved;
+    
     const id = req.session.profile_data;
-    let { is_solved, all_or_your,search_value } = req.body;
+    let { is_solved, all_or_your,search_value,choose_topic } = req.body;
     let faq_data = [];
     const registeras = req.session.registeras;
     is_solved = is_solved == 'true';
@@ -62,6 +62,12 @@ router.post('/filter', async(req, res) => {
     if (search_value != ""){
         faq_data = faq_data.filter((ques) => {
             return ques.question.toLowerCase().includes(search_value.toLowerCase());
+        });
+    }
+
+    if (choose_topic != "") {
+        faq_data = faq_data.filter((ques) => {
+            return ques.topic.toLowerCase() == choose_topic;
         });
     }
 
