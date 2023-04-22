@@ -12,10 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/3e893105a3.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> -->
-
     <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
     <link rel="stylesheet" href="/css/searchbar.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
 <link
       href="/css/admin.css"
       rel="stylesheet"
@@ -157,19 +157,7 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
 </style>
 <body>
 
-    <div class="side-nav-container short">
-        <nav >
-            <button class="toggler"><i class="fa-solid fa-bars"></i></button>
-
-            <ul class="nav-items">
-                <a href="/admin" style="text-decoration: none;color: white;"><li  class="nav-item"><i class="fa-solid fa-user"></i><span class="hide">Dashboard</span></li></a>
-                <a href="/landingpage" style="text-decoration: none;color: white;"><li  class="nav-item"><i class="fa-solid fa-house"></i><span class="hide">Home</span></li></a>
-               <a href="/admin/all_experts" style="text-decoration: none;color: white;"><li  class="nav-item"><i class="fa-solid fa-user-tie"></i><span class="hide">Experts</span></li></a>
-               <a href="/admin/all_articles" style="text-decoration: none;color: white;"><li class="nav-item"><i class="fa-sharp fa-solid fa-newspaper"></i><span class="hide">Articles</span></li></a>
-               <a href="/askquery?is_solved=true" style="text-decoration: none;color: white;"> <li class="nav-item"><i class="fa-solid fa-message"></i><span class="hide">Queries</span></li></a>
-            </ul>
-        </nav>
- </div>
+    <%- include('partials/adminnavbar') %>
 
 
     <div class="right">
@@ -207,7 +195,7 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
            -- <%= articles[i].author_name %>
            <div class="deletion">
 
-            <a href="/expert_articles/delete/<%=articles[i]._id %>" style="text-decoration: none;color: white;margin-left: 0;"><button class="delete">DELETE</button></a>
+            <a href="javascript:void(0)"  data-href="/expert_articles/delete/<%=articles[i]._id %>" style="text-decoration: none;color: white;margin-left: 0;" class="delete_article"><button class="delete">DELETE</button></a>
         </div>
          </div>
 
@@ -219,7 +207,8 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
     </div>
 
 
-    <script src="/js/admin.js"></script>
+    <script src="../js/admin.js"></script>
+    <script src="../js/all_articles.js"></script>
 </body>
 
 </html>

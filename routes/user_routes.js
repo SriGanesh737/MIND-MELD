@@ -4,6 +4,7 @@ const bookmarked_data = require('../infos/bookmarked_data');
 const user_model = require('../models/user');
 const expert_model = require('../models/expert');
 const admin_model=require('../models/admin_model.js');
+const Swal = require('sweetalert');
 let expert_articles_data = [
 
 ];
@@ -18,6 +19,7 @@ expert_articles_data = bookmarked_data;
 
 
 router.get('/edit_e',isAuth, async (req, res) => {
+    // Swal('Success!', 'Your form has been submitted', 'success');
     const registeras = req.session.registeras;
 
     const details=await expert_model.findOne({_id:req.session.profile_data});
@@ -56,7 +58,6 @@ router.post('/edit_e',async (req,res)=>{
         dateofbirth:req.body.dob
 
     }
-
     const result = await expert_model.updateOne({ _id: req.session.profile_data },{ $set: {  firstname:req.body.firstname,
         lastname:req.body.lastname,
         domain:req.body.domain,
@@ -68,7 +69,8 @@ router.post('/edit_e',async (req,res)=>{
         github_link:req.body.github_link,
         qualification:req.body.qualification,
         dateofbirth:req.body.dob } });
-    console.log(`${result.modifiedCount} document(s) was/were updated.`);
+        console.log(`${result.modifiedCount} document(s) was/were updated.`);
+    // Swal('Success!', 'Your form has been submitted', 'success');
     res.redirect('/user')
 
 })
@@ -101,7 +103,7 @@ else
 //     qualification:details.qualification,
 //     dateofbirth:details.dateofbirth
 // }
-console.log(profile_details)
+// console.log(profile_details)
 
     res.render('Expert_profile', {'data':profile_details,'registeras': req.session.registeras });
 });

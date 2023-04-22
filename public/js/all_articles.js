@@ -1,15 +1,6 @@
-$('.card').click(function (e) {
-    let id = e.currentTarget.id;
-    if(e.target.classList[0]!='remove-from-bookmarks')
-    window.location.href = "/posts/" + id;
-});
 
-$('.card').click(function (e) {
-    let id = e.currentTarget.id;
-    if (e.target.classList[0] == 'remove-from-bookmarks')
-        $(this).css('display', 'none');
-});
-$('a.remove_bookmarks_link').click(function(event) {
+
+$('a.delete_article').click(function(event) {
     // alert('hii')
     event.preventDefault(); // prevent the default behavior of the anchor tag
     
@@ -17,7 +8,7 @@ $('a.remove_bookmarks_link').click(function(event) {
     
     swal({
         title: "Are you sure?",
-        text: "Do you want to remove from bookmarks?",
+        text: "Do you want to delete the article?",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -26,18 +17,16 @@ $('a.remove_bookmarks_link').click(function(event) {
         if (willDelete) {
             url="http://localhost:3000"+ url
 
-    //    alert(url)
-        swal("Poof! Bookmark is removed!", {
+       alert(url)
+        swal("Poof! article is deleted successfully!", {
                         icon: "success",
         });
           window.location.href = url;
           
           
         } else {
-          swal("Bookmark is not removed!");
+          swal("article is restored!");
         }
       });
 
   });
-
-
