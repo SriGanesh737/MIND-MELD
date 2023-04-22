@@ -6,12 +6,13 @@ const expert_model = require('../models/expert');
 
 router.get('/',isAuth, (req, res) => {
     const registeras = req.session.registeras;
+    const is_blocked = req.session.is_blocked;
     console.log(req.query);
     let is_solved = req.query.is_solved;
     is_solved = (is_solved == 'true');
     // console.log(is_solved);
     faq_model.find({ is_answered: is_solved }).then((faq_data) => {
-        res.render('askquery', { 'faq_data': faq_data, 'registeras': registeras,'is_answered':is_solved });
+        res.render('askquery', { 'faq_data': faq_data, 'registeras': registeras,'is_answered':is_solved,is_blocked:is_blocked });
     }).catch((err) => {
         console.log(err);
     })
@@ -39,7 +40,7 @@ router.post('/', (req, res) => {
 
 router.post('/filter', async(req, res) => {
     console.log(req.body);
-    
+
     const id = req.session.profile_data;
     let { is_solved, all_or_your,search_value,choose_topic } = req.body;
     let faq_data = [];
@@ -71,7 +72,7 @@ router.post('/filter', async(req, res) => {
         });
     }
 
-    res.render('askquery', { 'faq_data': faq_data, 'registeras': registeras, 'is_answered': is_solved });
+    res.render('askquery', { 'faq_data': faq_data, 'registeras': registeras, 'is_answered': is_solved, is_blocked: req.session.is_blocked });
 
 });
 

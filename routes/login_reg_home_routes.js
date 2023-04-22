@@ -127,7 +127,8 @@ router.post('/login',async (req, res) => {
         {
                 req.session.isAuth = true;
                 let registeras = 'admin';
-                req.session.registeras = 'admin';
+            req.session.registeras = 'admin';
+            req.session.is_blocked = false;
                 data1 = "";
                 req.session.profile_data = person3._id;
                 req.session.user_name = person3.firstname;
@@ -140,9 +141,9 @@ router.post('/login',async (req, res) => {
             data1 = "Incorrect Login details";
              res.redirect('/login')
             }
-        
+
      }
-     
+
 
 
 
@@ -157,6 +158,7 @@ router.post('/login',async (req, res) => {
                 req.session.isAuth = true;
                 let registeras = 'user';
                 req.session.registeras = 'user';
+                req.session.is_blocked = false;
                 data1 = "";
                 let profile_data = {};
                 req.session.profile_data = person._id;
@@ -184,6 +186,7 @@ router.post('/login',async (req, res) => {
             req.session.profile_data = person1._id;
             req.session.user_name = person1.firstname;
             req.session.profile_image_link = person1.profile_image_link;
+            req.session.is_blocked = person1.is_blocked;
             res.redirect('/landingpage')
         }
         else
@@ -209,7 +212,7 @@ router.get('/', (req, res) => {
 router.get('/landingpage',isAuth, (req, res) => {
     const registeras = req.session.registeras;
     // console.log(registeras+"....");
-    res.render('landingpage', { 'registeras': registeras });
+    res.render('landingpage', { 'registeras': registeras, is_blocked: req.session.is_blocked });
 });
 
 

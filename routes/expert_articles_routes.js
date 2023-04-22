@@ -11,7 +11,7 @@ router.get('/',isAuth, (req, res) => {
     const expert_id = req.session.profile_data;
     article_model.find({ author_id: expert_id }).then((expert_articles_data) => {
 
-            res.render('expert_articles', { data: expert_articles_data,topic:"", 'registeras': registeras,page:"yourwork" });
+        res.render('expert_articles', { data: expert_articles_data, topic: "", 'registeras': registeras, page: "yourwork", is_blocked: req.session.is_blocked });
 
     })
 }
@@ -67,7 +67,7 @@ router.post('/', async(req, res) => {
         }
     });
     console.log('hello');
-    res.render('expert_articles', { data: filtered_articles, topic: "", 'registeras': registeras, page: "yourwork" });
+    res.render('expert_articles', { data: filtered_articles, topic: "", 'registeras': registeras, page: "yourwork", is_blocked: req.session.is_blocked });
 
 
 });

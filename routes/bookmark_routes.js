@@ -7,6 +7,7 @@ const {isAuth} = require('../controllers/isAuth');
 
 router.get('/',isAuth,(req, res) => {
     const registeras = req.session.registeras;
+    const is_blocked = req.session.is_blocked;
     const user_id = req.session.profile_data;
     let bookmarks_ids = [];
     bookmarks_model.findOne({ user_id: user_id }).then(
@@ -15,14 +16,14 @@ router.get('/',isAuth,(req, res) => {
                 console.log("no bookmarks...");
 
 
-                res.render('bookmarks', {page:"bookmarks",topic:"",'bookmarked_data': [], 'registeras': registeras });
+                res.render('bookmarks', {page:"bookmarks",topic:"",'bookmarked_data': [], 'registeras': registeras,is_blocked:is_blocked });
                 res.end();
             }
             else {
             bookmarks_ids = data.bookmarks_ids;
             article_model.find({ _id: { $in: bookmarks_ids } }).then((bookmarked_data) => {
                 // console.log('bookmarked data found', bookmarked_data);
-                res.render('bookmarks', { topic:"",'bookmarked_data': bookmarked_data, 'registeras': registeras,page:"bookmarks" });
+                res.render('bookmarks', { topic:"",'bookmarked_data': bookmarked_data, 'registeras': registeras,page:"bookmarks",is_blocked:is_blocked });
             })
                 .catch((err) => {
                     console.log(err);
@@ -113,7 +114,7 @@ router.post('/', (req, res) => {
             if (!data) {
                 console.log("no bookmarks...");
                 //   hello=[]
-                res.render('bookmarks', { topic: "", 'bookmarked_data': [], 'registeras': registeras });
+                res.render('bookmarks', { topic: "", 'bookmarked_data': [], 'registeras': registeras, is_blocked: req.session.is_blocked });
                 res.end();
             }
             else {
@@ -138,7 +139,7 @@ router.post('/', (req, res) => {
                         }
                     });
 
-                    res.render('bookmarks', { topic: "", 'bookmarked_data': filtered_data, 'registeras': registeras, page: "bookmarks" });
+                    res.render('bookmarks', { topic: "", 'bookmarked_data': filtered_data, 'registeras': registeras, page: "bookmarks", is_blocked: req.session.is_blocked });
                 })
                     .catch((err) => {
                         console.log(err);

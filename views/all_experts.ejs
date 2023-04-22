@@ -71,6 +71,16 @@
            </div>
            <div class="posted">
            <h3 > posted articles : <%= count[i] %></h3>
+           <div class="delete_block_btns d-flex mt-3 justify-content-center">
+            <form action="/admin/remove_expert" method="post">
+                 <input type="hidden" name="expert_id" value="<%= experts[i]._id %>">
+                <button type="submit" class="btn btn-danger me-3">Remove</button>
+            </form>
+            <form action="/admin/block_expert" method="post">
+                <input type="hidden" name="expert_id" value="<%= experts[i]._id %>">
+                <button type="submit" class="btn <%= experts[i].is_blocked?"btn-success":"btn-warning" %>"><%= experts[i].is_blocked?"Unblock":"Block" %></button>
+            </form>
+           </div>
            </div>
         </div>
     </a>
