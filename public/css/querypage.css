@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Tilt+Neon&family=Tilt+Prism&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background-image: url('../images/querypageimg.jpg'); */
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+    /* font-family: ; */
+}
+
+   h1 {
+    text-align: center;
+    font-size: 60px;
+    font-weight: bold;
+    color: rgb(168, 65, 22);
+    padding: 20px;
+    font-family: Helvetica;
+}
+
+.All_queries {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.query {
+    margin: 2% 20% 2% 20%;
+    border: 5px solid rgb(104, 100, 100);
+    border-radius: 10px;
+    background-color: rgb(221, 205, 219);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.query h4 span {
+    font-weight: bold;
+    padding-right: 10px;
+}
+.query h4 a{
+    text-decoration: none;
+}
+.query form button{
+    background-color: #79b3f4;
+    padding: 10px;
+    border-radius: 2px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.query form{
+    text-align: center;
+}
+
+@media only screen and (max-width:200px) {
+    .query {
+        padding: 50px;
+    }
+}

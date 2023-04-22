@@ -65,6 +65,7 @@ h3
 
 
 .side-nav-container{
+    top: 0;
     overflow: hidden;
     padding-top: 20px;
     min-height: 100vh;
@@ -284,13 +285,7 @@ padding-bottom: 20px;
     align-items: center;
 }
 
-.blog-time{
 
-}
-
-.blog-author{
-
-}
 
 
 .name-container{

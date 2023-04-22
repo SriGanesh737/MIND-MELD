@@ -1,0 +1,54 @@
+body{
+    font-family: 'Schibsted Grotesk', sans-serif;
+    background-color: rgb(198, 225, 234);
+    font-size: 17px;
+    font-weight: 300;
+    /* background-image: url(); */
+}
+.sendmails
+{
+    font-family: 'Schibsted Grotesk', sans-serif;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 720px;
+    height: 640px;
+    border: 2px solid rgb(65, 73, 75);
+}
+.sendmails h3{
+    font-family: 'Schibsted Grotesk', sans-serif;
+  margin: 0;
+  margin:5px 0;
+}
+.sendmails .subject
+{
+    font-family: 'Schibsted Grotesk', sans-serif;
+    width: 680px;
+    height: 30px;
+}
+.submitbutn
+{
+    font-family: 'Schibsted Grotesk', sans-serif;
+    font-size: 20px;
+    background-color: rgb(16, 182, 238);
+    margin-top: 10px;
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    margin-left: 200px;
+    padding: 5px;
+    border: 0;
+    color: white;
+    border-radius: 10px;
+}
+.submitbutn:hover
+{
+    background-color: darkcyan;
+}
+.sendmails textarea
+{
+    height: 300px;
+    width: 680px;
+}

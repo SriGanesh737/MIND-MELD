@@ -5,6 +5,9 @@ const { isAuth } = require('../controllers/isAuth');
 const expert_model = require('../models/expert');
 const article_model = require('../models/article_model');
 const user_model = require('../models/user');
+const nodemailer=require('nodemailer');
+const query_model = require('../models/query_model.js');
+
 // const { isAuth } = require('../controllers/isAuth');
 
 router.get('/',isAuth, (req, res) => {
@@ -14,7 +17,8 @@ router.get('/',isAuth, (req, res) => {
     user_model.find({}).sort({doj:-1}).then((userdata)=>{
       expert_model.find({}).sort({doj:-1}).then((expertdata)=>{
 
-      article_model.find({}).sort({dateofpublish:-1}).then((articles)=>{
+      article_model.find({}).sort({dateofpublish:-1}).then((articles)=>
+      {
 
         res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles,is_blocked:is_blocked });
       })
@@ -75,6 +79,26 @@ router.get('/expertshow/:id',isAuth, async (req, res) => {
     res.render('notfound')
   }
 });
+
+
+router.get('/query',async (req,res)=>{
+  const registeras = req.session.registeras;
+  query_data=await query_model.find({isresolved:false});
+
+  res.render('query_page',{query_data:query_data})
+})
+router.post('/query/:id',async (req,res)=>{
+  id=req.params.id;
+  console.log(id);
+  let updated=await query_model.updateOne({_id:id},{$set:{isresolved:true}});
+  console.log(updated);
+  res.redirect('/admin/query');
+})
+
+
+
+
+
 
 router.post('/all_articles', async(req, res) => {
   console.log(req.body);
@@ -153,6 +177,7 @@ router.post('/all_experts/search',async (req,res)=>{
 
 })
 
+
 router.post('/remove_expert', async (req, res) => {
   const expert_id = req.body.expert_id;
   // console.log(expert_id);
@@ -170,5 +195,69 @@ router.post('/block_expert', async(req, res) => {
   res.redirect('/admin/all_experts');
 
 });
+
+
+let sentdata="";
+router.get('/mail',logger5,(req,res)=>{
+  console.log(sentdata)
+  console.log('heloo hioi byee')
+  res.render('sendmail',{sent:sentdata})
+})
+router.post("/mail",async (req,res)=>{
+  console.log(req.body);
+  let subject=req.body.subject;
+  let text=req.body.content;
+  let experts=req.body.experts;
+  let users=req.body.users;
+  // console.log(users)
+  let emails=[];
+  let email1=[];
+  let email2=[];
+  if(experts==='1')
+  {
+     email1=await expert_model.find({},{email:1,_id:0});
+  }
+
+  if(users=='2')
+  {
+   email2=await user_model.find({},{email:1,_id:0})
+  }
+  
+  emails=[...email1,...email2]
+  const emailsArray = emails.map(obj => obj.email);
+  console.log(emailsArray);
+  let mailtransporter=nodemailer.createTransport({
+    service:"gmail",
+   auth:{
+     user:"contactmindmeld2023@gmail.com",
+     pass:"wgnfqhvyawxeziab"
+   }
+
+  })
+  let details={
+    from:"contactmindmeld2023@gmail.com",
+    to:emailsArray,
+    subject:subject,
+    text:text
+  }
+  mailtransporter.sendMail(details,(err)=>{
+    if(err)
+    console.log(err)
+    else
+    {
+      sentdata="Email has been sent successfully";
+      console.log('email has sent');
+      res.redirect('/admin/mail');
+    }
+  })
+})
+
+function logger5(req,res,next)
+{
+  next();
+  sentdata="";
+
+}
+
 
   module.exports = router;
