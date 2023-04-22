@@ -13,11 +13,14 @@ const admin_model = require('../models/admin_model');
 
 router.get('/',isAuth, (req, res) => {
     let topic = req.query.topic;
-    let db_articles;
     const registeras = req.session.registeras;
     // console.log(topic,'...')
-    article_model.find({ topic: topic }).then((data) => {
-        res.render('posts', { topic: topic.toUpperCase(), articles_data: data, 'registeras': registeras, page: "posts", is_blocked: req.session.is_blocked });
+    article_model.find({ topic: topic }).then(async(data) => {
+        let slider_data = data;
+        slider_data.sort((a, b) => b.likes - a.likes);
+        slider_data=slider_data.slice(0, Math.min(5, slider_data.length));
+        console.log(slider_data)
+        res.render('posts', { topic: topic.toUpperCase(), articles_data: data, 'registeras': registeras, page: "posts", is_blocked: req.session.is_blocked,slider_data:slider_data });
 
     }).catch((err) => {
         console.log(err);
@@ -408,6 +411,10 @@ router.post('/', (req, res) => {
 
     if (filter_option == 'most liked') {
         article_model.find({ topic: topic_lower }).sort({ likes: -1 }).then((data) => {
+            let slider_data = data;
+            slider_data.sort((a, b) => b.likes - a.likes);
+            slider_data = slider_data.slice(0, Math.min(5, slider_data.length));
+            console.log(slider_data);
             const filtered_data = data.filter((article) => {
                 if (based_on == 'title' && article.title.toLowerCase().includes(search_value.toLowerCase())) return true;
                 else if (based_on == 'tags') {
@@ -417,7 +424,7 @@ router.post('/', (req, res) => {
                     }
                 }
             });
-            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts", is_blocked: req.session.is_blocked });
+            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts", is_blocked: req.session.is_blocked,slider_data:slider_data });
 
         }).catch((err) => {
             console.log(err);
@@ -426,7 +433,11 @@ router.post('/', (req, res) => {
     else {
         console.log(sort_basis, "...");
         article_model.find({ topic: topic_lower }).sort({ date_of_publish: sort_basis }).then((data) => {
-            console.log(data)
+            let slider_data = data;
+
+            slider_data.sort((a, b) => b.likes - a.likes);
+            slider_data = slider_data.slice(0, Math.min(5, slider_data.length));
+            console.log(slider_data);
             const filtered_data = data.filter((article) => {
                 if (based_on == 'title' && article.title.toLowerCase().includes(search_value)) return true;
                 else if (based_on == 'tags') {
@@ -436,7 +447,7 @@ router.post('/', (req, res) => {
                     }
                 }
             });
-            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts", is_blocked: req.session.is_blocked });
+            res.render('posts', { topic: topic_name, articles_data: filtered_data, registeras: registeras, page: "posts", is_blocked: req.session.is_blocked,slider_data:slider_data });
 
         }).catch((err) => {
             console.log(err);

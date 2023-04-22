@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="../css/mail.css">
 </head>
 <style>
-   
+
 </style>
 <body>
     <%- include('partials/adminnavbar') %>
@@ -32,18 +32,18 @@
         <h2>Email MINDMELD members</h2>
         <h3>Category</h3>
         <form action="/admin/mail" method="post">
-    <label>
-        <input type="checkbox" name="experts" value="1">
+    <label class="me-2">
+        <input class="form-check-input me-1" type="checkbox" name="experts" value="1">
         Experts
       </label>
       <label>
-        <input type="checkbox" name="users" value="2">
+        <input class="form-check-input me-1" type="checkbox" name="users" value="2">
        Users
       </label>
       <h3>Subject</h3>
-      <input type="text" name="subject" class="subject" required>
+      <input  type="text" name="subject" class="subject px-1" required>
       <h3>Message</h3>
-      <textarea  id="" cols="100" rows="20" name="content" required></textarea>
+      <textarea class="p-2" id="" cols="100" rows="20" name="content" required></textarea>
       <p style="color:rgb(9, 233, 9);margin: 2px;"><%=sent %></p>
       <button type="submit" class="submitbutn">SEND MAIL</button>
     </form>

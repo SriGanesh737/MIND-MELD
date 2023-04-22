@@ -16,14 +16,32 @@ const getTagsString = () =>{
 }
 
 $('.addBtn').click(function (e) {
-  const tag = $('#myInput').val();
-  if (tags_list.includes(tag)) return;
+  const tag = $('#myInput').val().trim();
+  if (tag==""||tags_list.includes(tag)) return;
   tags_list.push(tag);
   const close = $('<span>').addClass('close').html('&times;');
     var newTag = $('<li>').html(tag).append(close);
   $('#myUL').append(newTag);
   $('.tags_string').val(getTagsString());
+  $('#myInput').val("");
+  $('#myInput').focus();
   // console.log(getTagsString());
+});
+
+$('#myInput').on('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    const tag = $('#myInput').val().trim();
+    if (tag==""||tags_list.includes(tag)) return;
+    tags_list.push(tag);
+    const close = $('<span>').addClass('close').html('&times;');
+    var newTag = $('<li>').html(tag).append(close);
+    $('#myUL').append(newTag);
+    $('.tags_string').val(getTagsString());
+    $('#myInput').val("");
+    $('#myInput').focus();
+
+  }
 });
 
 $(document).on("click", ".close", function () {
@@ -66,8 +84,8 @@ postarticle.addEventListener('click', (event) => {
   event.preventDefault(); // prevent form from submitting
   // perform form validation
   // alert('helo');
-  
-    swal({ 
+
+    swal({
       title: 'Are you sure?',
       text: 'Do you want to save the article?',
       icon: 'warning',
@@ -88,8 +106,8 @@ postarticle.addEventListener('click', (event) => {
         swal("Your article is not saved!","","error")
       }
     });
-     
-   
-  
-  
+
+
+
+
 });
