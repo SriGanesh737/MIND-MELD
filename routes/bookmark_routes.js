@@ -14,7 +14,7 @@ router.get('/',isAuth,(req, res) => {
             if (!data) {
                 console.log("no bookmarks...");
             //   hello=[]
-                res.render('bookmarks', {topic:"",'bookmarked_data': [], 'registeras': registeras });
+                res.render('bookmarks', {topic:"",'bookmarked_data': [], 'registeras': registeras,page:"bookmarks" });
                 res.end();
             }
             else {
