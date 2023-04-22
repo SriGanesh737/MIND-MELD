@@ -102,11 +102,14 @@ app.get('/expertshow/:id',async (req,res)=>{
 res.render('notfound')
 }
 })
+app.get('/mail',(req,res)=>{
+  res.render('sendmail')
+})
+
 app.get('*', (req, res) => {
   // console.log(req);
   res.render('notfound')
 });
-
 
 
 

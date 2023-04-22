@@ -5,6 +5,8 @@ const { isAuth } = require('../controllers/isAuth');
 const expert_model = require('../models/expert');
 const article_model = require('../models/article_model');
 const user_model = require('../models/user');
+const nodemailer=require('nodemailer');
+
 // const { isAuth } = require('../controllers/isAuth');
 router.get('/',isAuth, (req, res) => {
    const registeras=req.session.registeras;
@@ -12,7 +14,8 @@ router.get('/',isAuth, (req, res) => {
     user_model.find({}).sort({doj:-1}).then((userdata)=>{
       expert_model.find({}).sort({doj:-1}).then((expertdata)=>{
 
-      article_model.find({}).sort({dateofpublish:-1}).then((articles)=>{
+      article_model.find({}).sort({dateofpublish:-1}).then((articles)=>
+      {
 
         res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles });
       })
@@ -151,5 +154,68 @@ router.post('/all_experts/search',async (req,res)=>{
   
 
 })
+
+
+let sentdata="";
+router.get('/mail',logger5,(req,res)=>{
+  console.log(sentdata)
+  console.log('heloo hioi byee')
+  res.render('sendmail',{sent:sentdata})
+})
+router.post("/mail",async (req,res)=>{
+  console.log(req.body);
+  let subject=req.body.subject;
+  let text=req.body.content;
+  let experts=req.body.experts;
+  let users=req.body.users;
+  // console.log(users)
+  let emails=[];
+  let email1=[];
+  let email2=[];
+  if(experts==='1')
+  {
+     email1=await expert_model.find({},{email:1,_id:0});
+  }
+
+  if(users=='2')
+  {
+   email2=await user_model.find({},{email:1,_id:0})
+  }
+  
+  emails=[...email1,...email2]
+  const emailsArray = emails.map(obj => obj.email);
+  console.log(emailsArray);
+  let mailtransporter=nodemailer.createTransport({
+    service:"gmail",
+   auth:{
+     user:"contactmindmeld2023@gmail.com",
+     pass:"wgnfqhvyawxeziab"
+   }
+
+  })
+  let details={
+    from:"contactmindmeld2023@gmail.com",
+    to:emailsArray,
+    subject:subject,
+    text:text
+  }
+  mailtransporter.sendMail(details,(err)=>{
+    if(err)
+    console.log(err)
+    else
+    {
+      sentdata="Email has been sent successfully";
+      console.log('email has sent');
+      res.redirect('/admin/mail');
+    }
+  })
+})
+
+function logger5(req,res,next)
+{
+  next();
+  sentdata="";
+
+}
 
   module.exports = router;
