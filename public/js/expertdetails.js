@@ -80,12 +80,34 @@ function onlyLetters(str) {
     //   }
     // })
     register.addEventListener('click', (event) => {
-        alert('hii')
+        // alert('hii')
     event.preventDefault(); // prevent form from submitting
     // perform form validation
     
     if (onlyLetters(firstname.value) && onlyLetters(lastname.value) && onlynumbers(phno.value) && phno.value.length === 10 ) {
-        form.submit(); // submit the form
+      
+
+      swal({ 
+        title: 'Are you sure?',
+        text: 'You want to update the details?',
+        icon: 'warning',
+        buttons: ['No, cancel', 'Yes, submit!'],
+        dangerMode: true,
+      }).then(function(isConfirm) {
+        if (isConfirm) {
+          // If the user confirms the action, show a success message
+          swal({
+            title: 'Success!',
+            text: 'Your details are updated successfully.',
+            icon: 'success'
+          });
+          form.submit(); // submit the form
+        }
+      });
       
     } 
+    else
+    {
+      swal("Error!","Incorrect details!","error")
+    }
   });

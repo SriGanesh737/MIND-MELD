@@ -44,7 +44,7 @@ function checkpassword(str) {
   form=document.querySelector('.myform')
   selectElement = document.querySelector('#motive');
   firstname.addEventListener('focusout',()=>{
-   if(!onlyLetters(firstname.value))
+   if(!onlyLetters(firstname.value)||firstname.value=='')
    {
     // alert(firstname.value);
 
@@ -54,7 +54,7 @@ function checkpassword(str) {
    incfn.innerHTML=""
   })
   lastname.addEventListener('focusout',()=>{
-   if(!onlyLetters(lastname.value))
+   if(!onlyLetters(lastname.value)||lastname.value=='')
    {
    
 
@@ -103,9 +103,29 @@ function checkpassword(str) {
   event.preventDefault(); // prevent form from submitting
   // perform form validation
   
-  if (onlyLetters(firstname.value) && onlyLetters(lastname.value) && onlynumbers(phno.value) && phno.value.length === 10 && checkpassword(password.value) && password.value == cnfpassword.value) {
-      form.submit(); // submit the form
+  if (firstname.value!='' &&lastname.value!='' &&  onlyLetters(firstname.value) && onlyLetters(lastname.value) && onlynumbers(phno.value) && phno.value.length === 10 && checkpassword(password.value) && password.value == cnfpassword.value) {
+    swal({ 
+      title: 'Are you sure?',
+      text: 'Do you want to register with given details?',
+      icon: 'warning',
+      buttons: ['No, cancel', 'Yes, submit!'],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        // If the user confirms the action, show a success message
+        swal({
+          title: 'Success!',
+          text: 'Your details are updated successfully.',
+          icon: 'success'
+        });
+        form.submit(); // submit the form
+      }
+    });
     
   } 
+  else
+  {
+    swal("Error!","Incorrect details!","error")
+  }
   
 });
