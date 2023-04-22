@@ -58,3 +58,38 @@ $('.save-btn').click(() => {
   console.log(html);
 });
 
+const form=document.querySelector('.form')
+const postarticle=document.querySelector('.postarticle')
+
+
+postarticle.addEventListener('click', (event) => {
+  event.preventDefault(); // prevent form from submitting
+  // perform form validation
+  // alert('helo');
+  
+    swal({ 
+      title: 'Are you sure?',
+      text: 'Do you want to save the article?',
+      icon: 'warning',
+      buttons: ['No, cancel', 'Yes, submit!'],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+        // If the user confirms the action, show a success message
+        swal({
+          title: 'Success!',
+          text: 'Your article is saved successfully.',
+          icon: 'success'
+        });
+        form.submit(); // submit the form
+      }
+      else
+      {
+        swal("Your article is not saved!","","error")
+      }
+    });
+     
+   
+  
+  
+});

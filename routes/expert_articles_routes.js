@@ -24,7 +24,10 @@ else
 router.get('/delete/:article_id',isAuth, (req, res) => {
     const article_id = req.params.article_id;
     article_model.deleteOne({ _id: article_id }).then(() => {
-        console.log('article delted succesfully ');
+        console.log('article deleted succesfully ');
+        if(req.session.registeras=='admin')
+        res.redirect('/admin/all_articles')
+        else
         res.redirect('/expert_articles');
     }).catch((err) => {
         console.log(err);
@@ -63,7 +66,7 @@ router.post('/', async(req, res) => {
             }
         }
     });
-
+    console.log('hello');
     res.render('expert_articles', { data: filtered_articles, topic: "", 'registeras': registeras, page: "yourwork" });
 
 

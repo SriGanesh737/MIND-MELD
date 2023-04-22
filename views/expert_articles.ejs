@@ -15,6 +15,8 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
       <link rel="stylesheet" href="../css/searchbar.css">
       <link rel="stylesheet" href="../css/expertarticles.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
 </head>
 <body>
 
@@ -40,17 +42,19 @@
               <!-- <p><%- ele['content'].substring(0,150) %>...</p> -->
             </div>
 
-            <button class="edit">EDIT</button>
+            <a href="/posts/compose?id=<%= ele['id'] %>">
+              <button class="edit">EDIT</button>
+            </a>                                               
 
-            <a href="/expert_articles/delete/<%= ele['id'] %>" class="delete-btn-link">
-              <button class="delete">DELETE</button>
+            <a href="javascript:void(0)"  data-href="/expert_articles/delete/<%= ele['id'] %>" class="delete-btn-link">
+              <button class="delete" >DELETE</button>
             </a>
           </div>
     <% }) %>
 
     </div>
  <% }%>
- <% if(data.length==0) { %>
+ <% if(data.length===0) { %>
   <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
 
     <img src="../images/null.png" alt="">
@@ -71,5 +75,10 @@
   <script src="../js/expert_articles.js"></script>
   <script src="../js/navbar.js"></script>
   <script src="../js/cursor.js"></script>
+  <script>
+
+
+
+  </script>
 </body>
 </html>

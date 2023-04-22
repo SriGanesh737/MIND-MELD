@@ -31,11 +31,12 @@ router.get('/',isAuth, (req, res) => {
 
 router.get('/compose', isAuth, (req, res) => {
     articleid = req.query.id;
+    // console.log(articleid);
     const registeras = req.session.registeras;
     if(registeras=='expert'|| registeras=='admin')
     {
     if (articleid == null) {
-        console.log('here')
+        // console.log('here')
         data = {
             id: '',
             topic: '',
@@ -48,6 +49,7 @@ router.get('/compose', isAuth, (req, res) => {
         res.render('compose', { 'registeras': registeras, 'data': data })
     }
     else {
+        // console.log('heello editing')
         article_model.findOne({ _id: articleid }).then((blog) => {
             tagstring = "";
             for (let i = 0; i < blog.tags.length; i++) {
@@ -62,7 +64,7 @@ router.get('/compose', isAuth, (req, res) => {
                 imagelink: blog.image_link,
                 tagstring: tagstring
             }
-            console.log(blog)
+            // console.log(blog)
             res.render('compose', { 'registeras': registeras, 'data': data })
         })
     }
@@ -158,6 +160,7 @@ router.post('/compose', (req, res) => {
 
             new_blog.save().then(() => {
                 console.log('blog data saved successfully...');
+                res.redirect('/expert_articles');
             })
                 .catch((err) => {
                     console.log(err);
@@ -181,6 +184,7 @@ router.post('/compose', (req, res) => {
 
             new_blog.save().then(() => {
                 console.log('blog data saved successfully...');
+                res.redirect('/expert_articles');
             })
                 .catch((err) => {
                     console.log(err);
@@ -191,7 +195,6 @@ router.post('/compose', (req, res) => {
 
         })
         
-        res.redirect('/posts/compose');
     }
     else {
 

@@ -5,8 +5,8 @@ const { isAuth } = require('../controllers/isAuth');
 const expert_model = require('../models/expert');
 const article_model = require('../models/article_model');
 const user_model = require('../models/user');
-
-router.get('/', (req, res) => {
+// const { isAuth } = require('../controllers/isAuth');
+router.get('/',isAuth, (req, res) => {
    const registeras=req.session.registeras;
    if(registeras=='admin'){
     user_model.find({}).sort({doj:-1}).then((userdata)=>{
@@ -27,7 +27,7 @@ else
 
 
 
-router.get('/all_articles', async (req, res) => {
+router.get('/all_articles',isAuth, async (req, res) => {
 
   const registeras = req.session.registeras;
   if (registeras == 'admin') {
@@ -41,7 +41,7 @@ router.get('/all_articles', async (req, res) => {
 
 
 
-router.get("/all_experts", async (req, res) => {
+router.get("/all_experts",isAuth, async (req, res) => {
   const registeras = req.session.registeras;
   if (registeras == 'admin') {
     let experts = await expert_model.find({})
@@ -61,7 +61,7 @@ router.get("/all_experts", async (req, res) => {
 });
 
 
-router.get('/expertshow/:id', async (req, res) => {
+router.get('/expertshow/:id',isAuth, async (req, res) => {
   const registeras = req.session.registeras;
   if (registeras == 'admin') {
     id = req.params.id;

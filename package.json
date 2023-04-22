@@ -22,6 +22,7 @@
     "nodemon": "^2.0.21",
     "particles.js": "^2.0.0",
     "routes": "^2.1.0",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "sweetalert": "^2.1.2"
   }
 }

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/bookmarks.css">
     <script src="https://kit.fontawesome.com/f363f12a18.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js" ></script>
     <title>Favourites</title>
 </head>
 <body>
@@ -55,7 +57,7 @@
             </div>
 
 
-            <a href="/bookmarks/removeBookmark/<%= data['id'] %>" class="remove_bookmarks_link">
+            <a href="javascript:void(0)"  data-href="/bookmarks/removeBookmark/<%= data['id'] %>" class="remove_bookmarks_link">
           <button class="remove-from-bookmarks">Remove From Bookmarks</button>
             </a>
 
