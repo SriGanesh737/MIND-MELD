@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const bookmarks_model = require('./bookmarks_model');
 const Schema=mongoose.Schema;
 
 const query_schema=new Schema({
@@ -21,6 +22,10 @@ const query_schema=new Schema({
     message:{
      type:String,
      required:[true,'message is required']
+    },
+    isresolved:{
+        type:Boolean,
+        default:false
     }
 })
 

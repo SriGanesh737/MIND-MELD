@@ -74,6 +74,9 @@ app.use('/bookmarks', bookmarks_routes);
 app.use('/expert_articles', expert_articles_routes);
 app.use('/admin',admin_routes);
 
+
+
+
 // app.get('/admin', (req, res) => {
 //   user_model.find({}).then((userdata)=>{
 //     expert_model.find({}).then((expertdata)=>{
@@ -102,11 +105,14 @@ app.get('/expertshow/:id',async (req,res)=>{
 res.render('notfound')
 }
 })
+app.get('/mail',(req,res)=>{
+  res.render('sendmail')
+})
+
 app.get('*', (req, res) => {
   // console.log(req);
   res.render('notfound')
 });
-
 
 
 
