@@ -80,4 +80,44 @@ else
 }
   })
 
+router.post('/all_experts/search',async (req,res)=>{
+  console.log(req.body);
+  const {searchitem,basis1,basis2}=req.body;
+  let k=-1;
+  if(basis2=='oldest')
+   k=1;
+
+  const experts=await expert_model.find({}).sort({doj:k});
+  if(searchitem=='')
+  {
+    const count=await Promise.all(experts.map(async (expert)=>{
+      number=await article_model.find({author_id:expert._id})
+      length=number.length;
+      return length;
+     }))
+     res.render('all_experts',{experts:experts,count:count})   
+  }
+  else
+  {
+    newexperts=experts.filter((expert)=>{
+      if(basis1=='name')
+      {
+         return expert.firstname.toLowerCase().includes(searchitem.toLowerCase()) || expert.lastname.toLowerCase().includes(searchitem.toLowerCase())
+      }
+      else
+      {
+        return expert.email.toLowerCase().includes(searchitem.toLowerCase()) ;
+      }
+    })
+    const count=await Promise.all(newexperts.map(async (expert)=>{
+      number=await article_model.find({author_id:expert._id})
+      length=number.length;
+      return length;
+     }))
+     res.render('all_experts',{experts:newexperts,count:count})    
+  }
+  
+
+})
+
   module.exports = router;
