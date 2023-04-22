@@ -146,8 +146,25 @@ body{
     font-size: 26px;
 }
 
+.all_or_your_select{
+    padding: 5px;
+    margin-right: 20px;
+    border: none;
+    border-radius: 5px;
+}
 
+.search_question_input{
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    min-width: 200px;
+    margin-right: 30px;
+    outline: none;
+}
 
+.filter_form_faq_page{
+    margin-bottom: 30px;
+}
 
 @media only screen and (max-width:1140px) {
 
@@ -258,7 +275,7 @@ color: rgb(45, 45, 109);
     background-color: white;
     margin-bottom: 20px;
     margin-top: -15px;
-    padding: 20px 30px;
+    padding: 10px 20px;
     border-radius: 10px;
     display: none;
 }
@@ -279,6 +296,11 @@ color: rgb(45, 45, 109);
     color: white;
 
 
+}
+
+.answer-box .answer_text{
+    display: block;
+    margin-top: 10px;
 }
 
 .question-wrapper{

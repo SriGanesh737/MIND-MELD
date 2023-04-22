@@ -16,7 +16,7 @@
     <title>Admin Dashboard</title>
   </head>
   <body>
-    <%- include('partials/adminnavbar') %>
+ <%- include('partials/adminnavbar') %>
     <div class="right">
         <h1 class="admin-panel">Admin Dashboard</h1>
 
@@ -72,7 +72,7 @@
                         </div>
                         <% } %>
                         <h3 style="font-size: 30px;text-align: left;">Users</h3>
-                       
+
                         <% for(let i=0;i<2;i++) {%>
                             <div class="recent-item">
                                 <div class="name-container">
@@ -83,7 +83,7 @@
                                        User
                                     </span>
                                 </div>
-    
+
                                 <div class="sub-details">
                                     <div class="email"><%= userdata[i].email %></div>
                                     <div class="phone"><%= userdata[i].phone %></div>
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                  <%} %>
-                    
+
 
                 </div>
                </div>

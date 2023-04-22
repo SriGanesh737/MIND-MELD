@@ -9,9 +9,9 @@ $('.fa-xmark').click(function (e) {
     $('.answer-box-'+no).css('display', 'none');
 });
 
-$(document).ready(function () {
-    $('.faq-solution').val('').attr('placeholder', "write your answer here");
-});
+// $(document).ready(function () {
+//     $('.faq-solution').val('').attr('placeholder', "write your answer here");
+// });
 
 
 
