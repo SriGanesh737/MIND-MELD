@@ -80,7 +80,7 @@
     </div>
 
 
-
+   <% if(articles_data.length!==0) {%>
     <% for( let i = 0; i < articles_data.length; i++ ) { %>
       <div id="<%=articles_data[i]['_id']%>" class=" article-<%= (i%9<=2)?30:(i%9==3||i%9==6)?60:(i%9==4||i%9==5)?40:50 %>  wow <%= i%9<=2?'fadeInUp':(i%9)%2==1? 'fadeInLeft':'fadeInRight' %> article" data-wow-delay="<%= 0.21+(i%9)/100 %>s">
         <div class="clip-img">
@@ -97,14 +97,20 @@
           <div style="justify-content: right;display: flex;">
             <i style="font-size: 18px;margin-right: 5px;margin-top: 3px;color: rgb(6, 108, 191);"
               class="fa-solid fa-arrow-up"></i>
-            <h5 style="">
+              <h5 >
               <%=articles_data[i]["likes"] %>
             </h5>
           </div>
         </div>
       </div>
     <% } %>
-
+    <% } %>
+    <% if(articles_data.length===0) { %>
+      <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+    
+        <img src="../images/null.png" alt="">
+     </div>
+      <%} %>
 
   </div>
   <div class="pagination">

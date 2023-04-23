@@ -21,8 +21,11 @@
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.21",
     "particles.js": "^2.0.0",
+    "random": "^4.1.0",
+    "randomstring": "^1.2.3",
     "routes": "^2.1.0",
     "sqlite3": "^5.1.6",
+    "string": "^3.3.3",
     "sweetalert": "^2.1.2"
   }
 }

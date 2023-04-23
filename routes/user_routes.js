@@ -16,6 +16,7 @@ router.get('/edit_e',isAuth, async (req, res) => {
         res.redirect('/user/edit_u');
     }
     else {
+
         const details = await expert_model.findOne({ _id: req.session.profile_data });
         const date = new Date(details.dateofbirth);
         const formattedDate = date.toISOString().slice(0, 10);
@@ -30,15 +31,19 @@ router.get('/edit_e',isAuth, async (req, res) => {
             facebook_link: details.facebook_link,
             github_link: details.github_link,
             qualification: details.qualification,
+            profileimglink: details.profile_image_link,
             dateofbirth: formattedDate
 
         }
+
         res.render('editdetails', { 'registeras': registeras, 'data': profile_details, is_blocked: req.session.is_blocked });
     }
+
 
 })
 
 router.post('/edit_e',async (req,res)=>{
+
     console.log(req.body);
     if (req.session.registeras == 'user') {
         const { firstname, lastname, email, mobile, gender, link } = req.body;
@@ -84,6 +89,7 @@ router.post('/edit_e',async (req,res)=>{
             }
         });
         console.log(`${result.modifiedCount} document(s) was/were updated.`);
+
     // Swal('Success!', 'Your form has been submitted', 'success');
     }
 

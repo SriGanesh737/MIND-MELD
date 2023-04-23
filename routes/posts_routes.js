@@ -163,7 +163,7 @@ router.post('/compose', (req, res) => {
             const new_blog = new article_model(details);
 
             new_blog.save().then(() => {
-                console.log('blog data saved successfully...');
+                // console.log('blog data saved successfully...');
                 res.redirect('/expert_articles');
             })
                 .catch((err) => {
@@ -187,7 +187,7 @@ router.post('/compose', (req, res) => {
             const new_blog = new article_model(details);
 
             new_blog.save().then(() => {
-                console.log('blog data saved successfully...');
+                // console.log('blog data saved successfully...');
                 res.redirect('/expert_articles');
             })
                 .catch((err) => {
@@ -207,7 +207,7 @@ router.post('/compose', (req, res) => {
             content = req.body.blog_content_html,
             tags = req.body.tags_string.split('#').slice(0, -1),
             image_link = req.body.img_link
-        console.log(topic, title, content, tags, image_link, tags)
+        // console.log(topic, title, content, tags, image_link, tags)
 
         article_model.updateOne({ _id: articleid }, {
             $set: {
@@ -215,7 +215,7 @@ router.post('/compose', (req, res) => {
                     image_link
             }
         }).then((result) => {
-            console.log(`${result.modifiedCount} document(s) was/were updated.`);
+            // console.log(`${result.modifiedCount} document(s) was/were updated.`);
             res.redirect('/expert_articles')
         })
     }
@@ -233,7 +233,7 @@ router.post('/comment/:article_id', (req, res) => {
             const { profile_image_link, firstname:user_name } = data;
             const newComment = new comment_model({ article_id, user_id, comment_info, profile_image_link, user_name, is_main_comment });
             newComment.save().then(() => {
-                console.log('comment posted...');
+                // console.log('comment posted...');
                 res.redirect('/posts/'+article_id);
             }).catch((err) => {
                 console.log(err);
@@ -247,7 +247,7 @@ router.post('/comment/:article_id', (req, res) => {
             const { profile_image_link, firstname: user_name } = data;
             const newComment = new comment_model({ article_id, user_id, comment_info, profile_image_link, user_name, is_main_comment });
             newComment.save().then(() => {
-                console.log('comment posted...');
+                // console.log('comment posted...');
                 res.redirect('/posts/' + article_id);
             }).catch((err) => {
                 console.log(err);
@@ -273,7 +273,7 @@ router.post('/replycomment/:article_id/:comment_id', (req, res) => {
         comment_model.findOneAndUpdate({_id:comment_id}, { $push: { replies_ids: new_reply_comment._id } }, { new: true })
             .then((updatedDocument) => {
                 // console.log(updatedDocument,'...***');
-                console.log('reply posted');
+                // console.log('reply posted');
                 res.redirect('/posts/' + article_id);
             })
             .catch((error) => {
@@ -295,33 +295,33 @@ router.post('/liked/:articleid', (req, res) => {
         console.log(newarray1)
         likes = data[0].likes;
         dislikes = data[0].dislikes;
-        console.log(req.session.profile_data)
-        console.log(newarray1.includes(req.session.profile_data))
+        // console.log(req.session.profile_data)
+        // console.log(newarray1.includes(req.session.profile_data))
         let index = newarray1.includes(req.session.profile_data)
-        console.log(likes, dislikes);
+        // console.log(likes, dislikes);
         if (index == true) {
-            console.log('liked before')
+            // console.log('liked before')
         }
         else {
             ++likes;
-            console.log('liked now')
+            // console.log('liked now')
             newarray1.push(req.session.profile_data)
         }
         newarray2 = data[0].disliked_userids;
         index = newarray2.includes(req.session.profile_data)
         if (index == true) {
             --dislikes;
-            console.log('disliked before and removing')
-            console.log(newarray2)
+            // console.log('disliked before and removing')
+            // console.log(newarray2)
             newarray2 = newarray2.filter(fruit => fruit !== req.session.profile_data)
-            console.log(newarray2)
+            // console.log(newarray2)
             // newarray2.push(req.session.profile_data)
         }
         else {
-            console.log('not available in dislikes ')
+            // console.log('not available in dislikes ')
         }
         article_model.updateOne({ _id: articleid }, { $set: { likes: parseInt(likes), dislikes: parseInt(dislikes), liked_userids: newarray1, disliked_userids: newarray2 } }).then(() => {
-            console.log('successfully updated');
+            // console.log('successfully updated');
             res.redirect('/posts/' + articleid)
         })
         //    article_model.updateOne({_id:articleid},{$set:{}})
@@ -335,37 +335,37 @@ router.post('/liked/:articleid', (req, res) => {
 router.post('/disliked/:articleid', (req, res) => {
     articleid = req.params.articleid
     article_model.find({ _id: articleid }).then((data) => {
-        console.log(data)
+        // console.log(data)
         newarray1 = data[0].disliked_userids;
-        console.log(newarray1)
+        // console.log(newarray1)
         likes = data[0].likes;
         dislikes = data[0].dislikes;
-        console.log(req.session.profile_data)
+        // console.log(req.session.profile_data)
         // console.log(newarray1.includes(req.session.profile_data))
         let index = newarray1.includes(req.session.profile_data)
         console.log(likes, dislikes);
         if (index == true) {
-            console.log('disliked before')
+            // console.log('disliked before')
         }
         else {
             ++dislikes;
-            console.log('disliked now')
+            // console.log('disliked now')
             newarray1.push(req.session.profile_data)
         }
         newarray2 = data[0].liked_userids;
         index = newarray2.includes(req.session.profile_data)
         if (index == true) {
             --likes;
-            console.log('liked before removing')
+            // console.log('liked before removing')
             newarray2 = newarray2.filter(fruit => fruit !== req.session.profile_data)
-            console.log(newarray2)
+            // console.log(newarray2)
         }
         else {
 
-            console.log('not available in likes')
+            // console.log('not available in likes')
         }
         article_model.updateOne({ _id: articleid }, { $set: { likes: parseInt(likes), dislikes: parseInt(dislikes), liked_userids: newarray2, disliked_userids: newarray1 } }).then(() => {
-            console.log('successfully updated');
+            // console.log('successfully updated');
             res.redirect('/posts/' + articleid)
         })
 
@@ -382,11 +382,11 @@ router.delete('/:article_id/:comment_id', (req, res) => {
     // console.log(article_id, comment_id,"....");
     comment_model.findOne({ _id: comment_id }).then((comment) => {
         const replies_ids = comment['replies_ids'];
-        console.log(replies_ids, '...');
+        // console.log(replies_ids, '...');
         comment_model.deleteMany({ _id: { $in: replies_ids } }).then(() => {
             // console.log('replies deleted');
             comment_model.deleteOne({ _id: comment_id }).then(() => {
-                console.log('main comment also delted...');
+                // console.log('main comment also delted...');
                 // res.redirect('/');
                 res.end();
             })
@@ -401,7 +401,7 @@ router.delete('/:article_id/:comment_id', (req, res) => {
 
 //this is filter apply handler
 router.post('/', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const registeras = req.session.registeras;
     let { search_value, based_on, topic_name, filter_option } = req.body;
     let topic_lower = topic_name.toLowerCase();
@@ -432,7 +432,7 @@ router.post('/', (req, res) => {
         })
     }
     else {
-        console.log(sort_basis, "...");
+        // console.log(sort_basis, "...");
         article_model.find({ topic: topic_lower }).sort({ date_of_publish: sort_basis }).then((data) => {
             let slider_data = data;
 

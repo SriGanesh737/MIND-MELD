@@ -6,8 +6,8 @@ const expert_model = require('../models/expert');
 
 router.get('/',isAuth, (req, res) => {
     const registeras = req.session.registeras;
+
     const is_blocked = req.session.is_blocked;
-    console.log(req.query);
     let is_solved = req.query.is_solved;
     is_solved = (is_solved == 'true');
     // console.log(is_solved);
@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
     }
     const newFaq = new faq_model(question_details);
     newFaq.save().then(() => {
-        console.log('faq posted...');
+        // console.log('faq posted...');
         res.redirect('/askquery?is_solved=true');
     }).catch((err) => {
         console.log(err);
@@ -39,7 +39,9 @@ router.post('/', (req, res) => {
 
 
 router.post('/filter', async(req, res) => {
-    console.log(req.body);
+
+    // console.log(req.body);
+    
 
     const id = req.session.profile_data;
     let { is_solved, all_or_your,search_value,choose_topic } = req.body;
@@ -88,7 +90,7 @@ router.post('/answer/:question_id', (req, res) => {
             { _id: question_id },
             { $set: { is_answered: true, expert_id: exp_id, "profile-image-link": profile_image_link,answer:answer } }
         ).then(() => {
-            console.log('solution added succesfully');
+            // console.log('solution added succesfully');
             res.redirect('/askquery?is_solved=true');
         })
             .catch((err) => {

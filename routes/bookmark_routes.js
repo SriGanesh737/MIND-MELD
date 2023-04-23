@@ -13,7 +13,7 @@ router.get('/',isAuth,(req, res) => {
     bookmarks_model.findOne({ user_id: user_id }).then(
         (data) => {
             if (!data) {
-                console.log("no bookmarks...");
+                // console.log("no bookmarks...");
 
 
                 res.render('bookmarks', {page:"bookmarks",topic:"",'bookmarked_data': [], 'registeras': registeras,is_blocked:is_blocked });
@@ -54,7 +54,7 @@ router.get('/addBookmark/:article_id',isAuth,(req, res) => {
                 }
                 const new_bookmarks_data = new bookmarks_model(bookmarks_data);
                 new_bookmarks_data.save().then(() => {
-                    console.log('new bookmarks data added succesfully ...');
+                    // console.log('new bookmarks data added succesfully ...');
                     res.redirect('/bookmarks');
                 }).catch((err) => {
                     console.log(err);
@@ -68,7 +68,7 @@ router.get('/addBookmark/:article_id',isAuth,(req, res) => {
                     bookmarks_ids: arr
                 }
                 bookmarks_model.replaceOne({ user_id: user_id }, updated_bookmarks_data).then(() => {
-                    console.log('bookmark added succesfully...');
+                    // console.log('bookmark added succesfully...');
                     res.redirect('/bookmarks');
                 }).catch((err) => {
                     console.log(err);
@@ -94,7 +94,7 @@ router.get('/removeBookmark/:article_id',isAuth, (req, res) => {
     let user_id = req.session.profile_data;
     // await Bookmark.updateMany({}, { $pull: { articleIds: articleId } });
     bookmarks_model.updateOne({ user_id: user_id }, { $pull: { bookmarks_ids: a_id } }).then(() => {
-        console.log('bookmark removed');
+        // console.log('bookmark removed');
         res.redirect('/bookmarks');
     }).catch((err) => {
         console.log(err);
@@ -103,7 +103,7 @@ router.get('/removeBookmark/:article_id',isAuth, (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     let { search_value, based_on, choose_topic } = req.body;
     const user_id = req.session.profile_data;
     const registeras = req.session.registeras;
@@ -112,7 +112,7 @@ router.post('/', (req, res) => {
     bookmarks_model.findOne({ user_id: user_id }).then(
         (data) => {
             if (!data) {
-                console.log("no bookmarks...");
+                // console.log("no bookmarks...");
                 //   hello=[]
                 res.render('bookmarks', { topic: "", 'bookmarked_data': [], 'registeras': registeras, is_blocked: req.session.is_blocked });
                 res.end();

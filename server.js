@@ -20,20 +20,6 @@ const admin_routes=require('./routes/adminroutes.js');
 const query_model = require('./models/query_model.js');
 const bcrypt = require('bcryptjs');
 
-
-
-
-// admin_creation();
-// async function admin_creation()
-// {
-//   pswd='admin@123';
-//   const hashedpswd = await bcrypt.hash(pswd, 12);
-//   const admin=new admin_model({
-//     firstname:'Mind meld',lastname:'admin',email:'adminmeld@gmail.com',password:hashedpswd,phone:'8975471234',gender:'M',insta_link:'https://www.instagram.com/',facebook_link:'https://www.linkedin.com/feed/',qualification:'PHD in Informatics',profile_image_link:'https://th.bing.com/th/id/OIP.z4no5tqp2ryBdMMD5NU9OgHaEv?w=245&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
-// })
-// admin.save().then(() => console.log('Document saved')).catch((err) => console.error(err));
-// }
-
 app.use(express.json());
 dotenv.config();
 app.use(express.urlencoded({ extended: false }))
@@ -50,7 +36,7 @@ mongoose.set('strictQuery',false);
 app.use(session({
   secret: process.env.secret_key,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
 }));
 
 //set up mongoose connection
@@ -75,21 +61,6 @@ app.use('/expert_articles', expert_articles_routes);
 app.use('/admin',admin_routes);
 
 
-
-
-// app.get('/admin', (req, res) => {
-//   user_model.find({}).then((userdata)=>{
-//     expert_model.find({}).then((expertdata)=>{
-
-//     article_model.find({}).then((articles)=>{
-
-//       res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles });
-//     })
-//   })
-// })
-// });
-
-
 app.get('/expertshow/:id',async (req,res)=>{
   const registeras=req.session.registeras;
   if(registeras=='admin')
@@ -110,7 +81,6 @@ app.get('/mail',(req,res)=>{
 })
 
 app.get('*', (req, res) => {
-  // console.log(req);
   res.render('notfound')
 });
 

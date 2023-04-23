@@ -54,7 +54,7 @@ router.post('/signup', async (req, res) => {
      if(user)
         {
          checker=false
-         console.log('hello')
+        //  console.log('hello')
         em="This email already exists"
         }
        }
@@ -64,7 +64,7 @@ router.post('/signup', async (req, res) => {
        await expert_model.findOne({email:email}).then((user)=>{
             if(user)
             {
-                console.log('bjeewrjeee')
+                // console.log('bjeewrjeee')
                 checker=false;
                em="This email already exists"
             }
@@ -78,7 +78,7 @@ router.post('/signup', async (req, res) => {
 
         data = "";
         if (registeras === 'user') {
-            console.log('hii user')
+            // console.log('hii user')
 
           const user=new user_model({
                 firstname:firstname,lastname:lastname,email:email,password:hashedpswd,phone:phno
@@ -119,7 +119,7 @@ router.post('/login',async (req, res) => {
     const person3=await admin_model.findOne({email:email});
     const person=await user_model.findOne({email:email})
     const person1=await expert_model.findOne({email:email})
-    console.log(person3);
+    // console.log(person3);
      if(person3!=null)
      {
         let  result=await  bcrypt.compare(password, person3.password);
@@ -133,8 +133,12 @@ router.post('/login',async (req, res) => {
                 req.session.profile_data = person3._id;
                 req.session.user_name = person3.firstname;
                 req.session.profile_image_link = person3.profile_image_link;
-
+                setTimeout(()=>{
+                    console.log('entered timeout');
+                    req.session.destroy()
+                },60*60*1000)
                 res.redirect('/admin')
+
         }
         else
             {
@@ -164,7 +168,10 @@ router.post('/login',async (req, res) => {
                 req.session.profile_data = person._id;
                 req.session.user_name = person.firstname;
                 req.session.profile_image_link = person.profile_image_link;
-
+                setTimeout(()=>{
+                    console.log('entered timeout');
+                    req.session.destroy()
+                },60*60*1000)
                 res.redirect('/landingpage')
             }
             else
@@ -186,8 +193,16 @@ router.post('/login',async (req, res) => {
             req.session.profile_data = person1._id;
             req.session.user_name = person1.firstname;
             req.session.profile_image_link = person1.profile_image_link;
+
+            setTimeout(()=>{
+                console.log('entered timeout');
+                req.session.destroy()
+            },60*60*1000)
             req.session.is_blocked = person1.is_blocked;
-            res.redirect('/landingpage')
+            res.redirect('/landingpage');
+
+
+   
         }
         else
         {
