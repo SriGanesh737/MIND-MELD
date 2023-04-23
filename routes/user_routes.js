@@ -36,14 +36,16 @@ profile_details={
     facebook_link:details.facebook_link,
     github_link:details.github_link,
     qualification:details.qualification,
+    profileimglink:details.profile_image_link,
     dateofbirth:formattedDate
-
+    
 }
+// console.log(profile_details);
     res.render('editdetails', { 'registeras': registeras,'data':profile_details});
 })
 
 router.post('/edit_e',async (req,res)=>{
-    console.log(req.body);
+    // console.log(req.body);
     new_details={
         firstname:req.body.firstname,
         lastname:req.body.lastname,
@@ -55,7 +57,8 @@ router.post('/edit_e',async (req,res)=>{
         facebook_link:req.body.facebook_link,
         github_link:req.body.github_link,
         qualification:req.body.qualification,
-        dateofbirth:req.body.dob
+        dateofbirth:req.body.dob,
+        profileimglink:req.body.profile_picture
 
     }
     const result = await expert_model.updateOne({ _id: req.session.profile_data },{ $set: {  firstname:req.body.firstname,
@@ -68,8 +71,10 @@ router.post('/edit_e',async (req,res)=>{
         facebook_link:req.body.facebook_link,
         github_link:req.body.github_link,
         qualification:req.body.qualification,
-        dateofbirth:req.body.dob } });
-        console.log(`${result.modifiedCount} document(s) was/were updated.`);
+        dateofbirth:req.body.dob ,
+        profile_image_link:req.body.profile_picture
+    } });
+        // console.log(`${result.modifiedCount} document(s) was/were updated.`);
     // Swal('Success!', 'Your form has been submitted', 'success');
     res.redirect('/user')
 

@@ -24,7 +24,7 @@ else
 router.get('/delete/:article_id',isAuth, (req, res) => {
     const article_id = req.params.article_id;
     article_model.deleteOne({ _id: article_id }).then(() => {
-        console.log('article deleted succesfully ');
+        // console.log('article deleted succesfully ');
         if(req.session.registeras=='admin')
         res.redirect('/admin/all_articles')
         else
@@ -35,7 +35,7 @@ router.get('/delete/:article_id',isAuth, (req, res) => {
 });
 
 router.post('/', async(req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     let { search_value, based_on, filter_option, choose_topic } = req.body;
     const id = req.session.profile_data;
     const registeras = req.session.registeras;
@@ -66,7 +66,7 @@ router.post('/', async(req, res) => {
             }
         }
     });
-    console.log('hello');
+    // console.log('hello');
     res.render('expert_articles', { data: filtered_articles, topic: "", 'registeras': registeras, page: "yourwork" });
 
 

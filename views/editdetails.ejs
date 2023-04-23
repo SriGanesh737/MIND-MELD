@@ -45,9 +45,9 @@
                 <span class="inccn" style="color: red;"></span>
                 <input type="tel" id="mobile" name="mobile" value='<%= data.phone %>' pattern="[0-9]{10}" placeholder="10 digit mobile number"
                     required><br>
-                <label for="profile_picture" class="profile_picture">Profile Picture:</label>
-                <input type="file" id="profile_picture" name="profile_picture" accept="image/*"><br>
-                <small>( (Max file size: 5MB and max resolution: 500px x 500px))</small><br>
+                <label for="profile_picture" class="profile_picture">Profile image Link:</label>
+                <input type="text" id="profile_picture" value="<%=data.profileimglink %>" name="profile_picture" ><br>
+                <small ><pre>                                                  </pre></small><br>
             </div>
             <div class="two">
                 <label for="instaid">Instagram Link</label>

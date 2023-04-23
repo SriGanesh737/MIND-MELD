@@ -37,7 +37,7 @@
                         <h4><span>Email:</span><a href="https://www.gmail.com"><%= data['email']%></a></h2>
                             <h4><span>Phone No:</span><%= data['phone']%></h2>
                         <h4><span>query:</span><%= data['message']%></h2>
-                            <form method="post" action="/query/<%= data['_id']%>">
+                            <form method="post" action="/admin/query/<%= data['_id']%>">
                                 <button type="submit" name="submit" value="submit">Mark as resolved  </button>
                               </form>
                               
@@ -46,7 +46,7 @@
                     
                 </div>
 
-                
+                <script src="/js/admin.js"></script>
                     <script src="/js/cursor.js"></script>
 </body>
 

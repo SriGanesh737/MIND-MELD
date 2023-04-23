@@ -118,6 +118,7 @@ background: radial-gradient(circle, rgba(223,222,220,1) 0%, rgba(240,240,240,1) 
         
 
     <div class="right">
+        <!-- <img  src="../images/null.png" alt=""> -->
       <h1 style="margin-left: 30px;margin-bottom:20px;padding: 3px;border-bottom: 6px solid rgb(47, 46, 46);width: 205px;border-right: 6px solid rgb(47, 46, 46);font-size: 35px;">All experts</h1>
        <div class="searchbar">
         <form action="/admin/all_experts/search" method="post">
@@ -142,6 +143,7 @@ background: radial-gradient(circle, rgba(223,222,220,1) 0%, rgba(240,240,240,1) 
     
     
       <div class="total_experts">
+        <% if(experts.length!==0) { %>
         <% for(let i=0;i<experts.length;i++)  {%>
             <a href="/expertshow/<%=experts[i]._id%>">
         <div class="single_expert">
@@ -164,6 +166,13 @@ background: radial-gradient(circle, rgba(223,222,220,1) 0%, rgba(240,240,240,1) 
         </div>
     </a>
         <% }%>
+        <% }%>
+        <% if(experts.length===0) { %>
+            <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+              
+              <img  src="https://leetcode.com/_next/static/images/null_dark-3f55ffa94690763ee68c9a2be3074a42.png" alt="">
+           </div>
+            <%} %>
    
       
     </div>

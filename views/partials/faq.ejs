@@ -32,7 +32,7 @@
 
 
 
-
+<%if(faq_data.length!==0) {%>
 <% for( let i = 0; i < faq_data.length; i++ ) { %>
 
    <% let data=faq_data[i] %>
@@ -61,7 +61,8 @@
       </div>
 
     </div>
-
+   
+  
 
     <!-- for showing answered questions. -->
     <div class="question-wrapper <%= !is_answered?'dontshow':" " %>">
@@ -109,6 +110,13 @@
 
 
 <% } %>
+<% } %>
+<% if(faq_data.length===0) { %>
+  <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+
+    <img src="../images/null.png" alt="">
+ </div>
+  <%} %>
 
 
 

@@ -168,6 +168,7 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
     <%- include('partials/searchbar') %>
 
       <div class="allcards">
+        <% if(articles.length!==0) {%>
          <% for(let i=0;i<articles.length;i++) {%>
             <a href="/posts/<%= articles[i]._id %>">
         <div class="singlecard">
@@ -202,6 +203,13 @@ background: radial-gradient(circle, rgba(242,239,240,1) 0%, rgba(230,231,182,1) 
         </div>
     </a>
         <% } %>
+        <%} %>
+        <% if(articles.length===0) { %>
+            <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+          
+              <img src="../images/null.png" alt="">
+           </div>
+            <%} %>
       </div>
 
     </div>

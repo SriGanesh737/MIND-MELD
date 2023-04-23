@@ -15,7 +15,7 @@ router.get('/',isAuth, (req, res) => {
     user_model.find({}).sort({doj:-1}).then((userdata)=>{
       expert_model.find({}).sort({doj:-1}).then((expertdata)=>{
 
-      article_model.find({}).sort({dateofpublish:-1}).then((articles)=>
+      article_model.find({}).sort({date_of_publish:-1}).then((articles)=>
       {
 
         res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles });
@@ -69,7 +69,7 @@ router.get('/expertshow/:id',isAuth, async (req, res) => {
   const registeras = req.session.registeras;
   if (registeras == 'admin') {
     id = req.params.id;
-    console.log(id)
+    // console.log(id)
     expert = await expert_model.find({ _id: id })
     res.render('Expert_profile', { 'data': expert[0], 'registeras': 'expert' });
   }
@@ -80,7 +80,7 @@ router.get('/expertshow/:id',isAuth, async (req, res) => {
 });
 
 
-router.get('/query',async (req,res)=>{
+router.get('/query',isAuth,async (req,res)=>{
   const registeras = req.session.registeras;
   query_data=await query_model.find({isresolved:false});
 
@@ -88,9 +88,9 @@ router.get('/query',async (req,res)=>{
 })
 router.post('/query/:id',async (req,res)=>{
   id=req.params.id;
-  console.log(id);
+  // console.log(id);
   let updated=await query_model.updateOne({_id:id},{$set:{isresolved:true}});
-  console.log(updated);
+  // console.log(updated);
   res.redirect('/admin/query');
 })
 
@@ -100,7 +100,7 @@ router.post('/query/:id',async (req,res)=>{
 
 
 router.post('/all_articles', async(req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   let { search_value, based_on, filter_option, choose_topic } = req.body;
   const id = req.session.profile_data;
   const registeras = req.session.registeras;
@@ -137,7 +137,7 @@ router.post('/all_articles', async(req, res) => {
 });
 
 router.post('/all_experts/search',async (req,res)=>{
-  console.log(req.body);
+  // console.log(req.body);
   const {searchitem,basis1,basis2}=req.body;
   let k=-1;
   if(basis2=='oldest')
@@ -179,12 +179,12 @@ router.post('/all_experts/search',async (req,res)=>{
 
 let sentdata="";
 router.get('/mail',logger5,(req,res)=>{
-  console.log(sentdata)
-  console.log('heloo hioi byee')
+  // console.log(sentdata)
+  // console.log('heloo hioi byee')
   res.render('sendmail',{sent:sentdata})
 })
 router.post("/mail",async (req,res)=>{
-  console.log(req.body);
+  // console.log(req.body);
   let subject=req.body.subject;
   let text=req.body.content;
   let experts=req.body.experts;
@@ -205,7 +205,7 @@ router.post("/mail",async (req,res)=>{
   
   emails=[...email1,...email2]
   const emailsArray = emails.map(obj => obj.email);
-  console.log(emailsArray);
+  // console.log(emailsArray);
   let mailtransporter=nodemailer.createTransport({
     service:"gmail",
    auth:{

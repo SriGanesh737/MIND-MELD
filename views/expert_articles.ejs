@@ -42,9 +42,7 @@
               <!-- <p><%- ele['content'].substring(0,150) %>...</p> -->
             </div>
 
-            <a href="/posts/compose?id=<%= ele['id'] %>">
-              <button class="edit">EDIT</button>
-            </a>                                               
+            <a href="/posts/compose?id=<%= ele['id'] %>"> <button class="edit">EDIT</button></a>                                               
 
             <a href="javascript:void(0)"  data-href="/expert_articles/delete/<%= ele['id'] %>" class="delete-btn-link">
               <button class="delete" >DELETE</button>
