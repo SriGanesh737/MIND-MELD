@@ -36,7 +36,7 @@ exports.postaskquery=(req, res) => {
 exports.postfilter=async(req, res) => {
 
     // console.log(req.body);
-    
+
 
     const id = req.session.profile_data;
     let { is_solved, all_or_your,search_value,choose_topic } = req.body;
@@ -94,9 +94,5 @@ exports.answerquery=(req, res) => {
     }).catch((err) => {
         console.log(err);
     });
-
-
-
-
 
 }

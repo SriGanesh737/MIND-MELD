@@ -64,12 +64,12 @@ app.use('/admin',admin_routes);
 app.get('/expertshow/:id',async (req,res)=>{
   const registeras=req.session.registeras;
   const is_blocked=req.session.is_blocked;
-  if(registeras=='admin')
+  if(registeras=='admin'||registeras=='expert'||registeras=='user')
   {
   id=req.params.id;
   // console.log(id)
   expert=await expert_model.find({_id:id})
-  res.render('Expert_profile', {'data':expert[0],'registeras':'expert',is_blocked:is_blocked });
+  res.render('Expert_profile', {'data':expert[0],'registeras':registeras,is_blocked:is_blocked });
   }
 
   else

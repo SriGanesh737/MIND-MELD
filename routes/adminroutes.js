@@ -10,7 +10,6 @@ const nodemailer=require('nodemailer');
 router.get('/',isAuth,admin_c.admindashboard);
 router.get('/all_articles',isAuth, admin_c.allarticles);
 router.get("/all_experts",isAuth, admin_c.allexperts);
-router.get('/expertshow/:id',isAuth, admin_c.expertshow);
 router.get('/query',isAuth,admin_c.query);
 router.post('/query/:id',admin_c.postquery);
 router.post('/all_articles', admin_c.postallarticles);
@@ -42,7 +41,7 @@ router.post("/mail",async (req,res)=>{
   {
    email2=await user_model.find({},{email:1,_id:0})
   }
-  
+
   emails=[...email1,...email2]
   const emailsArray = emails.map(obj => obj.email);
   // console.log(emailsArray);

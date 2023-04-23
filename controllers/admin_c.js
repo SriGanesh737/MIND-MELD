@@ -11,10 +11,10 @@ exports.admindashboard= (req, res) => {
      if(registeras=='admin'){
       user_model.find({}).sort({doj:-1}).then((userdata)=>{
         expert_model.find({}).sort({doj:-1}).then((expertdata)=>{
-  
+
         article_model.find({}).sort({date_of_publish:-1}).then((articles)=>
         {
-  
+
           res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles,is_blocked:is_blocked });
         })
       })
@@ -54,25 +54,8 @@ exports.allarticles=async (req, res) => {
       res.render('all_experts', {
         experts: experts, count: count, is_blocked: is_blocked})
     }
-  
-  
-    else {
-      res.render('notfound')
-    }
-  }
 
-  exports.expertshow=async (req, res) => {
-    console.log('hello ')
-      const registeras = req.session.registeras;
-      const is_blocked = req.session.is_blocked;
-      if (registeras == 'admin') {
-          id = req.params.id;
-          // console.log(id)
-          expert = await expert_model.find({ _id: id })
-          console.log(is_blocked)
-      res.render('Expert_profile', { 'data': expert[0], 'registeras': 'expert',is_blocked:is_blocked });
-    }
-  
+
     else {
       res.render('notfound')
     }
@@ -81,7 +64,7 @@ exports.allarticles=async (req, res) => {
   exports.query=async (req,res)=>{
     const registeras = req.session.registeras;
     query_data=await query_model.find({isresolved:false});
-  
+
     res.render('query_page',{query_data:query_data})
   }
 
@@ -107,15 +90,15 @@ exports.allarticles=async (req, res) => {
     else {
       articles = await article_model.find().sort({ date_of_publish: sort_basis })
     }
-  
+
     let filtered_articles = articles;
-  
+
     if (choose_topic != "") {
       filtered_articles=filtered_articles.filter((article) => {
         return article.topic == choose_topic;
       })
     }
-  
+
     filtered_articles = filtered_articles.filter((article) => {
       if (based_on == 'title' && article.title.toLowerCase().includes(search_value.toLowerCase())) return true;
       else if (based_on == 'tags') {
@@ -125,9 +108,9 @@ exports.allarticles=async (req, res) => {
         }
       }
     });
-  
+
     res.render('all_articles', { articles: filtered_articles, topic: "", page: "all_articles", is_blocked: req.session.is_blocked })
-  
+
   }
   exports.expertsearch=async (req,res)=>{
     // console.log(req.body);
@@ -135,7 +118,7 @@ exports.allarticles=async (req, res) => {
     let k=-1;
     if(basis2=='oldest')
      k=1;
-  
+
     const experts=await expert_model.find({}).sort({doj:k});
     if(searchitem=='')
     {
@@ -165,8 +148,8 @@ exports.allarticles=async (req, res) => {
        }))
       res.render('all_experts', { experts: newexperts, count: count, is_blocked: req.session.is_blocked })
     }
-  
-  
+
+
   }
   exports.removeexpert=async (req, res) => {
     const expert_id = req.body.expert_id;

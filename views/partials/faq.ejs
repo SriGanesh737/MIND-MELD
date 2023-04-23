@@ -61,8 +61,8 @@
       </div>
 
     </div>
-   
-  
+
+
 
     <!-- for showing answered questions. -->
     <div class="question-wrapper <%= !is_answered?'dontshow':" " %>">
@@ -91,7 +91,9 @@
         <div class="faq-right-part">
           Answered by :
           <br>
-          <img src=<%=data["profile-image-link"] %> alt="" class="faq-profile">
+          <a href="/expertshow/<%= data['expert_id'] %>">
+            <img src=<%=data["profile-image-link"] %> alt="" class="faq-profile">
+          </a>
         </div>
 
       </div>
