@@ -30,59 +30,25 @@
 
   <div class="slideshow-container animated wow fadeInUp" data-wow-delay="0.1s">
 
-    <div id="<%= articles_data[3]['_id'] %>" class="slide active">
-        <div class="image-part">
-            <div class="left-btn">
-                &#10094;
-            </div>
-            <div class="right-btn">
-                &#10095;
-            </div>
+    <% for( let i = 0; i < slider_data.length; i++ ) { %>
+              <div id="<%= slider_data[i]['_id'] %>" class="slide active">
+                <div class="image-part">
+                  <div class="left-btn">
+                    &#10094;
+                  </div>
+                  <div class="right-btn">
+                    &#10095;
+                  </div>
 
 
-            <img src="<%= articles_data[3]['image_link'] %>" alt="edu1" >
-         </div>
-         <div class="title-part">
-            <%= articles_data[3]['title'].substring(0,200) %>
-         </div>
+                  <img src="<%= slider_data[i]['image_link'] %>" alt="edu1">
+                </div>
+                <div class="title-part">
+                  <%= slider_data[i]['title'].substring(0,200) %>
+                </div>
 
-    </div>
-
-    <div id="<%= articles_data[2]['_id'] %>"
-      class="slide ">
-      <div class="image-part">
-        <div  class="left-btn">
-          &#10094;
-        </div>
-        <div class="right-btn">
-          &#10095;
-        </div>
-
-
-        <img src="<%= articles_data[2]['image_link'] %>" alt="edu1">
-      </div>
-      <div class="title-part">
-        <%= articles_data[2]['title'].substring(0,200) %>
-      </div>
-    </div>
-
-    <div id="<%= articles_data[1]['_id'] %>" class="slide ">
-      <div class="image-part">
-        <div class="left-btn">
-          &#10094;
-        </div>
-        <div class="right-btn">
-          &#10095;
-        </div>
-
-
-        <img src="<%= articles_data[1]['image_link'] %>" alt="edu1">
-      </div>
-      <div class="title-part">
-        <%= articles_data[1]['title'].substring(0,200) %>
-      </div>
-
-    </div>
+              </div>
+    <% } %>
 
 </div>
 

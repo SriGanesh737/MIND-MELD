@@ -1,0 +1,99 @@
+body {
+    /* font-family: 'Roboto Slab', serif; */
+    /* font-weight: 300; */
+    /* font-size: 20px; */
+    background: rgb(223, 222, 220);
+    background: radial-gradient(circle, rgba(223, 222, 220, 1) 0%, rgba(240, 240, 240, 1) 35%);
+}
+
+.total_experts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.single_expert {
+    width: 500px;
+    border-radius: 10px;
+    /* height: 200px; */
+    background-color: rgb(213, 213, 213);
+    padding: 20px;
+}
+
+.detailss,
+.subdetailss {
+    /* font-weight: 300; */
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detailss h4,
+.detailss h3,
+.posted h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.detailss .box {
+    background-color: rgb(239, 142, 142);
+    padding: 7px;
+    border-radius: 4px;
+}
+
+.total_experts a {
+    text-decoration: none;
+    color: black;
+}
+
+.subdetailss h4 {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.posted h3 {
+    font-size: 19px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.right {
+    margin-bottom: 50px;
+}
+
+.searchbar {
+    text-align: right;
+    margin-right: 50px;
+    margin-bottom: 20px;
+}
+
+.searchtab {
+    border-radius: 5px;
+    padding: 5px;
+    width: 400px;
+    margin-right: 20px;
+}
+
+#selector1,
+#selector2 {
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+    margin-right: 20px;
+}
+
+.submitbtn {
+    border-radius: 5px;
+    width: 120px;
+    height: 35px;
+    background-color: #24a0ed;
+    border: 2px solid #29aafb;
+    color: white;
+    font-size: 17px;
+}
+
+.submitbtn:hover {
+    background-color: #023555;
+}
+

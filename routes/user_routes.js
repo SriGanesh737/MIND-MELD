@@ -40,8 +40,9 @@ profile_details={
     dateofbirth:formattedDate
     
 }
-// console.log(profile_details);
-    res.render('editdetails', { 'registeras': registeras,'data':profile_details});
+
+    res.render('editdetails', { 'registeras': registeras, 'data': profile_details, is_blocked: req.session.is_blocked });
+
 })
 
 router.post('/edit_e',async (req,res)=>{
@@ -110,7 +111,7 @@ else
 // }
 // console.log(profile_details)
 
-    res.render('Expert_profile', {'data':profile_details,'registeras': req.session.registeras });
+    res.render('Expert_profile', { 'data': profile_details, 'registeras': req.session.registeras, is_blocked: req.session.is_blocked });
 });
 
 
