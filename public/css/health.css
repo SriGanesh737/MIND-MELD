@@ -86,6 +86,7 @@ body{
 
 .description-text p,.description-text span ,.description-text h1,.description-text h2,.description-text h3,.description-text h4,.description-text h5,.description-text h6,.description-text div{
     color: white !important;
+    background: transparent !important;
 }
 
 

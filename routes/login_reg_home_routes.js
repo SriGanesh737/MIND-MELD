@@ -5,6 +5,19 @@ const user_model = require('../models/user');
 const expert_model = require('../models/expert');
 const {isAuth} = require('../controllers/isAuth');
 const admin_model=require('../models/admin_model.js');
+const loginreg_c=require('../controllers/loginreg_c');
+
+
+
+
+router.get('/logout',loginreg_c.logout )
+router.get('/', loginreg_c.index);
+router.get('/landingpage',isAuth, loginreg_c.landingpage);
+
+
+
+
+
 
 
 let em = "";
@@ -14,10 +27,7 @@ let data1 = "";
 
 function logger(req, res, next) {
     next();
-
     em = "";
-
-
 }
 
 function logger2(req, res, next) {
@@ -27,16 +37,10 @@ function logger2(req, res, next) {
 
 
 
-router.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) throw err;
-        res.redirect('/login');
-    });
-})
 
 router.get('/signup', logger, (req, res) => {
 
-    res.render('signup', { em});
+    res.render('signup', {em});
 })
 
 router.post('/signup', async (req, res) => {
@@ -64,22 +68,14 @@ router.post('/signup', async (req, res) => {
        await expert_model.findOne({email:email}).then((user)=>{
             if(user)
             {
-                // console.log('bjeewrjeee')
                 checker=false;
                em="This email already exists"
             }
         }).catch((err)=>console.log(err))
-
-// console.log(checker);
-
     if (checker) {
         const hashedpswd = await bcrypt.hash(pswd, 12);
-        // console.log(hashedpswd)
-
         data = "";
         if (registeras === 'user') {
-            // console.log('hii user')
-
           const user=new user_model({
                 firstname:firstname,lastname:lastname,email:email,password:hashedpswd,phone:phno
             })
@@ -87,7 +83,7 @@ router.post('/signup', async (req, res) => {
             res.redirect('/login');
         }
         else if (registeras === 'expert' && resume !== '')
-                            {
+        {
             resu = "";
             const expert=new expert_model({
                 firstname:firstname,lastname:lastname,email:email,password:hashedpswd,phone:phno
@@ -96,16 +92,15 @@ router.post('/signup', async (req, res) => {
 
             res.redirect('/login');
         }
-        else {
+        else 
+        {
             resu = "You must upload resume as you are a expert"
             res.redirect('/signup');
         }
 }
     else
     {
-
-        res.redirect('/signup')
-
+     res.redirect('/signup')
     }
 })
 
@@ -147,13 +142,6 @@ router.post('/login',async (req, res) => {
             }
 
      }
-
-
-
-
-
-
-
     else if(person!=null)
     {
      let  result=await  bcrypt.compare(password, person.password)
@@ -200,8 +188,6 @@ router.post('/login',async (req, res) => {
             },60*60*1000)
             req.session.is_blocked = person1.is_blocked;
             res.redirect('/landingpage');
-
-
    
         }
         else
@@ -212,24 +198,11 @@ router.post('/login',async (req, res) => {
     }
     else
     {
+        data1 = "Incorrect Login details";
         res.redirect('/login');
     }
 
-
-
 });
-
-
-router.get('/', (req, res) => {
-    res.render('index');
-});
-
-router.get('/landingpage',isAuth, (req, res) => {
-    const registeras = req.session.registeras;
-    // console.log(registeras+"....");
-    res.render('landingpage', { 'registeras': registeras, is_blocked: req.session.is_blocked });
-});
-
 
 
 module.exports = router;
