@@ -52,7 +52,7 @@
         <h3>Personal Information</h3>
         <div class="info">
             <div class="edit_details">
-                <%if(registeras=='expert') {%>  <a href="/user/edit_e"><i class="bi bi-pencil-square"><span>Edit profile</span></i></a> 
+                <%if(registeras=='expert') {%>  <a href="/user/edit_e"><i class="bi bi-pencil-square"><span>Edit profile</span></i></a>
                 <% }%>
             </div>
             <div class="firstname">
@@ -69,7 +69,7 @@
             </div>
             <div class="Gender">
                 <h4 style="font-weight: 500;"><b>Gender:</b></h4>
-                <h4><%= data.gender %></h4>
+                <h4><%= data.gender=='M'?"Male":data.gender=='F'?"Female":data.gender=='Trans'?"Transgender":" " %></h4>
             </div>
             <div class="emailicon" style="margin-bottom: 10px;">
                 <i class="bi bi-envelope" class="iconborder"></i>

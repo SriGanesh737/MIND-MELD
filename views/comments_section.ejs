@@ -18,7 +18,7 @@
 
               </div>
               <div class="right-part">
-                <div class="comment-header"> <img class="comment-profile-image" src="<%= comment_info['main_comment'].profile_image_link %>"
+                <div class="comment-header"> <img class="comment-profile-image rounded-circle" src="<%= comment_info['main_comment'].profile_image_link %>"
                     alt="">
                   <span class="name"><%= comment_info['main_comment'].user_name %></span>
                   <span class="youTag">You</span>
@@ -68,7 +68,7 @@
 
                   </div>
                   <div class="right-part">
-                    <div class="comment-header"> <img class="comment-profile-image" src="<%= single_reply.profile_image_link %>"
+                    <div class="comment-header"> <img class="comment-profile-image rounded-circle" src="<%= single_reply.profile_image_link %>"
                         alt="">
                       <span class="name"><%= single_reply.user_name %></span>
                       <span class="youTag">You</span>
@@ -158,7 +158,7 @@
 
 
   <div class="comment-container write-comment">
-    <img class="comment-profile-image" src="../images/avatars/image-juliusomo.png" alt="">
+    <img class="comment-profile-image rounded-circle" src="<%= profile_image_link %>" alt="">
 
   <form action="/posts/comment/<%= data['_id'] %>" method="post">
         <textarea placeholder="Add a comment..." name="comment-message" style="height:100px" cols="55" rows="3"></textarea>

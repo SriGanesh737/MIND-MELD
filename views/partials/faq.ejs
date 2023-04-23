@@ -11,7 +11,7 @@
         <option class="<%= registeras=='user'?"dontshow":"" %>" value="solved">Answered by you</option>
       </select>
 
-      
+
         <select class="topic_choose_select" name="choose_topic">
           <option value="">Choose a topic</option>
           <option value="health">HEALTH</option>
@@ -44,7 +44,7 @@
           <%= data['question'] %>
         </div>
 
-        <button class="<%= i %> answer <%=(registeras!="expert"&&registeras!="admin")? "dontshow":"" %>">
+        <button class="<%= i %> answer <%=(is_blocked||(registeras!="expert"&&registeras!="admin"))? "dontshow":"" %>">
           Answer
         </button>
       </div>

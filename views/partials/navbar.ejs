@@ -17,7 +17,7 @@
               <a class="nav-link " aria-current="page" href="/landingpage">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contactus">ContactUs</a>
+              <a class="nav-link <%= registeras=="admin"?"dontshow":"" %>" href="/contactus">ContactUs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/aboutus">AboutUs</a>
@@ -49,14 +49,14 @@
           <div class="dd_left">
             <ul>
              <li><i class="fa-solid fa-right-from-bracket"></i></li>
-             <li class="<%= registeras=='expert'   ?'show':" "%>" style="display:none"><i class="fa-solid fa-pen-to-square"></i></li>
-             <li class=" <%= registeras=='expert' || registeras=='admin' ?'show':" "%>" style="display:none"><i class="fa-solid fa-eye"></i></li>
+             <li class="<%= registeras=='expert'||registeras=='user'   ?'show':" "%>" style="display:none"><i class="fa-solid fa-pen-to-square"></i></li>
+             <li class=" <%= registeras=='expert' || registeras=='admin'||registeras=='user' ?'show':" "%>" style="display:none"><i class="fa-solid fa-eye"></i></li>
             </ul>
           </div>
           <div class="dd_right">
             <li><a href="/logout" style="text-decoration: none;color: black;">Logout</a></li>
-            <li class="<%= registeras=='expert'?'show':" "%>" style="display:none"><a href="/user/edit_e" style="text-decoration: none;color: black;">Edit</a></li>
-            <li class="<%= registeras=='expert'|| registeras=='admin' ?'show':" "%>" style="display:none"><a href="/user" style="text-decoration: none;color: black;">View</a></li>
+            <li class="<%= registeras=='expert'||registeras=='user'?'show':" "%>" style="display:none"><a href="/user/edit_e" style="text-decoration: none;color: black;">Edit</a></li>
+            <li class="<%= registeras=='expert'|| registeras=='admin'||registeras=='user' ?'show':" "%>" style="display:none"><a href="/user" style="text-decoration: none;color: black;">View</a></li>
           </div>
         </div>
 

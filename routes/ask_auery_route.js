@@ -80,9 +80,10 @@ router.post('/filter', async(req, res) => {
 router.post('/answer/:question_id', (req, res) => {
     const question_id = req.params.question_id;
     const exp_id = req.session.profile_data;
+    // const profile_image_link = req.session.profile_image_link;
     const answer = req.body['faq-solution'];
     expert_model.findOne({ _id: exp_id }).then((data) => {
-        const profile_image_link = data['profile-img-link'];
+        const profile_image_link = data['profile_image_link'];
         faq_model.updateOne(
             { _id: question_id },
             { $set: { is_answered: true, expert_id: exp_id, "profile-image-link": profile_image_link,answer:answer } }

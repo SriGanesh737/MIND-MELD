@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, verdana;
+}
+
+.bigDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../images/subtle-prism.png);
+    min-height: 100vh;
+    margin-bottom: -120px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+.info {
+    padding: 20px;
+}
+
+.iconborder {
+    background-color: #999;
+    border-radius: 30%;
+}
+
+.desc {
+    min-width: 500px;
+    min-height: 500px;
+    background-color: White;
+    border-radius: 30px;
+    box-sizing: border-box;
+    font-size: 13px !important;
+}
+
+.desc h4{
+    font-size: 18px !important;
+}
+
+.desc h3 {
+    padding-left: 30px;
+    padding-top: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #555;
+    line-height: 10px;
+    margin-top: 20px;
+    font-size: 25px !important;
+    padding-bottom: 30px;
+}
+
+.edit_user_det{
+    right: 30px;
+    top: 20px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.phoneicon,
+.emailicon{
+    display: flex;
+    gap: 18px;
+    padding-bottom: 22px;
+}
+
+.phoneicon i,
+.emailicon i{
+    display: flex;
+    background-color: pink;
+    height: 40px;
+      width: 40px;
+      align-items: center;
+   justify-content: center;
+    border-radius: 50%;
+
+}
+
+.user_profile_image{
+    width: 200px;
+    height: 200px;
+}
+
+.firstname {
+    display: flex;
+    padding-left: 5px;
+    padding-bottom: 22px;
+    gap: 15px;
+}
+
+.lastname {
+    display: flex;
+    padding-left: 5px;
+    padding-bottom: 22px;
+    gap: 15px;
+}
+
+.Gender {
+    display: flex;
+    padding-left: 5px;
+    padding-bottom: 22px;
+    gap: 15px;
+}
+
+@media(max-width: 767px) {
+    .bigDiv {
+        margin-top: 0px;
+        padding-top: 90px;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: -90px;
+        padding-bottom: 40px;
+
+    }
+}
+
+@media (max-width: 340px) and (max-width:767px) {
+    .bigDiv {
+        display: flex;
+        flex-direction: column;
+    }
+}

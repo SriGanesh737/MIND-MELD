@@ -194,6 +194,10 @@ body {
   display: none;
 }
 
+.edit{
+  display: none !important;
+}
+
 @media only screen and (max-width: 850px) {
   .comment-parent-wrapper, .comment-container, .replies-container {
     width: 90vw;
