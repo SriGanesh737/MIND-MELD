@@ -13,7 +13,10 @@ $('.fa-xmark').click(function (e) {
 //     $('.faq-solution').val('').attr('placeholder', "write your answer here");
 // });
 
-
+$('.textarea-container').click(function (e) {
+    // e.preventDefault();
+    $('.askbar').focus();
+});
 
 
 $('.answer').click(function (e) {

@@ -92,8 +92,18 @@
 
                 $('input').focusout(function () {
                     $('.cursor,.outercursor').css('display', 'block');
-                    
+
                 });
+
+                $('textarea').focusin(function () {
+                 $('.cursor,.outercursor').css('display', 'none');
+
+             });
+
+             $('textarea').focusout(function () {
+                 $('.cursor,.outercursor').css('display', 'block');
+
+             });
             });
 
 

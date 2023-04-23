@@ -24,8 +24,8 @@ exports.editprofile=async (req, res) => {
             facebook_link: details.facebook_link,
             github_link: details.github_link,
             qualification: details.qualification,
-            dateofbirth: formattedDate
-
+            dateofbirth: formattedDate,
+            profile_image_link:details.profile_image_link
         }
         res.render('editdetails', { 'registeras': registeras, 'data': profile_details, is_blocked: req.session.is_blocked });
     }
