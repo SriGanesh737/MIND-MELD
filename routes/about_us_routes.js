@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const aboutus_c=require('../controllers/aboutus_c');
 
+router.get('/',aboutus_c.aboutus);
 
-router.get('/', (req, res) => {
-    const registeras = req.session.registeras;
-    const is_blocked = req.session.is_blocked;
-    res.render('about', { 'registeras': registeras,is_blocked:is_blocked });
-})
 
 module.exports = router;

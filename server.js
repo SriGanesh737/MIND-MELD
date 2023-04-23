@@ -63,12 +63,13 @@ app.use('/admin',admin_routes);
 
 app.get('/expertshow/:id',async (req,res)=>{
   const registeras=req.session.registeras;
+  const is_blocked=req.session.is_blocked;
   if(registeras=='admin')
   {
   id=req.params.id;
   // console.log(id)
   expert=await expert_model.find({_id:id})
-  res.render('Expert_profile', {'data':expert[0],'registeras':'expert' });
+  res.render('Expert_profile', {'data':expert[0],'registeras':'expert',is_blocked:is_blocked });
   }
 
   else
@@ -76,9 +77,7 @@ app.get('/expertshow/:id',async (req,res)=>{
 res.render('notfound')
 }
 })
-app.get('/mail',(req,res)=>{
-  res.render('sendmail')
-})
+
 
 app.get('*', (req, res) => {
   res.render('notfound')
