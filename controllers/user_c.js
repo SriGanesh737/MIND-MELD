@@ -1,4 +1,4 @@
-const bookmarked_data = require('../infos/bookmarked_data');
+// const bookmarked_data = require('../infos/bookmarked_data');
 const user_model = require('../models/user');
 const expert_model = require('../models/expert');
 const admin_model=require('../models/admin_model.js');
@@ -33,17 +33,18 @@ exports.editprofile=async (req, res) => {
 }
 
 exports.posteditprofile=async (req,res)=>{
-    console.log(req.body);
     if (req.session.registeras == 'user') {
         const { firstname, lastname, email, mobile, gender, link } = req.body;
+        console.log(req.body);
         const result = await user_model.updateOne({ _id: req.session.profile_data }, {
             $set: {
                 firstname: firstname,
                 lastname: lastname,
                 email: email,
-                profile_image_link: link,
+                profile_image_link:link,
                 gender: gender,
                 phone: mobile
+                
             }
         });
         console.log(`${result.modifiedCount} document(s) was/were updated.`);
@@ -60,7 +61,8 @@ exports.posteditprofile=async (req,res)=>{
             facebook_link: req.body.facebook_link,
             github_link: req.body.github_link,
             qualification: req.body.qualification,
-            dateofbirth: req.body.dob
+            dateofbirth: req.body.dob,
+            profile_image_link:req.body.profile_image_link,
         }
         const result = await expert_model.updateOne({ _id: req.session.profile_data }, {
             $set: {
@@ -74,7 +76,8 @@ exports.posteditprofile=async (req,res)=>{
                 facebook_link: req.body.facebook_link,
                 github_link: req.body.github_link,
                 qualification: req.body.qualification,
-                dateofbirth: req.body.dob
+                dateofbirth: req.body.dob,
+                profile_image_link:req.body.profile_image_link
             }
         });
         console.log(`${result.modifiedCount} document(s) was/were updated.`);
@@ -97,6 +100,7 @@ exports.getprofile=async (req, res) => {
     else {
         if (registeras == 'expert') {
             profile_details = await expert_model.findOne({ _id: req.session.profile_data });
+            // console.log(profile_details)
         }
         else {
             profile_details = await admin_model.findOne({ _id: req.session.profile_data });

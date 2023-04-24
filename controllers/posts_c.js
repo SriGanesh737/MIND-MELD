@@ -1,6 +1,6 @@
 const expert_model = require('../models/expert');
 const article_model = require('../models/article_model');
-const comments_data = require('../infos/commentsData');
+// const comments_data = require('../infos/commentsData');
 const comment_model = require('../models/comment_model');
 const user_model = require('../models/user');
 const formatDate=require('../controllers/date_formatter');
