@@ -1,6 +1,5 @@
 const expert_model = require('../models/expert');
 const article_model = require('../models/article_model');
-const comments_data = require('../infos/commentsData');
 const comment_model = require('../models/comment_model');
 const user_model = require('../models/user');
 const formatDate=require('../controllers/date_formatter');
@@ -26,7 +25,7 @@ exports.compose_c = (req, res) => {
         }
         res.render('compose', { 'registeras': registeras, 'data': data, is_blocked: req.session.is_blocked })
     }
-    else { 
+    else {
         article_model.findOne({ _id: articleid }).then((blog) => {
             tagstring = "";
             for (let i = 0; i < blog.tags.length; i++) {
@@ -51,7 +50,7 @@ else
 }
 };
 
-exports.postarticles=(req, res) => 
+exports.postarticles=(req, res) =>
 {
     let topic = req.query.topic;
     const registeras = req.session.registeras;

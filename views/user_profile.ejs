@@ -24,7 +24,7 @@
     <div class="desc position-relative">
         <h3>Personal Information</h3>
 
-        <a href="/user/edit_u" class="edit_user_det position-absolute"><i class="bi bi-pencil-square"></i> Edit Details </a>
+        <a href="/user/edit_u" style="display:none;" class="edit_user_det position-absolute <%= user_id==data._id ?'show':"" %>"><i class="bi bi-pencil-square "></i> Edit Details </a>
 
         <img src="<%= data.profile_image_link %>" alt="img" class="user_profile_image rounded-circle  d-block mx-auto ">
         <div class="info">

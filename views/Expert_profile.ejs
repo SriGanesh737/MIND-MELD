@@ -52,7 +52,7 @@
         <h3>Personal Information</h3>
         <div class="info">
             <div class="edit_details">
-                  <a style="display: none !important;" class="<%= registeras=='expert'?'show':"" %>" href="/user/edit_e"><i class="bi bi-pencil-square"><span>Edit profile</span></i></a>
+                  <a style="display: none" class="<%= (user_id==data._id)&&(registeras!='admin') ?'show':"" %>" href="/user/edit_e"><i class="bi bi-pencil-square"><span>Edit profile</span></i></a>
             </div>
             <div class="firstname">
                 <h4 style="font-weight: 500;"> <b>FirstName:</b></h4>

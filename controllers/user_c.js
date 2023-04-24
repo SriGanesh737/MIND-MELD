@@ -60,7 +60,8 @@ exports.posteditprofile=async (req,res)=>{
             facebook_link: req.body.facebook_link,
             github_link: req.body.github_link,
             qualification: req.body.qualification,
-            dateofbirth: req.body.dob
+            dateofbirth: req.body.dob,
+            profile_image_link:req.body.profile_image_link
         }
         const result = await expert_model.updateOne({ _id: req.session.profile_data }, {
             $set: {
@@ -74,7 +75,8 @@ exports.posteditprofile=async (req,res)=>{
                 facebook_link: req.body.facebook_link,
                 github_link: req.body.github_link,
                 qualification: req.body.qualification,
-                dateofbirth: req.body.dob
+                dateofbirth: req.body.dob,
+                profile_image_link: req.body.profile_image_link
             }
         });
         console.log(`${result.modifiedCount} document(s) was/were updated.`);
@@ -87,23 +89,27 @@ exports.posteditprofile=async (req,res)=>{
 
 exports.getprofile=async (req, res) => {
     // console.log(req.session.id)
-    const registeras=req.session.registeras;
+    const registeras = req.session.registeras;
+    const id_param = req.query.id;
+    console.log(id_param);
+    let display_id = id_param;
+    if (display_id === undefined) display_id = req.session.profile_data;
     let profile_details = {}
-    if (registeras == 'user') {
+    let person1 = await user_model.findOne({ _id: display_id });
+    let person2 = await expert_model.findOne({ _id: display_id });
+    let person3 = await admin_model.findOne({ _id: display_id });
+    if (person1 !== null) profile_details = person1;
+    if (person2 !== null) profile_details = person2;
+    if (person3 !== null) profile_details = person3;
 
-        profile_details=await user_model.findOne({_id:req.session.profile_data})
-        res.render('user_profile', {data:profile_details, 'registeras': req.session.registeras, is_blocked: req.session.is_blocked });
+    if (person1 !== null) {
+        res.render('user_profile', { data: profile_details, 'registeras': req.session.registeras, is_blocked: req.session.is_blocked, user_id: req.session.profile_data });
     }
     else {
-        if (registeras == 'expert') {
-            profile_details = await expert_model.findOne({ _id: req.session.profile_data });
-        }
-        else {
-            profile_details = await admin_model.findOne({ _id: req.session.profile_data });
-        }
-
-        res.render('Expert_profile', { 'data': profile_details, 'registeras': req.session.registeras, is_blocked: req.session.is_blocked });
+        console.log(profile_details)
+        res.render('Expert_profile', { 'data': profile_details, 'registeras': req.session.registeras, is_blocked: req.session.is_blocked, user_id: req.session.profile_data });
     }
+
 
 }
 

@@ -18,8 +18,8 @@
 
               </div>
               <div class="right-part">
-                <div class="comment-header"> <img class="comment-profile-image rounded-circle" src="<%= comment_info['main_comment'].profile_image_link %>"
-                    alt="">
+                <div class="comment-header"> <a href="/user?id=<%= comment_info['main_comment'].user_id %>"> <img class="comment-profile-image rounded-circle" src="<%= comment_info['main_comment'].profile_image_link %>"
+                    alt=""></a>
                   <span class="name"><%= comment_info['main_comment'].user_name %></span>
                   <span class="youTag">You</span>
                   <% let formatted_date=comment_info['main_comment'].posted_date;  formatted_date=formatted_date.getDate()+'-'+(formatted_date.getMonth()+1)+'-'+formatted_date.getFullYear() %>
@@ -68,8 +68,8 @@
 
                   </div>
                   <div class="right-part">
-                    <div class="comment-header"> <img class="comment-profile-image rounded-circle" src="<%= single_reply.profile_image_link %>"
-                        alt="">
+                    <div class="comment-header"> <a href="/user?id=<%= single_reply.user_id %>"> <img class="comment-profile-image rounded-circle" src="<%= single_reply.profile_image_link %>"
+                        alt=""></a>
                       <span class="name"><%= single_reply.user_name %></span>
                       <span class="youTag">You</span>
                       <% let formatted_date=single_reply.posted_date; formatted_date=formatted_date.getDate()+'-'+formatted_date.getMonth()+1+'-'+formatted_date.getFullYear() %>
@@ -158,8 +158,9 @@
 
 
   <div class="comment-container write-comment">
+    <a href="/user">
     <img class="comment-profile-image rounded-circle" src="<%= profile_image_link %>" alt="">
-
+    </a>
   <form action="/posts/comment/<%= data['_id'] %>" method="post">
         <textarea placeholder="Add a comment..." name="comment-message" style="height:100px" cols="55" rows="3"></textarea>
         <button type="submit" class="send-btn">Send</button>

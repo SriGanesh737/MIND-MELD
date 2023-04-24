@@ -69,7 +69,7 @@ app.get('/expertshow/:id',async (req,res)=>{
   id=req.params.id;
   // console.log(id)
   expert=await expert_model.find({_id:id})
-  res.render('Expert_profile', {'data':expert[0],'registeras':registeras,is_blocked:is_blocked });
+    res.render('Expert_profile', { 'data': expert[0], 'registeras': registeras, is_blocked: is_blocked, user_id: req.session.profile_data });
   }
 
   else

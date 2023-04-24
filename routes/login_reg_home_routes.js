@@ -54,7 +54,7 @@ router.post('/signup', async (req, res) => {
    let resume = req.body.resume;
    let checker=true;
     //console.log(firstname,lastname,email,phno,pswd,cnfpswd,registeras);
-   await  user_model.findOne({email:email}).then((user)=>{
+   await user_model.findOne({email:email}).then((user)=>{
      if(user)
         {
          checker=false
@@ -71,7 +71,8 @@ router.post('/signup', async (req, res) => {
                 checker=false;
                em="This email already exists"
             }
-        }).catch((err)=>console.log(err))
+       }).catch((err) => console.log(err))
+
     if (checker) {
         const hashedpswd = await bcrypt.hash(pswd, 12);
         data = "";
@@ -92,7 +93,7 @@ router.post('/signup', async (req, res) => {
 
             res.redirect('/login');
         }
-        else 
+        else
         {
             resu = "You must upload resume as you are a expert"
             res.redirect('/signup');
@@ -121,7 +122,6 @@ router.post('/login',async (req, res) => {
         if(result===true)
         {
                 req.session.isAuth = true;
-                let registeras = 'admin';
             req.session.registeras = 'admin';
             req.session.is_blocked = false;
                 data1 = "";
@@ -148,7 +148,6 @@ router.post('/login',async (req, res) => {
             if (result === true)
             {
                 req.session.isAuth = true;
-                let registeras = 'user';
                 req.session.registeras = 'user';
                 req.session.is_blocked = false;
                 data1 = "";
@@ -174,10 +173,8 @@ router.post('/login',async (req, res) => {
         if (result === true)
         {
             req.session.isAuth = true;
-            let registeras = 'expert';
             req.session.registeras = 'expert';
             data1 = "";
-            let profile_data = {};
             req.session.profile_data = person1._id;
             req.session.user_name = person1.firstname;
             req.session.profile_image_link = person1.profile_image_link;
@@ -188,7 +185,7 @@ router.post('/login',async (req, res) => {
             },60*60*1000)
             req.session.is_blocked = person1.is_blocked;
             res.redirect('/landingpage');
-   
+
         }
         else
         {
