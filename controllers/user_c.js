@@ -1,4 +1,4 @@
-const bookmarked_data = require('../infos/bookmarked_data');
+// const bookmarked_data = require('../infos/bookmarked_data');
 const user_model = require('../models/user');
 const expert_model = require('../models/expert');
 const admin_model=require('../models/admin_model.js');
@@ -33,17 +33,18 @@ exports.editprofile=async (req, res) => {
 }
 
 exports.posteditprofile=async (req,res)=>{
-    console.log(req.body);
     if (req.session.registeras == 'user') {
         const { firstname, lastname, email, mobile, gender, link } = req.body;
+        console.log(req.body);
         const result = await user_model.updateOne({ _id: req.session.profile_data }, {
             $set: {
                 firstname: firstname,
                 lastname: lastname,
                 email: email,
-                profile_image_link: link,
+                profile_image_link:link,
                 gender: gender,
                 phone: mobile
+
             }
         });
         console.log(`${result.modifiedCount} document(s) was/were updated.`);
@@ -61,7 +62,7 @@ exports.posteditprofile=async (req,res)=>{
             github_link: req.body.github_link,
             qualification: req.body.qualification,
             dateofbirth: req.body.dob,
-            profile_image_link:req.body.profile_image_link
+            profile_image_link:req.body.profile_image_link,
         }
         const result = await expert_model.updateOne({ _id: req.session.profile_data }, {
             $set: {
@@ -76,7 +77,7 @@ exports.posteditprofile=async (req,res)=>{
                 github_link: req.body.github_link,
                 qualification: req.body.qualification,
                 dateofbirth: req.body.dob,
-                profile_image_link: req.body.profile_image_link
+                profile_image_link:req.body.profile_image_link
             }
         });
         console.log(`${result.modifiedCount} document(s) was/were updated.`);
@@ -91,7 +92,7 @@ exports.getprofile=async (req, res) => {
     // console.log(req.session.id)
     const registeras = req.session.registeras;
     const id_param = req.query.id;
-    console.log(id_param);
+    // console.log(id_param);
     let display_id = id_param;
     if (display_id === undefined) display_id = req.session.profile_data;
     let profile_details = {}
@@ -106,7 +107,7 @@ exports.getprofile=async (req, res) => {
         res.render('user_profile', { data: profile_details, 'registeras': req.session.registeras, is_blocked: req.session.is_blocked, user_id: req.session.profile_data });
     }
     else {
-        console.log(profile_details)
+        // console.log(profile_details)
         res.render('Expert_profile', { 'data': profile_details, 'registeras': req.session.registeras, is_blocked: req.session.is_blocked, user_id: req.session.profile_data });
     }
 

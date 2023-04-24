@@ -21,9 +21,11 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 8px;
-    min-height: 470px;
+    height: 470px;
+    overflow-y: auto;
     padding-bottom: 5px;
     background-color: rgb(238, 238, 238);
+    margin-bottom: 20px !important;
 }
 
 .heading {
