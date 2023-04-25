@@ -2,7 +2,7 @@
 let resume = document.querySelector('.resume');
 let resume_upload = document.querySelector('.resume_upload');
 firstname=document.querySelector('.firstname');
-// firstname.addEventListener('focusout',()=>{
+// firstname.addEventListener('keyup',()=>{
 //   alert('hello');
 // })
 selectElement = document.querySelector('#motive');
@@ -43,7 +43,7 @@ function checkpassword(str) {
   register=document.querySelector('.register');
   form=document.querySelector('.myform')
   selectElement = document.querySelector('#motive');
-  firstname.addEventListener('focusout',()=>{
+  firstname.addEventListener('keyup',()=>{
    if(!onlyLetters(firstname.value)||firstname.value=='')
    {
     // alert(firstname.value);
@@ -53,7 +53,7 @@ function checkpassword(str) {
    else
    incfn.innerHTML=""
   })
-  lastname.addEventListener('focusout',()=>{
+  lastname.addEventListener('keyup',()=>{
    if(!onlyLetters(lastname.value)||lastname.value=='')
    {
    
@@ -63,7 +63,7 @@ function checkpassword(str) {
    else
    incln.innerHTML=""
   })
-  phno.addEventListener('focusout',()=>{
+  phno.addEventListener('keyup',()=>{
     // alert(phno.value.length)
     if(!onlynumbers(phno.value) ||phno.value.length!=10)
     {
@@ -72,7 +72,7 @@ function checkpassword(str) {
    else
    inccn.innerHTML="";
   })
-  password.addEventListener('focusout',()=>{
+  password.addEventListener('keyup',()=>{
    if(!checkpassword(password.value))
    {
     // alert(phno.value);
@@ -81,7 +81,7 @@ function checkpassword(str) {
    else
    incpswd.innerHTML="";
   })
-  cnfpassword.addEventListener('focusout',()=>{
+  cnfpassword.addEventListener('keyup',()=>{
    if(password.value!==cnfpassword.value)
    {
     //  alert(password.value);

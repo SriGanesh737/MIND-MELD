@@ -58,7 +58,7 @@ exports.postarticles=(req, res) =>
         let slider_data = data;
         slider_data.sort((a, b) => b.likes - a.likes);
         slider_data=slider_data.slice(0, Math.min(5, slider_data.length));
-        console.log(slider_data)
+        // console.log(slider_data)
         res.render('posts', { topic: topic.toUpperCase(), articles_data: data, 'registeras': registeras, page: "posts", is_blocked: req.session.is_blocked,slider_data:slider_data });
 
     }).catch((err) => {
@@ -272,7 +272,7 @@ exports.postlike=(req, res) => {
     article_model.find({ _id: articleid }).then((data) => {
         // console.log(data)
         newarray1 = data[0].liked_userids;
-        console.log(newarray1)
+        // console.log(newarray1)
         likes = data[0].likes;
         dislikes = data[0].dislikes;
         // console.log(req.session.profile_data)
@@ -321,7 +321,7 @@ exports.postdislike=(req, res) => {
         // console.log(req.session.profile_data)
         // console.log(newarray1.includes(req.session.profile_data))
         let index = newarray1.includes(req.session.profile_data)
-        console.log(likes, dislikes);
+        // console.log(likes, dislikes);
         if (index == true) {
             // console.log('disliked before')
         }
@@ -392,7 +392,7 @@ exports.filterhandler=(req, res) => {
             let slider_data = data;
             slider_data.sort((a, b) => b.likes - a.likes);
             slider_data = slider_data.slice(0, Math.min(5, slider_data.length));
-            console.log(slider_data);
+            // console.log(slider_data);
             const filtered_data = data.filter((article) => {
                 if (based_on == 'title' && article.title.toLowerCase().includes(search_value.toLowerCase())) return true;
                 else if (based_on == 'tags') {
@@ -415,7 +415,7 @@ exports.filterhandler=(req, res) => {
 
             slider_data.sort((a, b) => b.likes - a.likes);
             slider_data = slider_data.slice(0, Math.min(5, slider_data.length));
-            console.log(slider_data);
+            // console.log(slider_data);
             const filtered_data = data.filter((article) => {
                 if (based_on == 'title' && article.title.toLowerCase().includes(search_value)) return true;
                 else if (based_on == 'tags') {
