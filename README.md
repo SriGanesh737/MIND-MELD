@@ -13,10 +13,7 @@ we mainly have 3 huge cases they are admin,expert and user
 
 first you can select login or signup to enter into the website if you are a new user you can sign up with details mentioned and login with that details.
 
-TO LOGIN AS ADMIN
-admin details
-email:adminmeld@gmail.com
-password:admin@123
+
 
 after logging as admin you will be redirected to admin dashboard
 
@@ -66,5 +63,3 @@ SOME USER DETAILS
 1.email:user3@gmail.com password:pass@123
 2.email:user6@gmail.com password:pass@123
 
-ADMIN DETAILS
-1.email:adminmeld@gmail.com password:admin@123
