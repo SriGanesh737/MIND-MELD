@@ -10,14 +10,14 @@ exports.bookmarks=(req, res) => {
         (data) => {
             if (!data) {
                 // console.log("no bookmarks...");
-
-
                 res.render('bookmarks', {page:"bookmarks",topic:"",'bookmarked_data': [], 'registeras': registeras,is_blocked:is_blocked });
                 res.end();
             }
-            else {
+            else 
+            {
             bookmarks_ids = data.bookmarks_ids;
-            article_model.find({ _id: { $in: bookmarks_ids } }).then((bookmarked_data) => {
+            article_model.find({ _id: { $in: bookmarks_ids } }).then((bookmarked_data) => 
+            {
                 // console.log('bookmarked data found', bookmarked_data);
                 res.render('bookmarks', { topic:"",'bookmarked_data': bookmarked_data, 'registeras': registeras,page:"bookmarks",is_blocked:is_blocked });
             })

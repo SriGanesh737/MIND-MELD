@@ -5,17 +5,19 @@ const nodemailer=require('nodemailer');
 const query_model = require('../models/query_model.js');
 
 
-exports.admindashboard= (req, res) => {
+exports.admindashboard= (req, res) => 
+{
     const registeras = req.session.registeras;
     const is_blocked = req.session.is_blocked;
-     if(registeras=='admin'){
+     if(registeras=='admin')
+     {
       user_model.find({}).sort({doj:-1}).then((userdata)=>{
         expert_model.find({}).sort({doj:-1}).then((expertdata)=>{
 
         article_model.find({}).sort({date_of_publish:-1}).then((articles)=>
         {
 
-          res.render('admin', { registeras: 'expert',userdata:userdata,expertdata:expertdata,articles:articles,is_blocked:is_blocked });
+          res.render('admin', { registeras: 'admin',userdata:userdata,expertdata:expertdata,articles:articles,is_blocked:is_blocked });
         })
       })
     })

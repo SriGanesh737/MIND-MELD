@@ -1,6 +1,6 @@
 let tags_list = [];
 let tagstring=document.querySelector('.tags_string').value;
-console.log(tagstring)
+// console.log(tagstring)
 tagstring=tagstring.split('#').slice(0, -1);
 tags_list=tagstring;
 // alert(tags_list)
