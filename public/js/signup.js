@@ -113,11 +113,11 @@ function checkpassword(str) {
     }).then(function(isConfirm) {
       if (isConfirm) {
         // If the user confirms the action, show a success message
-        swal({
-          title: 'Success!',
-          text: 'Your details are updated successfully.',
-          icon: 'success'
-        });
+        // swal({
+        //   title: 'Success!',
+        //   text: 'Your details are updated successfully.',
+        //   icon: 'success'
+        // });
         form.submit(); // submit the form
       }
     });

@@ -182,7 +182,7 @@ router.post('/login',async (req, res) => {
             setTimeout(()=>{
                 console.log('entered timeout');
                 req.session.destroy()
-            },60*60*1000)
+            },60*60*1000)  
             req.session.is_blocked = person1.is_blocked;
             res.redirect('/landingpage');
 
@@ -190,7 +190,7 @@ router.post('/login',async (req, res) => {
         else
         {
         data1 = "Incorrect Login details";
-         res.redirect('/login')
+         res.redirect('/login');
         }
     }
     else

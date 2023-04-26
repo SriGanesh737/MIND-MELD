@@ -169,7 +169,8 @@ exports.compose_post=(req, res) => {
         })
 
     }
-    else {
+    else 
+    {
 
         topic = req.body.topic,
             title = req.body.title,
@@ -198,10 +199,11 @@ exports.postcomment_articleid= (req, res) => {
     const registeras = req.session.registeras;
     const is_main_comment = true;
     if (registeras == 'user') {
-        user_model.findOne({ _id: user_id }).then((data) => {
+        user_model.findOne({ _id: user_id }).then((data) => 
+        {
             const { profile_image_link, firstname:user_name } = data;
             const newComment = new comment_model({ article_id, user_id, comment_info, profile_image_link, user_name, is_main_comment });
-            newComment.save().then(() => {
+            newComment.save().then(() => {  
                 // console.log('comment posted...');
                 res.redirect('/posts/'+article_id);
             }).catch((err) => {
@@ -384,17 +386,20 @@ exports.filterhandler=(req, res) => {
     let topic_lower = topic_name.toLowerCase();
     search_value = search_value.toLowerCase();
     let sort_basis = -1;
-    if (filter_option == 'oldest first') sort_basis = 1;
+    if (filter_option == 'oldest first') 
+    sort_basis = 1;
 
 
-    if (filter_option == 'most liked') {
+    if (filter_option == 'most liked') 
+    {
         article_model.find({ topic: topic_lower }).sort({ likes: -1 }).then((data) => {
             let slider_data = data;
             slider_data.sort((a, b) => b.likes - a.likes);
             slider_data = slider_data.slice(0, Math.min(5, slider_data.length));
             // console.log(slider_data);
             const filtered_data = data.filter((article) => {
-                if (based_on == 'title' && article.title.toLowerCase().includes(search_value.toLowerCase())) return true;
+                if (based_on == 'title' && article.title.toLowerCase().includes(search_value.toLowerCase())) 
+                return true;
                 else if (based_on == 'tags') {
                     const tags = article.tags;
                     for (let i = 0; i < tags.length; i++) {

@@ -15,7 +15,8 @@ const galleryItems = document.querySelector(".articles").children;
     check();
     showItems();
   })
-  next.addEventListener("click",function(){
+  next.addEventListener("click",function()
+  {
   	index++;
   	check();
     showItems();
@@ -42,8 +43,6 @@ const galleryItems = document.querySelector(".articles").children;
   	 for(let i=1;i<galleryItems.length; i++){
   	 	galleryItems[i].classList.remove("show");
   	 	galleryItems[i].classList.add("hide");
-
-
   	    if(i>=(index*maxItem)+1-maxItem && i<index*maxItem+1){
   	 	  // if i greater than and equal to (index*maxItem)-maxItem;
   		  // means  (1*8)-8=0 if index=2 then (2*8)-8=8

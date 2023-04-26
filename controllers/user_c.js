@@ -4,7 +4,6 @@ const expert_model = require('../models/expert');
 const admin_model=require('../models/admin_model.js');
 
 exports.editprofile=async (req, res) => {
-    // Swal('Success!', 'Your form has been submitted', 'success');
     const registeras = req.session.registeras;
     if (registeras == 'user') {
         res.redirect('/user/edit_u');
@@ -35,7 +34,7 @@ exports.editprofile=async (req, res) => {
 exports.posteditprofile=async (req,res)=>{
     if (req.session.registeras == 'user') {
         const { firstname, lastname, email, mobile, gender, link } = req.body;
-        console.log(req.body);
+        // console.log(req.body);
         const result = await user_model.updateOne({ _id: req.session.profile_data }, {
             $set: {
                 firstname: firstname,
