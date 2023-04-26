@@ -68,12 +68,13 @@ exports.allarticles=async (req, res) => {
     res.render('query_page',{query_data:query_data})
   }
 
-  exports.postquery=async (req,res)=>{
+  exports.postquery= (req,res)=>{
     id=req.params.id;
     // console.log(id);
-    let updated=await query_model.updateOne({_id:id},{$set:{isresolved:true}});
+     query_model.updateOne({ _id: id }, { $set: { isresolved: true } }).then((updated) => {
+       res.redirect('/admin/query');
+    });
     // console.log(updated);
-    res.redirect('/admin/query');
   }
 
   exports.postallarticles=async(req, res) => {

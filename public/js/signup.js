@@ -56,7 +56,7 @@ function checkpassword(str) {
   lastname.addEventListener('focusout',()=>{
    if(!onlyLetters(lastname.value)||lastname.value=='')
    {
-   
+
 
     incln.innerHTML="Incorrect name format";
    }
@@ -102,9 +102,9 @@ function checkpassword(str) {
   register.addEventListener('click', (event) => {
   event.preventDefault(); // prevent form from submitting
   // perform form validation
-  
+
   if (firstname.value!='' &&lastname.value!='' &&  onlyLetters(firstname.value) && onlyLetters(lastname.value) && onlynumbers(phno.value) && phno.value.length === 10 && checkpassword(password.value) && password.value == cnfpassword.value) {
-    swal({ 
+    swal({
       title: 'Are you sure?',
       text: 'Do you want to register with given details?',
       icon: 'warning',
@@ -113,19 +113,19 @@ function checkpassword(str) {
     }).then(function(isConfirm) {
       if (isConfirm) {
         // If the user confirms the action, show a success message
-        swal({
-          title: 'Success!',
-          text: 'Your details are updated successfully.',
-          icon: 'success'
-        });
+        // swal({
+        //   title: 'Success!',
+        //   text: 'Your details are updated successfully.',
+        //   icon: 'success'
+        // });
         form.submit(); // submit the form
       }
     });
-    
-  } 
+
+  }
   else
   {
     swal("Error!","Incorrect details!","error")
   }
-  
+
 });
