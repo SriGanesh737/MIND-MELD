@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500;600&display=swap" rel="stylesheet">
+    <title>Forgot Password</title>
+    <style>
+        body
+    {
+        text-align: center;
+        background: #fceabb ;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #f8b500, #fceabb);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f8b500, #fceabb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+    .formdiv
+    {
+        width: 350px;
+        height: 200px;
+       margin-top: 270px;
+       margin-left: auto;
+       margin-right: auto;
+    }
+
+    .formdiv h2{
+        font-family: 'Roboto Slab', serif;
+        font-weight: 600;
+        width: fit-content;
+        font-size: 20px;
+    }
+
+    span{
+        font-weight: 600;
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    input
+    {
+        width: 350px;
+        height: 30px;
+        margin-top: 10px;
+        border-radius: 5px;
+        padding: 5px;
+    }
+    .formdiv button{
+        width: 100px;
+        height: 30px;
+        background-color: rgb(120, 120, 238);
+        font-size: 20px;
+        color: white;
+        margin:0;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+
+<body>
+    <div class="formdiv">
+    <form action="/otpchecking" method="post" >
+        <h2>Enter OTP sent to your email</h2>
+        <input type="text" name="otp" required><br>
+        <br>
+        <span style="color: red;"><%=data %></span>
+        <br>
+        <br>
+        <button type="submit">SUBMIT</button>
+    </form>
+</div>
+</body>
+</html>

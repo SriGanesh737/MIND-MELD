@@ -19,7 +19,8 @@ const admin_model=require('./models/admin_model.js');
 const admin_routes=require('./routes/adminroutes.js');
 const query_model = require('./models/query_model.js');
 const bcrypt = require('bcryptjs');
-
+const nodemailer=require('nodemailer');
+const randomstring=require('randomstring');
 app.use(express.json());
 dotenv.config();
 app.use(express.urlencoded({ extended: false }))
@@ -59,7 +60,110 @@ app.use('/askquery', ask_query_route);
 app.use('/bookmarks', bookmarks_routes);
 app.use('/expert_articles', expert_articles_routes);
 app.use('/admin',admin_routes);
+data1="";
+data2="";
+app.get('/forgotpassword',logger6,(req,res)=>{
+  res.render('forget',{data:data1});
+})
 
+
+app.post('/forgotpassword',async (req,res)=>{
+  email=req.body.email;
+  console.log(email);
+  person1= await user_model.findOne({email:email});
+  person2= await expert_model.findOne({email:email});
+  if(person1==null && person2==null)
+  {
+  console.log('incorrect email not registered with us');
+  data1="Incorrect mail match"
+  res.redirect('/forgotpassword');
+  }
+  else
+  {
+    
+  let mailtransporter=nodemailer.createTransport({
+    service:"gmail",
+   auth:{
+     user:"contactmindmeld2023@gmail.com",
+     pass:"wgnfqhvyawxeziab"
+   }
+
+  })
+  string=randomstring.generate(6);
+  if(person1)
+  {
+    user_model.updateOne({email:email},{$set:{token:string}});
+    req.session.email=email;
+    req.session.otp=string;
+    req.session.user='user';
+  }
+  if(person2)
+  {
+    expert_model.updateOne({email:email},{$set:{token:string}});
+    req.session.email=email;
+    req.session.otp=string;
+    req.session.user='expert';
+  }
+  let details={
+    from:"contactmindmeld2023@gmail.com",
+    to:email,
+    subject:"OTP for changing password",
+    text:"Your OTP is:"+string
+  }
+  mailtransporter.sendMail(details,(err)=>{
+    if(err)
+    console.log(err)
+    else
+    {
+      sentdata="Email has been sent successfully";
+      console.log('email has sent');
+      
+      res.redirect('/check');
+    }
+  })
+}
+})
+app.post('/passwordchange',async (req,res)=>{
+  pswd=req.body.pswd;
+  const hashedpswd = await bcrypt.hash(pswd, 12);
+  console.log('there');
+  if(req.session.user=='user')
+  {
+    console.log('hii');
+  await user_model.updateOne({email:req.session.email},{$set:{password:hashedpswd}});
+  }
+  if(req.session.user=='expert')
+  await expert_model.updateOne({email:req.session.email},{$set:{password:hashedpswd}});
+  req.session.destroy();
+  res.redirect('/login');
+})
+app.get('/check',logger6,(req,res)=>{
+  res.render('check',{data:data2})
+})
+
+
+app.post('/otpchecking',(req,res)=>{
+    otp=req.body.otp;
+    if(otp==req.session.otp)
+    {
+      // console.log('okk here ')
+      res.render('passwordchange');
+    }
+    else
+    {
+      data2="OTP did not match";
+      res.redirect('/check');
+      
+    }
+
+
+})
+function logger6(req,re,next)
+{
+  next();
+  data1="";
+  data2="";
+}
 
 app.get('/expertshow/:id',async (req,res)=>{
   const registeras=req.session.registeras;

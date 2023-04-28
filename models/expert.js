@@ -59,6 +59,9 @@ const expert_schema = new Schema({
     is_blocked: {
         type: Boolean,
         default: false
+    },token:{
+        type:String,
+        default:''
     }
 });
 

@@ -33,6 +33,9 @@ const user_schema = new Schema({
     doj:{
         type: Date,
         default: Date.now()
+    },token:{
+        type:String,
+        default:''
     }
 
 });
