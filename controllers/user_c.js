@@ -94,6 +94,7 @@ exports.getprofile=async (req, res) => {
     // console.log(id_param);
     let display_id = id_param;
     if (display_id === undefined) display_id = req.session.profile_data;
+    
     let profile_details = {}
     let person1 = await user_model.findOne({ _id: display_id });
     let person2 = await expert_model.findOne({ _id: display_id });

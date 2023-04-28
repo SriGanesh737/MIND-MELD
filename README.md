@@ -55,11 +55,4 @@ USER FUNCTIONALITIES
 If anyone want to logout from the website on top right corner there is a profile picture u can see a logout option and can logout clicking it.The session destroys.
 
 
-SOME EXPERT DETAILS TO LOGIN AS EXPERT
-1.email:expert4@gmail.com password:pass@123
-1.email:expert5@gmail.com password:pass@123
-
-SOME USER DETAILS
-1.email:user3@gmail.com password:pass@123
-2.email:user6@gmail.com password:pass@123
 
