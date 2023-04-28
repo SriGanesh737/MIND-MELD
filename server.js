@@ -43,7 +43,7 @@ app.use(session({
 mongoose.connect(process.env.myUri, connectionparams)
   .then(() => {
     console.info("connected to the db");
-    app.listen(3000, () => {
+    app.listen(process.env.PORT||3000, () => {
       console.log('app listening in port 3000')
     })
   })
