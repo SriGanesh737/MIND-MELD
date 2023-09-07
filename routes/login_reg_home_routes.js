@@ -6,9 +6,7 @@ const expert_model = require('../models/expert');
 const {isAuth} = require('../controllers/isAuth');
 const admin_model=require('../models/admin_model.js');
 const loginreg_c=require('../controllers/loginreg_c');
-
-
-
+const multer=require('multer');
 
 router.get('/logout',loginreg_c.logout )
 router.get('/', loginreg_c.index);
@@ -51,9 +49,8 @@ router.post('/signup', async (req, res) => {
    let pswd = req.body.pswd;
    let cnfpswd = req.body.cnfpswd;
    let registeras = req.body.registeras;
-   let resume = req.body.resume;
+   let resume = req.file;
    let checker=true;
-    //console.log(firstname,lastname,email,phno,pswd,cnfpswd,registeras);
    await user_model.findOne({email:email}).then((user)=>{
      if(user)
         {
@@ -83,11 +80,13 @@ router.post('/signup', async (req, res) => {
             user.save().then(() => console.log('Document saved')).catch((err) => console.error(err));
             res.redirect('/login');
         }
-        else if (registeras === 'expert' && resume !== '')
+        else if (registeras === 'expert')
         {
+            
+           
             resu = "";
             const expert=new expert_model({
-                firstname:firstname,lastname:lastname,email:email,password:hashedpswd,phone:phno
+                firstname:firstname,lastname:lastname,email:email,password:hashedpswd,phone:phno,resume:resume.filename
             })
             expert.save().then(() => console.log('Document saved')).catch((err) => console.error(err));
 
@@ -107,6 +106,29 @@ router.post('/signup', async (req, res) => {
 
 router.get('/login', logger2, (req, res) => {
     res.render('loginpage', { data1 })
+});
+router.post('/checkEmail', async (req, res) => {
+    
+    const { emailvalue } = req.body;
+
+    // Check if the email exists in the user_model
+    const user = await user_model.findOne({ email: emailvalue }).catch((err) =>
+        console.log(err)
+    );
+
+    if (user) {
+        res.json({ exists: true });
+        return;
+    }
+    const expert = await expert_model.findOne({ email: emailvalue }).catch((err) =>
+        console.log(err)
+    );
+
+    if (expert) {
+        res.json({ exists: true });
+        return;
+    }
+    res.json({ exists: false });
 });
 
 router.post('/login',async (req, res) => {
@@ -200,6 +222,7 @@ router.post('/login',async (req, res) => {
     }
 
 });
+
 
 
 module.exports = router;

@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-
+const fs=require('fs');
 const login_reg = require('./routes/login_reg_home_routes.js');
 const posts = require('./routes/posts_routes.js');
 const user_routes = require('./routes/user_routes.js');
@@ -20,11 +20,24 @@ const admin_routes=require('./routes/adminroutes.js');
 const bcrypt = require('bcryptjs');
 const nodemailer=require('nodemailer');
 const randomstring=require('randomstring');
+const multer=require('multer');
 app.use(express.json());
 dotenv.config();
 app.use(express.urlencoded({ extended: false }))
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')))
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'pdfs');
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString().replace(/:/g,'-') + '_' + file.originalname);
+  }
+});
+
+app.use(
+  multer({ storage: fileStorage }).single('file')
+);
 
 
 // const UrI='mongodb://0.0.0.0:27017/mindmeld';
@@ -183,7 +196,26 @@ app.get('/expertshow/:id',async (req,res)=>{
 res.render('notfound')
 }
 })
+app.get("/download_pdf",(req,res)=>{
+  expert_model.findById({_id:req.query.id}).then((data)=>{
+    filepath="pdfs/"+data.resume;
+    if (fs.existsSync(filepath)) {
+      // Set the appropriate headers
+      res.setHeader('Content-Disposition', 'attachment;inline;filename=file.pdf');
+      res.setHeader('Content-Type', 'application/pdf');
+  
+      // Create a read stream from the file
+      const fileStream = fs.createReadStream(filepath);
+  
+      // Pipe the stream to the response object
+      fileStream.pipe(res);
+    
+    } else {
+      res.status(404).send('File not found');
+    }
+  })
 
+})
 
 app.get('*', (req, res) => {
   res.render('notfound')
