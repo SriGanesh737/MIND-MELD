@@ -57,7 +57,7 @@
             </div>
 
 
-            <a  id="<%= data['id'] %>" href="javascript:void(0)"   class="remove_bookmarks_link">
+            <a  data-bookmarkid="<%= data['id'] %>" href="javascript:void(0)"   class="remove_bookmarks_link">
           <button class="remove-from-bookmarks">Remove From Bookmarks</button>
             </a>
 
@@ -68,11 +68,11 @@
 
       </div>
       <% } %>
-      <% if(bookmarked_data.length==0) { %>
-       <div class="not_available" style="height: 300px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;">
+
+       <div class="not_available" style="height: 300px;text-align: center;display:none;align-items: center;justify-content: center;flex-direction: column;">
           <img src="../images/null.png" alt="">
        </div>
-        <% }%>
+       
 
       <%- include('partials/footer') %>
 

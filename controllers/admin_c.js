@@ -71,8 +71,9 @@ exports.allarticles=async (req, res) => {
   }
 
   exports.postquery= (req,res)=>{
+    
     id=req.params.id;
-    // console.log(id);
+    //  console.log(id);
      query_model.updateOne({ _id: id }, { $set: { isresolved: true } }).then((updated) => {
        res.redirect('/admin/query');
     });

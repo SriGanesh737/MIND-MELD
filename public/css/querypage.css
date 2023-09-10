@@ -36,9 +36,9 @@ body {
     border: 5px solid rgb(104, 100, 100);
     border-radius: 10px;
     background-color: rgb(221, 205, 219);
-    justify-content: center;
-    align-items: center;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .query h4 span {
@@ -48,16 +48,22 @@ body {
 .query h4 a{
     text-decoration: none;
 }
-.query form button{
+.resolve_btn{
     background-color: #79b3f4;
     padding: 10px;
     border-radius: 2px;
     font-size: 20px;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.query form{
-    text-align: center;
+
+.null-image{
+    display: none;
+    justify-content: center;
+    margin-top: 150px;
 }
+
 
 @media only screen and (max-width:200px) {
     .query {

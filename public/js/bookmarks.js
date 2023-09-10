@@ -4,11 +4,11 @@ $('.card').click(function (e) {
     window.location.href = "/posts/" + id;
 });
 
-$('.card').click(function (e) {
-    let id = e.currentTarget.id;
-    if (e.target.classList[0] == 'remove-from-bookmarks')
-        $(this).css('display', 'none');
-});
+// $('.card').click(function (e) {
+//     let id = e.currentTarget.id;
+//     if (e.target.classList[0] == 'remove-from-bookmarks')
+//         $(this).css('display', 'none');
+// });
 
 // i will use fetch api to remove the bookmark from the database
 // and then i will remove the bookmark from the bookmarks page using javascript
@@ -28,7 +28,23 @@ function removeBookmarkHelper(bookmarkId){
       });
     
       // if there are no bookmarks show no bookmarks image.
+      check();
 }
+
+function check(){
+    let cards = document.querySelectorAll('.card');
+    let cnt = 0;
+    for(let i=0;i<cards.length;i++){
+        if(cards[i].style.display!='none')
+            cnt++;
+    }
+    if(cnt==0){
+        document.querySelector('.not_available').style.display = 'flex';
+        document.querySelector('.cards').style.display = 'none';
+    }
+}
+
+check();
 
 $('a.remove_bookmarks_link').click(function(event) {
     
@@ -36,7 +52,7 @@ $('a.remove_bookmarks_link').click(function(event) {
     
     var url = $(this).data('href'); // get the URL from the data-href attribute of the anchor tag
 
-    const bookmarkId = $(this).attr('id');
+    const bookmarkId = $(this).data('bookmarkid');
 
     swal({
         title: "Are you sure?",
@@ -53,8 +69,8 @@ $('a.remove_bookmarks_link').click(function(event) {
                         icon: "success",
         });
           // window.location.href = url;
+          $('#'+bookmarkId).css('display', 'none');
           removeBookmarkHelper(bookmarkId);
-          
           
         } else {
           swal("Bookmark is not removed!");
