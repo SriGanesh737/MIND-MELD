@@ -2,20 +2,54 @@ let rated=document.querySelector(".rated");
 let unrated=document.querySelector(".unrated");
 let submitlike=document.querySelector(".submitlike");
 let submitdislike=document.querySelector(".submitdislike");
+let likes_cnt=document.querySelector(".likes_cnt");
+let dislikes_cnt=document.querySelector(".dislikes_cnt");
 
 rated.addEventListener('click', () => {
+    const article_id = rated.dataset.article_id;
+    // if already liked, return
+    if (rated.style.color === "rgb(6, 108, 191)") {
+        return;
+    }
     rated.style.color = "rgb(6, 108, 191)";
     submitlike.style.pointerEvents="none"
     unrated.style.color = "black"
     submitdislike.style.pointerEvents="auto"
-});
+    likes_cnt.innerHTML=parseInt(likes_cnt.innerHTML)+1;
+    dislikes_cnt.innerHTML=parseInt(dislikes_cnt.innerHTML)-1;
+    const url = 'http://localhost:3000/posts/liked/'+article_id;
+    console.log(url);
+    // send post request using fetch
+    fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({ article_id }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+}); 
 unrated.addEventListener('click', () => {
+    const article_id = unrated.dataset.article_id;
+    // if already disliked, return
+    if (unrated.style.color === "rgb(6, 108, 191)") {
+        return;
+    }
     unrated.style.color = "rgb(6, 108, 191)";
     submitdislike.style.pointerEvents="none"
     rated.style.color = "black"
    submitlike.style.pointerEvents="auto"
-    
-
+    likes_cnt.innerHTML=parseInt(likes_cnt.innerHTML)-1;
+    dislikes_cnt.innerHTML=parseInt(dislikes_cnt.innerHTML)+1;
+    const url = 'http://localhost:3000/posts/disliked/'+article_id;
+    console.log(url)
+    // send post request using fetch
+    fetch(url,{
+      method: 'POST',
+      body: JSON.stringify({ article_id }),
+      headers: {
+          'Content-Type': 'application/json',
+      }, 
+    })
 });
 
 
@@ -49,5 +83,8 @@ $('a.bookmark-link').click(function(event) {
       });
 
   });
+
+
+
 
 

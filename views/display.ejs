@@ -48,26 +48,26 @@
         <i style="font-size: 40px;" class="fa-solid fa-thumbs-down unrated"></i>
     </div> -->
     <div class="rating" style="display: flex;align-items: center;justify-content: center;">
-        <form action="/posts/liked/<%= data['_id']%>" method="post">
-            <div class="liked">
-                <button type="submit" class="submitlike"><i
+        
+            <div  class="liked">
+                <button class="submitlike"><i data-article_id="<%= data['_id'] %>"
                         style="font-size: 40px;padding-right: 10px;<%=value==1?'color:rgb(6, 108, 191);':'' %>"
                         class="fa-solid fa-thumbs-up rated"></i></button>
-                <h4>
+                <h4 class="likes_cnt">
                     <%= data['likes'] %>
                 </h4>
-        </form>
+        
     </div>
-    <form action="/posts/disliked/<%= data['_id']%>" method="post">
-        <div class="disliked">
-            <button type="submit" class="submitdislike"><i
+
+        <div  class="disliked">
+            <button class="submitdislike"><i data-article_id="<%= data['_id'] %>"
                     style="font-size: 40px;<%=value==2?'color:rgb(6, 108, 191);':'' %>"
                     class="fa-solid fa-thumbs-down unrated"></i></button>
-            <h4>
+            <h4 class="dislikes_cnt">
                 <%= data['dislikes'] %>
             </h4>
         </div>
-    </form>
+    
     </div>
 
     <h2 style="text-align: center;">***** Thank You *****</h2>
