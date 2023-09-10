@@ -2,9 +2,7 @@
 let resume = document.querySelector('.resume');
 let resume_upload = document.querySelector('.resume_upload');
 firstname=document.querySelector('.firstname');
-// firstname.addEventListener('keyup',()=>{
-//   alert('hello');
-// })
+
 selectElement = document.querySelector('#motive');
 function checkup() {
   selectElement = document.querySelector('#motive');
@@ -43,10 +41,56 @@ function checkpassword(str) {
   register=document.querySelector('.register');
   form=document.querySelector('.myform')
   selectElement = document.querySelector('#motive');
+  incem=document.querySelector('.incem')
+  function isValidEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailRegex.test(email);
+  }
+  email.addEventListener('keyup',async ()=>{
+    
+    emailvalue=email.value
+    if(!isValidEmail(email.value))
+    {
+      incem.innerHTML="Incorrect email format"
+    }
+    else
+    {
+      
+      await  fetch('/checkEmail', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ emailvalue }),
+        })
+        .then(response =>{
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+          })
+        .then(data => {
+            if (data.exists) {
+                // Email exists
+                incem.innerHTML="this email already exists"
+                console.log('Email exists');
+            } else {
+                // Email does not exist
+                incem.innerHTML=""
+                console.log('Email does not exist');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+  })
+
+
+
   firstname.addEventListener('keyup',()=>{
    if(!onlyLetters(firstname.value)||firstname.value=='')
    {
-    // alert(firstname.value);
 
     incfn.innerHTML="Incorrect name format";
    }
@@ -92,18 +136,12 @@ function checkpassword(str) {
    incnfpswd.innerHTML="";
   })
 
-  // register.addEventListener('click',()=>{
-  //   alert('hello')
-  //   if (onlyLetters(firstname.value) && onlyLetters(lastname.value) && onlynumbers(phno.value) && phno.value.length === 10 && checkpassword(pswd.value) && pswd.value == cnfpswd.value)
-  //   {
-  //     register.removeAttribute('disabled');
-  //   }
-  // })
+ 
   register.addEventListener('click', (event) => {
   event.preventDefault(); // prevent form from submitting
   // perform form validation
 
-  if (firstname.value!='' &&lastname.value!='' &&  onlyLetters(firstname.value) && onlyLetters(lastname.value) && onlynumbers(phno.value) && phno.value.length === 10 && checkpassword(password.value) && password.value == cnfpassword.value) {
+  if (firstname.value!='' &&lastname.value!='' &&  onlyLetters(firstname.value) && onlyLetters(lastname.value) && onlynumbers(phno.value) && phno.value.length === 10 && checkpassword(password.value) && password.value == cnfpassword.value && isValidEmail(email.value)) {
     swal({
       title: 'Are you sure?',
       text: 'Do you want to register with given details?',

@@ -23,7 +23,7 @@
 
     <div class="title">Sign Up</div>
     <div class="content" data-wow-delay="0.4s">
-      <form action="/signup" method="post" class="myform">
+      <form action="/signup" method="post" class="myform" enctype="multipart/form-data">
         <div class="user-details">
           <div class="input-box animated wow fadeInLeft">
             <span class="details">First Name</span>
@@ -71,7 +71,7 @@
         <br>
         <span class="details">Upload Resume(Required for expert)</span>
         <br>
-        <input type="file" name="resume" class="resume_upload">
+        <input type="file" name="file" accept="application/pdf" class="resume_upload">
 
        </div>
        <br>

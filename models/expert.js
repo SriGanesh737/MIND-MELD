@@ -62,6 +62,10 @@ const expert_schema = new Schema({
     },token:{
         type:String,
         default:''
+    },
+    resume:{
+        type:String,
+        required:[true,'resume is required']
     }
 });
 
