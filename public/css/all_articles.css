@@ -133,6 +133,19 @@ a .delete {
     width: 140px;
     font-size: 16px;
 }
+.deleteArticle
+{
+    border-radius: 5px;
+    /* margin-left: 5px; */
+    /* left: 0; */
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(255, 40, 40, 0.97);
+    height: 30px;
+    width: 140px;
+    font-size: 16px;   
+}
 
 .deletion {
     text-align: center;

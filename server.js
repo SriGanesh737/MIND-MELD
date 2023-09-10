@@ -16,6 +16,7 @@ const ask_query_route = require('./routes/ask_auery_route.js');
 const bookmarks_routes = require('./routes/bookmark_routes.js');
 const expert_articles_routes = require('./routes/expert_articles_routes.js');
 const expert_model = require('./models/expert.js');
+const user_model=require('./models/user.js')
 const admin_routes=require('./routes/adminroutes.js');
 const bcrypt = require('bcryptjs');
 const nodemailer=require('nodemailer');
@@ -144,7 +145,7 @@ app.post('/passwordchange',async (req,res)=>{
   console.log('there');
   if(req.session.user=='user')
   {
-    console.log('hii');
+   
   await user_model.updateOne({email:req.session.email},{$set:{password:hashedpswd}});
   }
   if(req.session.user=='expert')

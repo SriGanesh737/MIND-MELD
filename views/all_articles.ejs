@@ -39,7 +39,7 @@
         <% if(articles.length!==0) {%>
          <% for(let i=0;i<articles.length;i++) {%>
             <a href="/posts/<%= articles[i]._id %>">
-        <div class="singlecard">
+        <div class="singlecard" id="<%= articles[i]._id%>">
 
             <div class="image">
             <img src="<%=articles[i].image_link %>" alt="">
@@ -53,9 +53,7 @@
                 <div class="tags">
                     <% for(let j=0;j<Math.min(articles[i].tags.length,3);j++) {%>
                     <div class="ettag"><%=articles[i].tags[j] %></div>
-                <!-- <div class="tag">jerkierjre</div> -->
-                <!-- <div class="tag">eiertreutrehtreujhtretre ...</div> -->
-                <!-- <div class="tag">jreierioreeirtnykyjiyrtuytreo</div> -->
+                
                 <% } %>
                 </div>
 
@@ -66,8 +64,8 @@
            -- <%= articles[i].author_name %>
            <div class="deletion">
 
-            <a href="javascript:void(0)"  data-href="/expert_articles/delete/<%=articles[i]._id %>" style="text-decoration: none;color: white;margin-left: 0;" class="delete_article"><button class="delete">DELETE</button></a>
-        </div>
+            <!-- <a href="javascript:void(0)" data-articleid="<%=articles[i]._id %>" data-href="/expert_articles/delete/<%=articles[i]._id %>" style="text-decoration: none;color: white;margin-left: 0;" class="delete_article"><button class="delete">DELETE</button></a> -->
+        </div><button class="deleteArticle" data-articleid="<%=articles[i]._id%>" data-href="/expert_articles/delete/<%=articles[i]._id %>" >DELETE</button>
          </div>
 
         </div>

@@ -21,7 +21,7 @@ else
 exports.deletearticle=(req, res) => {
     const article_id = req.params.article_id;
     article_model.deleteOne({ _id: article_id }).then(() => {
-        // console.log('article deleted succesfully ');
+        console.log('article deleted succesfully ');
         if(req.session.registeras=='admin')
         res.redirect('/admin/all_articles')
         else
