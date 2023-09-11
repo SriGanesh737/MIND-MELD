@@ -17,15 +17,15 @@ function checkup() {
   }
 }
 function onlyLetters(str) {
-  return /^[A-Za-z\s]*$/.test(str);
+  return /^[A-Za-z\s]*$/.test(str) && str.trim()!='';
 }
 
 function onlynumbers(str) {
-  return /^[0-9]*$/.test(str);
+  return /^[0-9]*$/.test(str) && str.trim()!='' ;
 }
 
 function checkpassword(str) {
-  return /^^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/.test(str);
+  return /^^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/.test(str) ;
 }
   firstname=document.querySelector('.firstname');
   incfn=document.querySelector('.incfn');
@@ -44,7 +44,7 @@ function checkpassword(str) {
   incem=document.querySelector('.incem')
   function isValidEmail(email) {
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailRegex.test(email);
+    return emailRegex.test(email) && email.trim()!='';
   }
   email.addEventListener('keyup',async ()=>{
     
@@ -150,13 +150,8 @@ function checkpassword(str) {
       dangerMode: true,
     }).then(function(isConfirm) {
       if (isConfirm) {
-        // If the user confirms the action, show a success message
-        // swal({
-        //   title: 'Success!',
-        //   text: 'Your details are updated successfully.',
-        //   icon: 'success'
-        // });
-        form.submit(); // submit the form
+        
+        form.submit();
       }
     });
 

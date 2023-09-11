@@ -18,8 +18,8 @@
   <%- include('partials/loading') %>
 <%- include('partials/cursor') %>
 
-  <div class="total animated wow fadeIn" >
-    <div class="left animated wow slideInLeft">
+  <div class="total" >
+    <div class="left wow slideInLeft">
 
       <div class="vid">
         <video width="170px" height="170px" autoplay muted loop>
@@ -30,23 +30,23 @@
         Welcome to
       </h2>
 
-      <img class="meld animated wow fadeInUp" src="../images/title5.png" alt="" data-wow-delay="0.3s">
+      <img class="meld  wow fadeInUp" src="../images/title5.png" alt="" data-wow-delay="0.3s">
 
 
-      <div class="caption animated wow fadeInDown" data-wow-delay="0.4s">The writing of a good Blog is a talent, but the conveying it is an art.</div>
+      <div class="caption wow fadeInDown" data-wow-delay="0.4s">The writing of a good Blog is a talent, but the conveying it is an art.</div>
 
 
       <div class="slideshow-container animated wow fadeIn">
 
-      <div class="mySlides fade ">
+      <div class="mySlides">
         <img src="../images/health-12.jpg" class="slides aminated wow fadeIn" style="border-radius: 15px;">
       </div>
 
-      <div class="mySlides fade aminated wow fadeIn">
+      <div class="mySlides">
         <img src="../images/study2.jpg" class="slides" style="border-radius: 15px;">
       </div>
 
-      <div class="mySlides fade aminated wow fadeIn">
+      <div class="mySlides ">
         <img src="../images/lifestyle.jpg" class="slides" style="border-radius: 15px;">
       </div>
     </div>
@@ -56,7 +56,7 @@
 
 
 
-    <div class="right animated wow slideInRight">
+    <div class="right  wow slideInRight">
       <div class="loginimage">
         <img src="../images/mm.jpg" height="120px" width="120px" style="border-radius: 50%;" class="name" alt="">
       </div>
@@ -65,7 +65,7 @@
         <div class="form-container">
           <div class="slide-controls">
             <input type="radio" name="slide" id="login" checked>
-            <input type="radio" name="slide" id="signup" >
+            <!-- <input type="radio" name="slide" id="signup" > -->
             <label for="login" class="slide login">Login</label>
 
             <a href="signup" class="slide signup" style="text-decoration: none;">SignUp</a>
@@ -73,20 +73,19 @@
             <div class="slider-tab"></div>
           </div>
           <div class="form-inner">
-            <form action="/login" method="post" class="login" >
+            <form action="/login" method="post" class="loginform" >
               <div class="field">
-                <input type="email" name="email" placeholder="Email Address" required autocomplete="off">
+                <input type="email" name="email" placeholder="Email Address" required autocomplete="off" id="email">
               </div>
               <div class="field" style="margin-bottom: 10px;">
-                <input type="password" name="password" placeholder="Password" class="pswd" required autocomplete="off">
+                <input type="password" name="password" placeholder="Password" class="pswd" id="pswd" required autocomplete="off">
               </div>
-              <span style="color:red;margin-top: 20px;font-size: 18px;"><%=data1 %></span> 
+              <span style="color:red;margin-top: 20px;font-size: 18px;" class="errorMessage"><%=data1 %></span> 
               <br>
               <a href="/forgotpassword" style="color: white;">Forgot(or)reset password?</a>
-              <div class="field btn animated wow zoomIn" data-wow-delay="0.5s">
-                <div class="btn-layer"></div>
-                <input type="submit" value="Login">
-              </div>
+              <button class="field btn animated wow zoomIn" id="loginsubmit" type="submit" style="background-color: black;font-size: 20px;" data-wow-delay="0.5s">
+              Login
+              </button>
               <div class="signup-link">Not a member? <a href="signup">Signup now</a></div>
             </form>
 

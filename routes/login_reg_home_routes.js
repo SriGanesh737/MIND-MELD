@@ -154,13 +154,17 @@ router.post('/login',async (req, res) => {
                     console.log('entered timeout');
                     req.session.destroy()
                 },60*60*1000)
-                res.redirect('/admin')
+                res.status(200).json({ redirectTo: '/admin' });
+                // res.redirect('/admin')
 
         }
         else
             {
             data1 = "Incorrect Login details";
-             res.redirect('/login')
+            {
+            //  res.redirect('/login')
+            res.status(401).json({ error: 'Invalid Login credentials' });
+            }
             }
 
      }
@@ -181,12 +185,15 @@ router.post('/login',async (req, res) => {
                     console.log('entered timeout');
                     req.session.destroy()
                 },60*60*1000)
-                res.redirect('/landingpage')
+                // res.redirect('/landingpage')
+                res.status(200).json({ redirectTo: '/landingpage' });
+                
             }
             else
             {
                 data1 = "Incorrect Login details";
-             res.redirect('/login')
+            //  res.redirect('/login')
+            res.status(401).json({ error: 'Invalid Login credentials' });
             }
     }
     else if(person1!=null)
@@ -206,19 +213,22 @@ router.post('/login',async (req, res) => {
                 req.session.destroy()
             },60*60*1000)  
             req.session.is_blocked = person1.is_blocked;
-            res.redirect('/landingpage');
+            // res.redirect('/landingpage');
+            res.status(200).json({ redirectTo: '/landingpage' });
 
         }
         else
         {
         data1 = "Incorrect Login details";
-         res.redirect('/login');
+        //  res.redirect('/login');
+        res.status(401).json({ error: 'Invalid Login credentials' });
         }
     }
     else
     {
         data1 = "Incorrect Login details";
-        res.redirect('/login');
+        // res.redirect('/login');
+        res.status(401).json({ error: 'Invalid Login credentials' });
     }
 
 });
