@@ -20,7 +20,9 @@ $('a.delete-btn-link').click(function(event) {
     event.preventDefault(); // prevent the default behavior of the anchor tag
     
     var url = $(this).data('href'); // get the URL from the data-href attribute of the anchor tag
-    
+
+    const article_id = url.split('/')[3];
+
     swal({
         title: "Are you sure?",
         text: "Once deleted, you will not be able to recover the article!",
@@ -36,8 +38,17 @@ $('a.delete-btn-link').click(function(event) {
         swal("Poof! Your article has been deleted successfully!", {
                         icon: "success",
         });
-          window.location.href = url;
-          
+          // window.location.href = url;
+          // make that card display none
+          // send a fetch request to delete the article
+          fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(() => {
+            $(`#${article_id}`).css('display', 'none');
+        })
           
         } else {
           swal("Your article is not deleted!");

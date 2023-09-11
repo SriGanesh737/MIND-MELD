@@ -11,12 +11,15 @@ rated.addEventListener('click', () => {
     if (rated.style.color === "rgb(6, 108, 191)") {
         return;
     }
+    
+    likes_cnt.innerHTML=parseInt(likes_cnt.innerHTML)+1;
+    if(unrated.style.color === "rgb(6, 108, 191)"){
+        dislikes_cnt.innerHTML=parseInt(dislikes_cnt.innerHTML)-1;
+    }
     rated.style.color = "rgb(6, 108, 191)";
     submitlike.style.pointerEvents="none"
     unrated.style.color = "black"
     submitdislike.style.pointerEvents="auto"
-    likes_cnt.innerHTML=parseInt(likes_cnt.innerHTML)+1;
-    dislikes_cnt.innerHTML=parseInt(dislikes_cnt.innerHTML)-1;
     const url = 'http://localhost:3000/posts/liked/'+article_id;
     console.log(url);
     // send post request using fetch
@@ -34,12 +37,15 @@ unrated.addEventListener('click', () => {
     if (unrated.style.color === "rgb(6, 108, 191)") {
         return;
     }
+    if(rated.style.color === "rgb(6, 108, 191)") {
+        likes_cnt.innerHTML=parseInt(likes_cnt.innerHTML)-1;
+    }
+    
+    dislikes_cnt.innerHTML=parseInt(dislikes_cnt.innerHTML)+1;
     unrated.style.color = "rgb(6, 108, 191)";
     submitdislike.style.pointerEvents="none"
     rated.style.color = "black"
    submitlike.style.pointerEvents="auto"
-    likes_cnt.innerHTML=parseInt(likes_cnt.innerHTML)-1;
-    dislikes_cnt.innerHTML=parseInt(dislikes_cnt.innerHTML)+1;
     const url = 'http://localhost:3000/posts/disliked/'+article_id;
     console.log(url)
     // send post request using fetch
